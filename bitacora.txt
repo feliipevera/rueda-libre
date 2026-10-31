@@ -1,0 +1,27 @@
+retos del dia 1 informacion bitacora reto 1
+
+Request URL
+http://127.0.0.1:5500/index.html
+Request method
+GET
+Status code
+200 OK
+Remote address
+127.0.0.1:5500
+Referrer policy
+strict-origin-when-cross-origin
+
+http://127.0.0.1:5500/promociones.html
+al agregar /promociones.html a la pagina sale un codigo de estado de 404 
+El Servidor no puedo encontrar la direccion solicitada, por eso el error 404
+
+
+*Rol de HTML 
+- HTML sera usado para mostrar los enlaces de navegación de la pagina, menus, enlaces relativos y externos como un chat por WhatsApp 
+
+*Rol de CSS
+- CSS será usado para estilizar formularios, encabezados, textos, enlaces imagenes y todo lo que hace llamativa a una web
+
+*Rol de JavaScript 
+- JavaScript ayudara al sitio de Rueda Libre a crear un sitio dinamico, funcional, responsivo a peticiones del usuario y manejara el comportamiento de ciertos elementos en la web
+
