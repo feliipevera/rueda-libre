@@ -3,54 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta name="description" content="Tarifas de alquiler de bicicletas y recorridos guiados de Rueda Libre en Medellín.">
+    <title>Tarifas y rutas | Rueda Libre</title>
 </head>
-<body> 
+<body>
+    <!-- PASO 2: menú (rutas desde la carpeta paginas/) -->
     <nav>
         <ul id="menu">
             <li><a href="../index.html">Inicio</a></li>
             <li><a href="tarifas.html">Tarifas y rutas</a></li>
-            <li><a href="contacto.html">Reservas</a></li>
-        </ul> 
+            <li><a href="reservas.html">Reservas</a></li>
+        </ul>
     </nav>
 
+    <img src="../img/LogoBicicleta.jpg" alt="Logo de Rueda Libre" width="200" height="200">
 
-
-
-
-
-    <img src="../img/LogoBicicleta.jpg" alt="logo" width="200" height="200">
     <section>
-        <h1>Tarifas alquiler de bicicletas</h1>
-        <p>En esta sección encontrarás información sobre las tarifas de alquiler de bicicletas y los recorridos guiados que ofrecemos en nuestra empresa.</p>
+        <h1>Tarifas de alquiler de bicicletas</h1>
+        <p>En esta sección encontrarás información sobre las tarifas de alquiler de bicicletas y los recorridos guiados que ofrecemos.</p>
     </section>
+
     <table id="precios">
         <caption>Tarifas de alquiler de bicicletas</caption>
         <thead>
             <tr>
                 <th scope="col">Tipo de bicicleta</th>
                 <th scope="col">1 hora</th>
+                <th scope="col">Medio día (4 h)</th>
                 <th scope="col">Día completo</th>
-                <th scope="col">Medio día (4 horas)</th>
             </tr>
         </thead>
-                  
-       <tbody>
+        <tbody>
             <tr>
-                <td>Urbana</td>
+                <th scope="row">Urbana</th>
                 <td>$10.000</td>
                 <td>$30.000</td>
                 <td>$50.000</td>
-
             </tr>
             <tr>
-                <td>Montaña</td>
+                <th scope="row">Montaña</th>
                 <td>$15.000</td>
                 <td>$45.000</td>
                 <td>$70.000</td>
             </tr>
             <tr>
-                <td>Eléctrica</td>
+                <th scope="row">Eléctrica</th>
                 <td>$25.000</td>
                 <td>$70.000</td>
                 <td>$110.000</td>
@@ -58,74 +55,77 @@
         </tbody>
     </table>
 
-<section id="recorridos guiados">
+    <section id="recorridos">
+        <h2>Recorridos guiados</h2>
+        <p>Ofrecemos recorridos guiados por la ciudad y sus alrededores, con expertos locales que te contarán la historia y los secretos de nuestro entorno.</p>
 
-    <h1>recorridos guiados</h1>
-    <p>Ofrecemos recorridos guiados por la ciudad y sus alrededores, con expertos locales que te contarán la historia y los secretos de nuestro entorno.</p>
-   
- <table>
-     <caption>Tarifas de recorridos guiados</caption>
-    <thead>
-        <tr>
-            <th scope="col">Recorrido</th>
-            <th scope="col">Distancia</th>
-            <th scope="col">Duración</th>
-            <th scope="col">Nivel</th>
-            <th scope="col">Precio por persona</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>Rio y parques</td>
-            <td>12 km</td>
-            <td>2 h</td>
-            <td>Facil</td>
-            <td>$45.000</td>
-            
-        </tr>
-        <tr>
-            <td>Sabores de barrio</td>
-            <td>18 km</td>
-            <td>3 h</td>
-            <td>Medio</td>
-            <td>$60.000</td>
+        <table>
+            <caption>Tarifas de recorridos guiados</caption>
+            <thead>
+                <tr>
+                    <th scope="col">Recorrido</th>
+                    <th scope="col">Distancia</th>
+                    <th scope="col">Duración</th>
+                    <th scope="col">Nivel</th>
+                    <th scope="col">Precio por persona</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">Río y Parques</th>
+                    <td>12 km</td>
+                    <td>2 h</td>
+                    <td>Fácil</td>
+                    <td>$45.000</td>
+                </tr>
+                <tr>
+                    <th scope="row">Sabores de Barrio</th>
+                    <td>18 km</td>
+                    <td>3 h</td>
+                    <td>Medio</td>
+                    <td>$60.000</td>
+                </tr>
+                <tr>
+                    <th scope="row">Reto Las Palmas</th>
+                    <td>25 km</td>
+                    <td>4 h</td>
+                    <td>Difícil</td>
+                    <td>$85.000</td>
+                </tr>
+            </tbody>
+        </table>
 
-        </tr>
-        <tr>
-            <td>Reto las palmas</td>
-            <td>25 km</td>
-            <td>4 h</td>
-            <td>Dificil</td>
-            <td>$85.000</td>
-        </tr>
-    </tbody>
- </table>
-</section>
+        <!-- PASO 4: enlace a reservas, debajo de la tabla de recorridos -->
+        <p><a href="reservas.html">Reservar ahora</a></p>
+    </section>
 
+    <section>
+        <h2>Información importante</h2>
+        <p><strong>Todas las tarifas incluyen casco y candado.</strong> Los recorridos salen sábados y domingos a las 7:00 a. m.</p>
 
-<section> 
-    <h1>Consejos para ciclistas</h1>
-<ul>
-    <li>Utilizar siempre casco y protecion.</li>
-    <li>Respeta las señales de transito.</li>
-    <li>Manten hidratado durante el recorrido.</li>
-    <li>Llegar 15 min antes de la hora de salida.</li>
-</ul>
+        <h3>Consejos para ciclistas</h3>
+        <ul>
+            <li>Utilizar siempre casco y protección.</li>
+            <li>Respeta las señales de tránsito.</li>
+            <li>Mantente hidratado durante el recorrido.</li>
+            <li>Llegar 15 minutos antes de la hora de salida.</li>
+        </ul>
 
-     <h2>Sugerencias</h2>
-<ul>
-    <li>Documento de identidad</li>
-    <li>Botella de agua</li>
-    <li>Power bank</li>
-    <li>Protector solar</li>
-    <li>Ropa deportiva y calzado adecuado</li>
-    <li>El candado está incluido pero puede traer adicional.</li>
+        <h3>Qué llevar</h3>
+        <ul>
+            <li>Documento de identidad</li>
+            <li>Botella de agua</li>
+            <li>Power bank</li>
+            <li>Protector solar</li>
+            <li>Ropa deportiva y calzado adecuado</li>
+        </ul>
 
+        <p>Horario de atención: lunes a viernes de 7:00 a. m. a 7:00 p. m.; sábados, domingos y festivos de 6:00 a. m. a 2:00 p. m.</p>
+    </section>
 
-<p>Horario de atención: lunes a viernes de 7:00 a. m. a 7:00 p. m.; sábados, domingos y festivos de 6:00 a. m. a 2:00 p. m.</p>
-
-
-
-
+    <!-- PASO 3: pie de página -->
+    <footer>
+        <p>Rueda Libre · <a href="mailto:hola@ruedalibre.example">hola@ruedalibre.example</a> · © 2026</p>
+    </footer>
 </body>
 </html>
