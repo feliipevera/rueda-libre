@@ -1,0 +1,58 @@
+/* ===== Variables globales ===== */
+:root {
+    /* Colores de marca */
+    --verde-ruta: #1E7A4F;
+    --naranja-pedal: #F39A2B;
+    --azul-noche: #14213D;
+    --crema: #FAF6EF;
+    --gris-asfalto: #5B6470;
+
+    /* Tipografías (con fuentes de respaldo) */
+    --fuente-titulos: "Montserrat", Arial, Helvetica, sans-serif;
+    --fuente-texto: "Open Sans", Arial, Helvetica, sans-serif;
+
+    /* Escala de espaciado */
+    --espacio-1: 0.5rem;
+    --espacio-2: 1rem;
+    --espacio-3: 1.5rem;
+    --espacio-4: 2.5rem;
+}
+
+/* ===== Base: se hereda a todo el documento ===== */
+body {
+    font-family: var(--fuente-texto);
+    font-weight: 400;
+    color: var(--azul-noche);
+    background-color: var(--crema);
+    padding: var(--espacio-2);
+}
+
+/* ===== Títulos: un solo selector agrupado ===== */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--fuente-titulos);
+    font-weight: 700;
+}
+
+/* ===== Texto con énfasis ===== */
+strong {
+    font-weight: 600;
+}
+
+/* ===== Enlaces: Verde Ruta sobre Crema (4,9:1) ===== */
+a {
+    color: var(--verde-ruta);
+}
+
+/* ===== Texto secundario: Gris Asfalto sobre Crema (5,6:1) ===== */
+small,
+figcaption {
+    color: var(--gris-asfalto);
+}
+
+/* ===== Controles de formulario: heredan la fuente del cuerpo ===== */
+input,
+select,
+textarea,
+button {
+    font-family: inherit;
+}

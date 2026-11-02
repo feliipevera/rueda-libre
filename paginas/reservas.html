@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Reserva tu bicicleta en Rueda Libre, Medellín. Completa el formulario con tus datos y el tipo de alquiler.">
     <title>Reservas | Rueda Libre</title>
+
+    <!-- NUEVO: Google Fonts primero, luego tu hoja de estilos (con ../ por la subcarpeta) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body>
     <a href="#contenido">Saltar al contenido principal</a>
@@ -29,7 +35,6 @@
             <h2>Formulario de reserva</h2>
 
             <form action="#" method="post">
-                <!-- NUEVO: instrucción sobre campos obligatorios -->
                 <p>Todos los campos son obligatorios, excepto el recorrido guiado y los comentarios.</p>
 
                 <fieldset>
@@ -77,7 +82,6 @@
                                required min="2026-11-01" max="2026-12-31">
                     </p>
 
-                    <!-- CAMBIO: el título ahora nombra al grupo de radios -->
                     <p id="titulo-tipo"><strong>Tipo de bicicleta</strong></p>
                     <p role="group" aria-labelledby="titulo-tipo">
                         <input type="radio" id="tipo-urbana" name="tipo_bicicleta" value="urbana" required>

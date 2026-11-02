@@ -5,12 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Tarifas de alquiler de bicicletas y recorridos guiados de Rueda Libre en Medellín.">
     <title>Tarifas y rutas | Rueda Libre</title>
+
+    <!-- NUEVO: Google Fonts primero, luego tu hoja de estilos (con ../ por la subcarpeta) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body>
-    <!-- CAMBIO 1: enlace de salto -->
     <a href="#contenido">Saltar al contenido principal</a>
 
-    <!-- CAMBIO 2: logo decorativo (alt vacío) y aria-current en la página actual -->
     <header>
         <img src="../img/LogoBicicleta.jpg" alt="" width="200" height="200">
         <p><strong>Rueda Libre</strong></p>
@@ -23,7 +27,6 @@
         </nav>
     </header>
 
-    <!-- CAMBIO 3: id para que funcione el enlace de salto -->
     <main id="contenido">
         <h1>Tarifas de alquiler de bicicletas</h1>
         <p>En esta sección encontrarás información sobre las tarifas de alquiler de bicicletas y los recorridos guiados que ofrecemos.</p>
@@ -123,7 +126,6 @@
                 <ul>
                     <li>Documento de identidad</li>
                     <li>Botella de agua</li>
-                    <!-- CAMBIO 4: frase en inglés marcada con su idioma -->
                     <li><span lang="en">Power bank</span></li>
                     <li>Protector solar</li>
                     <li>Ropa deportiva y calzado adecuado</li>

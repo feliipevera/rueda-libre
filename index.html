@@ -5,43 +5,58 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Rueda Libre: alquiler de bicicletas y recorridos guiados en Medellín. Una manera de rodar en cualquier parte.">
     <title>Rueda Libre | Alquiler de bicicletas en Medellín</title>
+
+    <!-- NUEVO: Google Fonts primero, luego tu hoja de estilos -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <!-- PASO 2: menú (rutas desde la raíz del proyecto) -->
-    <nav>
-        <ul id="menu">
-            <li><a href="index.html">Inicio</a></li>
-            <li><a href="paginas/tarifas.html">Tarifas y rutas</a></li>
-            <li><a href="paginas/reservas.html">Reservas</a></li>
-        </ul>
-    </nav>
+    <a href="#contenido">Saltar al contenido principal</a>
 
-    <h1>Rueda Libre</h1>
-    <p>Bienvenido a Rueda Libre, el mejor lugar de bicicletas</p>
+    <header>
+        <h1>Rueda Libre</h1>
+        <nav>
+            <ul id="menu">
+                <li><a href="index.html" aria-current="page">Inicio</a></li>
+                <li><a href="paginas/tarifas.html">Tarifas y rutas</a></li>
+                <li><a href="paginas/reservas.html">Reservas</a></li>
+            </ul>
+        </nav>
+    </header>
 
-    <article>
+    <main id="contenido">
+        <p>Bienvenido a Rueda Libre, el mejor lugar de bicicletas</p>
+
         <section id="quienes-somos">
             <h2>¿Quiénes somos?</h2>
             <p>Somos una empresa dedicada al alquiler de bicicletas en Medellín, con el objetivo de ofrecer una alternativa de transporte sostenible y ecológica.</p>
             <a href="#ubicacion">Ver nuestra ubicación</a>
         </section>
-    </article>
 
-    <article>
         <section id="nuestros-servicios">
             <h2>Nuestros servicios</h2>
-            <ul>
-                <li><strong>Alquiler de bicicletas</strong>: por hora o por día, pensado para la comodidad del cliente.</li>
-                <li><strong>Recorridos guiados por la ciudad</strong>: ahora puedes recorrer la ciudad con un guía que te mostrará los mejores lugares.
-                    <a href="paginas/tarifas.html#recorridos">Ver tarifas y rutas</a></li>
-                <li><strong>Taller</strong>: ofrecemos accesorios para mantener tu bicicleta en perfecto estado y reparaciones.</li>
-            </ul>
-            <!-- PASO 4: enlace a reservas -->
+
+            <article>
+                <h3>Alquiler de bicicletas</h3>
+                <p><strong>Por hora o por día</strong>, pensado para la comodidad del cliente.</p>
+            </article>
+
+            <article>
+                <h3>Recorridos guiados por la ciudad</h3>
+                <p>Ahora puedes recorrer la ciudad con un guía que te mostrará los mejores lugares.
+                    <a href="paginas/tarifas.html#recorridos">Ver tarifas y rutas de los recorridos guiados</a></p>
+            </article>
+
+            <article>
+                <h3>Taller</h3>
+                <p>Ofrecemos accesorios para mantener tu bicicleta en perfecto estado y reparaciones.</p>
+            </article>
+
             <p><a href="paginas/reservas.html">Reservar ahora</a></p>
         </section>
-    </article>
 
-    <article>
         <section id="como-alquilar">
             <h2>Cómo alquilar</h2>
             <p>Para alquilar una bicicleta, puedes seguir estos pasos:</p>
@@ -52,30 +67,29 @@
                 <li>Acude a nuestra tienda en la fecha y hora acordadas para recoger tu bicicleta.</li>
             </ol>
         </section>
-    </article>
 
-    <article class="logo">
-        <img src="img/LogoBicicleta.jpg" alt="Logo de Rueda Libre" width="400" height="300">
-        <p>Rueda Libre es tu mejor opción para disfrutar de la ciudad en bicicleta.</p>
-    </article>
+        <figure class="logo">
+            <img src="img/LogoBicicleta.jpg" alt="Logo de Rueda Libre" width="200" height="200">
+            <figcaption>Rueda Libre es tu mejor opción para disfrutar de la ciudad en bicicleta.</figcaption>
+        </figure>
 
-    <article class="bicicleta">
-        <img src="img/bicicleta1.jpg" alt="Bicicleta disponible para alquiler en Rueda Libre" width="400" height="300">
-        <p>Alquila una bicicleta y recorre Medellín de manera divertida y saludable.</p>
-    </article>
+        <figure class="bicicleta">
+            <img src="img/bicicleta1.jpg" alt="Bicicleta disponible para alquiler en Rueda Libre" width="200" height="200">
+            <figcaption>Alquila una bicicleta y recorre Medellín de manera divertida y saludable.</figcaption>
+        </figure>
 
-    <section id="ubicacion">
-        <h2>Ubicación</h2>
-        <p>Descubre nuestra ubicación:</p>
-        <img src="img/bicicleta2.jpg" alt="Fachada de la tienda de Rueda Libre" width="500" height="250">
-        <p>Nuestra tienda se encuentra en Medellín, en la dirección: <em>Calle 10 # 20-30, Medellín, Colombia.</em></p>
-        <a href="https://www.google.com/maps/place/Calle+10+%2320-30,+Medell%C3%ADn,+Antioquia" target="_blank">Ver ubicación en Google Maps</a>
-        <p>Si deseas contactarnos, escríbenos a <a href="mailto:hola@ruedalibre.example">hola@ruedalibre.example</a>.</p>
-    </section>
+        <section id="ubicacion">
+            <h2>Ubicación</h2>
+            <p>Descubre nuestra ubicación:</p>
+            <img src="img/bicileta2.jpg" alt="Bicicleta estacionada frente a la tienda de Rueda Libre" width="200" height="200">
+            <p>Nuestra tienda se encuentra en Medellín, en la dirección: <em>Calle 10 # 20-30, Medellín, Colombia.</em></p>
+            <a href="https://www.google.com/maps/place/Calle+10+%2320-30,+Medell%C3%ADn,+Antioquia" target="_blank" rel="noopener">Ver ubicación en Google Maps (se abre en otra pestaña)</a>
+            <p>Si deseas contactarnos, escríbenos a <a href="mailto:hola@ruedalibre.example">hola@ruedalibre.example</a>.</p>
+        </section>
+    </main>
 
-    <!-- PASO 3: pie de página -->
     <footer>
-        <p>Rueda Libre · <a href="mailto:hola@ruedalibre.example">hola@ruedalibre.example</a> · 2026</p>
+        <p>Rueda Libre · <a href="mailto:hola@ruedalibre.example">hola@ruedalibre.example</a> · © 2026</p>
     </footer>
 </body>
 </html>

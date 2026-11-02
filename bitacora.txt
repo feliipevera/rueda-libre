@@ -38,3 +38,163 @@ paginas/tarifas.html      paginas/reservas.html      reservas.html
 paginas/reservas.html     index.html                 ../index.html
 paginas/reservas.html     paginas/tarifas.html       tarifas.html
 
+MINIRETO 5: ESQUEMA DE REGIONES
+
+index.html
+  header
+    h1 Rueda Libre
+    nav (menú principal)
+  main
+    p bienvenida
+    section ¿Quiénes somos?
+    section Nuestros servicios
+      article Alquiler de bicicletas
+      article Recorridos guiados
+      article Taller
+    section Cómo alquilar
+    figure logo / figure bicicleta
+    section Ubicación
+  footer
+
+
+
+paginas/tarifas.html
+  header
+    logo (nombre del negocio)
+    nav
+  main
+    h1 Tarifas de alquiler de bicicletas
+    section Alquiler de bicicletas (tabla de tarifas)
+    section Recorridos guiados (tabla de recorridos)
+    section Información importante
+      aside Qué llevar
+  footer
+
+
+
+paginas/reservas.html
+  header
+    nombre del negocio
+    nav
+  main
+    h1 Reserva tu bicicleta
+    p contacto por correo
+    aside Horario de atención
+    (aquí irá el formulario en el MiniReto 6)
+  footer
+
+  USO DE <div> Y <span>
+No se usó ningún <div> ni <span> en las tres páginas. Cada bloque tiene una
+etiqueta semántica equivalente: header, nav, main, section, article, aside,
+figure/figcaption y footer.
+
+MINIRETO 6: JUSTIFICACIÓN DE LOS CONTROLES
+
+1 Tipo de bicicleta: input radio (mismo name="tipo_bicicleta")
+   Son solo tres opciones excluyentes y conviene verlas todas a la vez.
+   Con el mismo name el navegador permite marcar una sola.
+
+2 Correo: input type="email".
+   El navegador comprueba que tenga formato de correo y en el celular muestra
+   un teclado con arroba, lo que reduce errores de digitación.
+
+3 Comentarios: textarea.
+   Es texto largo y libre; un input de una sola línea no alcanza para esto.
+
+
+
+
+MINIRETO 7: TABLA DE PRUEBAS DE VALIDACIÓN
+
+Campo        Dato de prueba         Resultado esperado                  Resultado obtenido
+-----------  ---------------------  ----------------------------------  ------------------------------------
+Nombre       (vacío)                No envía; campo obligatorio         No envía: "Completa este campo"
+Nombre       Al                     No envía; mínimo 3 caracteres       No envía: pide al menos 3 caracteres
+Documento    12345                  No envía; mínimo 6 dígitos          No envía: muestra el título del formato
+Documento    12ab5678               No envía; solo números              No envía: muestra el título del formato
+Documento    123456                 Acepta (6 dígitos)                  Acepta
+Documento    12345678901            No deja escribir el dígito 11       Solo escribe 10 dígitos (maxlength)
+Correo       ana@                   No envía; formato inválido          No envía: pide un correo válido
+Celular      3001234567             Acepta                              Acepta
+Celular      1234567890             No envía; no empieza por 3          No envía: muestra el título del formato
+Celular      300123                 No envía; faltan dígitos            No envía: muestra el título del formato
+Fecha        2026-10-31             No envía; antes del 1 nov           No envía: pide valor igual o posterior
+Fecha        2027-01-01             No envía; después del 31 dic        No envía: pide valor igual o anterior
+Cantidad     0                      No envía; mínimo 1                  No envía: pide valor mayor o igual a 1
+Cantidad     7                      No envía; máximo 6                  No envía: pide valor menor o igual a 6
+Plan         "Selecciona un plan"   No envía; obligatorio               No envía: "Selecciona un elemento"
+Tipo bici    (sin marcar)           No envía; obligatorio               No envía: "Selecciona una de estas opciones"
+Comentarios  301 caracteres         No deja escribir más de 300         Corta en 300 (maxlength)
+Políticas    (sin marcar)           No envía; obligatorio aceptar       No envía: "Marca esta casilla"
+Todo válido  (datos correctos)      Pasa la validación                  Intenta enviar (en Live Server aparece "Cannot POST", es lo esperado)
+
+
+MINIRETO 8: AUDITORÍA DE ACCESIBILIDAD 2
+
+Hallazgo                                              Corrección
+----------------------------------------------------  ---------------------------------------------
+1. Alt de la foto de ubicación era "Imagen de          Alt descriptivo de lo que muestra la foto.
+   ubicación" (no describe).
+2. Logo repetido junto al nombre en tarifas.           Imagen decorativa: alt="".
+3. Enlace al mapa abre otra pestaña sin avisar.        Aviso en el texto + rel="noopener".
+4. El menú no indicaba la página actual.               aria-current="page" en cada página.
+5. Con teclado hay que recorrer el menú siempre.       Enlace "Saltar al contenido principal" y
+                                                       id="contenido" en main.
+6. Grupo de radios "Tipo de bicicleta" sin nombre.     role="group" + aria-labelledby.
+7. Formato de documento y celular solo en title.       Texto de ayuda visible + aria-describedby.
+8. No se indicaban los campos obligatorios.            Línea de instrucciones al inicio del formulario.
+9. "Power bank" está en inglés.                        <span lang="en">.
+10. Enlace "Ver tarifas y rutas" poco específico.      "Ver tarifas y rutas de los recorridos guiados".
+
+Verificado sin cambios: lang="es" en las tres páginas; jerarquía de encabezados
+(un h1 por página, sin saltos); títulos distintos en cada página.
+
+Uso de <span>: el único es <span lang="en">Power bank</span>, justificado porque
+no existe etiqueta semántica para cambiar el idioma de una frase. No se usa <div>.
+
+CONTRASTE (WCAG: 4,5:1 texto normal, 3:1 texto grande)
+Blanco / Verde Ruta         5,3:1   Apta texto normal
+Blanco / Naranja Pedal      2,2:1   No apta
+Azul Noche / Naranja Pedal  7,2:1   Apta texto normal
+Azul Noche / Crema          14,8:1  Apta texto normal
+Gris Asfalto / Crema        5,6:1   Apta texto normal
+Verde Ruta / Crema          4,9:1   Apta texto normal (justa)
+Naranja Pedal / Crema       2,1:1   No apta
+Blanco / Azul Noche         16:1    Apta texto normal
+
+MAPA DE USO DE COLOR
+Fondo general: Crema. Texto y títulos: Azul Noche. Texto secundario: Gris Asfalto.
+Encabezado: fondo Azul Noche con texto blanco. Botón principal: fondo Verde Ruta
+con texto blanco. Botón secundario/destacados: fondo Naranja Pedal con texto
+Azul Noche. Enlaces: Verde Ruta sobre Crema, siempre subrayados.
+Naranja Pedal nunca como color de texto ni con texto blanco encima.
+
+PUBLICACIÓN
+URL del sitio v0.2: https://feliipevera.github.io/rueda-libre/
+Rama: main, carpeta raíz. Revisadas las tres páginas, imágenes y enlaces en línea.
+
+
+
+
+*MINIRETO 9: IDENTIDAD DE MARCA (css/styles.css)
+
+Archivo: css/styles.css, enlazado así:
+- index.html: href="css/styles.css"
+- paginas/tarifas.html y paginas/reservas.html: href="../css/styles.css"
+Google Fonts (Montserrat 700; Open Sans 400 y 600) con preconnect, antes del CSS.
+
+Variables: 5 colores de marca, 2 familias con respaldo, 4 tamaños de espaciado en rem.
+Estilos en línea o <style>: ninguno (verificado con búsqueda de "style=" y "<style").
+
+COMPROBACIÓN DE HERENCIA (DevTools, Styles y Computed)
+- Se hereda: color. En un <p> el color calculado es rgb(20, 33, 61) (Azul Noche)
+  y viene de "Inherited from body"; el <p> no tiene regla propia de color.
+  Lo mismo con font-family: Open Sans.
+- No se hereda: padding. El body tiene padding 1rem (16px) y el <p> tiene 0px.
+  Tampoco se hereda background-color: el <p> es transparente aunque el body es Crema.
+- Otro caso: los <a> y los controles del formulario no heredan la fuente ni el color
+  porque el navegador les da los suyos; por eso hay reglas específicas para ellos.
+
+COMBINACIONES USADAS (del mapa de uso de color)
+Azul Noche sobre Crema (texto y títulos), Verde Ruta sobre Crema (enlaces),
+Gris Asfalto sobre Crema (texto secundario).
