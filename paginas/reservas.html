@@ -7,18 +7,20 @@
     <title>Reservas | Rueda Libre</title>
 </head>
 <body>
+    <a href="#contenido">Saltar al contenido principal</a>
+
     <header>
         <p><strong>Rueda Libre</strong></p>
         <nav>
             <ul id="menu">
                 <li><a href="../index.html">Inicio</a></li>
                 <li><a href="tarifas.html">Tarifas y rutas</a></li>
-                <li><a href="reservas.html">Reservas</a></li>
+                <li><a href="reservas.html" aria-current="page">Reservas</a></li>
             </ul>
         </nav>
     </header>
 
-    <main>
+    <main id="contenido">
         <h1>Reserva tu bicicleta</h1>
         <p>Completa el formulario con los datos de tu reserva. También puedes escribirnos a
             <a href="mailto:hola@ruedalibre.example">hola@ruedalibre.example</a>.</p>
@@ -27,6 +29,8 @@
             <h2>Formulario de reserva</h2>
 
             <form action="#" method="post">
+                <!-- NUEVO: instrucción sobre campos obligatorios -->
+                <p>Todos los campos son obligatorios, excepto el recorrido guiado y los comentarios.</p>
 
                 <fieldset>
                     <legend>Tus datos</legend>
@@ -42,7 +46,9 @@
                         <input type="text" id="documento" name="documento"
                                required pattern="[0-9]{6,10}" maxlength="10"
                                inputmode="numeric"
+                               aria-describedby="ayuda-documento"
                                title="Solo números, entre 6 y 10 dígitos (sin puntos ni espacios)">
+                        <small id="ayuda-documento">Solo números, de 6 a 10 dígitos.</small>
                     </p>
 
                     <p>
@@ -56,7 +62,9 @@
                         <input type="tel" id="celular" name="celular"
                                required pattern="3[0-9]{9}" maxlength="10"
                                autocomplete="tel"
+                               aria-describedby="ayuda-celular"
                                title="10 dígitos, debe empezar por 3. Ejemplo: 3001234567">
+                        <small id="ayuda-celular">10 dígitos, empieza por 3. Ejemplo: 3001234567.</small>
                     </p>
                 </fieldset>
 
@@ -64,13 +72,14 @@
                     <legend>Tu alquiler</legend>
 
                     <p>
-                        <label for="fecha">Fecha del alquiler</label>
+                        <label for="fecha">Fecha del alquiler (entre el 1 de noviembre y el 31 de diciembre de 2026)</label>
                         <input type="date" id="fecha" name="fecha"
                                required min="2026-11-01" max="2026-12-31">
                     </p>
 
-                    <p><strong>Tipo de bicicleta</strong></p>
-                    <p>
+                    <!-- CAMBIO: el título ahora nombra al grupo de radios -->
+                    <p id="titulo-tipo"><strong>Tipo de bicicleta</strong></p>
+                    <p role="group" aria-labelledby="titulo-tipo">
                         <input type="radio" id="tipo-urbana" name="tipo_bicicleta" value="urbana" required>
                         <label for="tipo-urbana">Urbana</label>
 
