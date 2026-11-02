@@ -25,3 +25,16 @@ El Servidor no puedo encontrar la direccion solicitada, por eso el error 404
 *Rol de JavaScript 
 - JavaScript ayudara al sitio de Rueda Libre a crear un sitio dinamico, funcional, responsivo a peticiones del usuario y manejara el comportamiento de ciertos elementos en la web
 
+
+
+TABLA DE RUTAS RELATIVAS 
+
+Origen                    Destino                    Ruta escrita
+------------------------  -------------------------  ------------------------
+index.html                paginas/tarifas.html       paginas/tarifas.html
+index.html                paginas/reservas.html      paginas/reservas.html
+paginas/tarifas.html      index.html                 ../index.html
+paginas/tarifas.html      paginas/reservas.html      reservas.html
+paginas/reservas.html     index.html                 ../index.html
+paginas/reservas.html     paginas/tarifas.html       tarifas.html
+
