@@ -33,22 +33,30 @@
 
                     <p>
                         <label for="nombre">Nombre completo</label>
-                        <input type="text" id="nombre" name="nombre">
+                        <input type="text" id="nombre" name="nombre"
+                               required minlength="3" autocomplete="name">
                     </p>
 
                     <p>
                         <label for="documento">Número de documento</label>
-                        <input type="text" id="documento" name="documento">
+                        <input type="text" id="documento" name="documento"
+                               required pattern="[0-9]{6,10}" maxlength="10"
+                               inputmode="numeric"
+                               title="Solo números, entre 6 y 10 dígitos (sin puntos ni espacios)">
                     </p>
 
                     <p>
                         <label for="correo">Correo electrónico</label>
-                        <input type="email" id="correo" name="correo">
+                        <input type="email" id="correo" name="correo"
+                               required autocomplete="email">
                     </p>
 
                     <p>
                         <label for="celular">Celular</label>
-                        <input type="tel" id="celular" name="celular">
+                        <input type="tel" id="celular" name="celular"
+                               required pattern="3[0-9]{9}" maxlength="10"
+                               autocomplete="tel"
+                               title="10 dígitos, debe empezar por 3. Ejemplo: 3001234567">
                     </p>
                 </fieldset>
 
@@ -57,24 +65,26 @@
 
                     <p>
                         <label for="fecha">Fecha del alquiler</label>
-                        <input type="date" id="fecha" name="fecha">
+                        <input type="date" id="fecha" name="fecha"
+                               required min="2026-11-01" max="2026-12-31">
                     </p>
 
                     <p><strong>Tipo de bicicleta</strong></p>
                     <p>
-                        <input type="radio" id="tipo-urbana" name="tipo_bicicleta" value="urbana">
+                        <input type="radio" id="tipo-urbana" name="tipo_bicicleta" value="urbana" required>
                         <label for="tipo-urbana">Urbana</label>
 
-                        <input type="radio" id="tipo-montana" name="tipo_bicicleta" value="montana">
+                        <input type="radio" id="tipo-montana" name="tipo_bicicleta" value="montana" required>
                         <label for="tipo-montana">Montaña</label>
 
-                        <input type="radio" id="tipo-electrica" name="tipo_bicicleta" value="electrica">
+                        <input type="radio" id="tipo-electrica" name="tipo_bicicleta" value="electrica" required>
                         <label for="tipo-electrica">Eléctrica</label>
                     </p>
 
                     <p>
                         <label for="plan">Plan</label>
-                        <select id="plan" name="plan">
+                        <select id="plan" name="plan" required>
+                            <option value="">Selecciona un plan</option>
                             <option value="1-hora">1 hora</option>
                             <option value="medio-dia">Medio día (4 h)</option>
                             <option value="dia-completo">Día completo</option>
@@ -82,8 +92,9 @@
                     </p>
 
                     <p>
-                        <label for="cantidad">Cantidad de bicicletas</label>
-                        <input type="number" id="cantidad" name="cantidad" min="1" value="1">
+                        <label for="cantidad">Cantidad de bicicletas (de 1 a 6)</label>
+                        <input type="number" id="cantidad" name="cantidad"
+                               required min="1" max="6" value="1">
                     </p>
 
                     <p>
@@ -101,12 +112,13 @@
                     <legend>Confirmación</legend>
 
                     <p>
-                        <label for="comentarios">Comentarios</label><br>
-                        <textarea id="comentarios" name="comentarios" rows="4" cols="40"></textarea>
+                        <label for="comentarios">Comentarios (opcional, máximo 300 caracteres)</label><br>
+                        <textarea id="comentarios" name="comentarios"
+                                  rows="4" cols="40" maxlength="300"></textarea>
                     </p>
 
                     <p>
-                        <input type="checkbox" id="politicas" name="politicas" value="aceptadas">
+                        <input type="checkbox" id="politicas" name="politicas" value="aceptadas" required>
                         <label for="politicas">Acepto las políticas de alquiler</label>
                     </p>
                 </fieldset>
