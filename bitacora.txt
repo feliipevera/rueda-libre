@@ -277,3 +277,22 @@ quedan apilados uno bajo otro. Las tres páginas se comportan igual porque compa
 
 (El contenedor principal tiene un ancho máximo de 48rem, por eso a 1280 px y a 900 px se ven las mismas 3 columnas.)
 
+grid o flexbox y por que :
+
+1 Portada  Grid Usé `grid-template-columns: 1fr 1fr para tener dos columnas iguales (texto y foto) y
+align-items: center` para centrar verticalmente el bloque de texto. Elegí Grid porque el layout es de
+columnas definidas con proporciones.
+2 Galería de rutas  Grid.Usé repeat(3, 1fr) con gap: tres columnas iguales y una separación
+uniforme. Grid permite declarar la cantidad de columnas directamente y que todas las tarjetas midan lo mismo.
+3 Reservas  Grid.Usé grid-template-columns: 2fr 1fr para la proporción 2:1 entre el formulario y elcontacto. Con
+ fr el reparto es exacto y el gap no hace desbordar el contenedor, cosa que sí pasaría con porcentajes.
+4 Fila del formulario (documento y celular)  Flexbox.Son solo dos campos en una única fila, es decir, 
+una dimensión. Con flex: 1 1 12rem y flex-wrap se reparten el espacio y, si no caben, el segundo baja de 
+línea. Grid habría sido más de lo necesario para este caso.
+5 Encabezado  Flexbox. El nombre y el menú van en una sola fila, uno en cada extremo (justify-content:
+ space-between) y centrados verticalmente (align-items: center). Es una dimensión, y con `flex-wrap` el
+  menú baja de línea si no cabe.
+6 Pie de página  Flexbox. Los tres bloques (marca, contacto y horario) van en una fila, alineados por 
+arriba y separados con gap. Es una sola dimensión y con `flex-wrap` los bloques bajan de línea al estrechar 
+la ventana.
+
