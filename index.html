@@ -18,7 +18,6 @@
         <h1>Rueda Libre</h1>
         <nav>
             <ul id="menu">
-                <!-- CAMBIO: class="activo" en la página actual -->
                 <li><a href="index.html" class="activo" aria-current="page">Inicio</a></li>
                 <li><a href="paginas/tarifas.html">Tarifas y rutas</a></li>
                 <li><a href="paginas/reservas.html">Reservas</a></li>
@@ -27,7 +26,16 @@
     </header>
 
     <main id="contenido">
-        <p>Bienvenido a Rueda Libre, el mejor lugar de bicicletas</p>
+        <!-- CAMBIO: portada con el saludo y el logo -->
+        <section class="portada">
+            <h2>Bienvenido a Rueda Libre</h2>
+            <p>El mejor lugar de bicicletas</p>
+
+            <figure class="logo">
+                <img src="img/LogoBicicleta.jpg" alt="Logo de Rueda Libre" width="200" height="200">
+                <figcaption>Rueda Libre es tu mejor opción para disfrutar de la ciudad en bicicleta.</figcaption>
+            </figure>
+        </section>
 
         <section id="quienes-somos">
             <h2>¿Quiénes somos?</h2>
@@ -38,23 +46,25 @@
         <section id="nuestros-servicios">
             <h2>Nuestros servicios</h2>
 
-            <article>
+            <!-- CAMBIO: cada servicio es una tarjeta -->
+            <article class="tarjeta">
+                <img src="img/bicicleta1.jpg" alt="" width="200" height="200">
                 <h3>Alquiler de bicicletas</h3>
                 <p><strong>Por hora o por día</strong>, pensado para la comodidad del cliente.</p>
             </article>
 
-            <article>
+            <article class="tarjeta">
+                <img src="img/bicileta2.jpg" alt="" width="200" height="200">
                 <h3>Recorridos guiados por la ciudad</h3>
                 <p>Ahora puedes recorrer la ciudad con un guía que te mostrará los mejores lugares.
                     <a href="paginas/tarifas.html#recorridos">Ver tarifas y rutas de los recorridos guiados</a></p>
             </article>
 
-            <article>
+            <article class="tarjeta">
                 <h3>Taller</h3>
                 <p>Ofrecemos accesorios para mantener tu bicicleta en perfecto estado y reparaciones.</p>
             </article>
 
-            <!-- CAMBIO: class="boton-cta" -->
             <p><a href="paginas/reservas.html" class="boton-cta">Reservar ahora</a></p>
         </section>
 
@@ -68,11 +78,6 @@
                 <li>Acude a nuestra tienda en la fecha y hora acordadas para recoger tu bicicleta.</li>
             </ol>
         </section>
-
-        <figure class="logo">
-            <img src="img/LogoBicicleta.jpg" alt="Logo de Rueda Libre" width="200" height="200">
-            <figcaption>Rueda Libre es tu mejor opción para disfrutar de la ciudad en bicicleta.</figcaption>
-        </figure>
 
         <figure class="bicicleta">
             <img src="img/bicicleta1.jpg" alt="Bicicleta disponible para alquiler en Rueda Libre" width="200" height="200">

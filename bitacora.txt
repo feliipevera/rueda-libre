@@ -228,3 +228,14 @@ el texto azul sobre fondo azul. Se resolvió con ".boton-cta:hover" (0,2,0).
 RECORRIDO CON TAB
 En index, tarifas y reservas el foco siempre se ve (contorno Azul Noche de 3px).
 Estados revisados con el botón :hov de DevTools en menú, enlaces, botones y campos.
+
+
+
+MINIRETO 11: MODELO DE CAJA
+
+Contenedor: header, main y footer con max-width: 48rem y márgenes laterales
+auto (centrados). Portada: .portada con min-height: 60vh.
+Tarjetas: padding 1.5rem, borde 2px, border-radius 0.75rem, margin-bottom 1.5rem.
+Imagen de la tarjeta: width: 100%; height: auto; display: block.
+Tablas: border-collapse: collapse; celdas con padding 0.5rem 1rem; encabezados
+en blanco sobre Azul Noche (16:1).

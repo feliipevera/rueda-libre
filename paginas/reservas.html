@@ -20,7 +20,6 @@
             <ul id="menu">
                 <li><a href="../index.html">Inicio</a></li>
                 <li><a href="tarifas.html">Tarifas y rutas</a></li>
-                <!-- CAMBIO: class="activo" en la página actual -->
                 <li><a href="reservas.html" class="activo" aria-current="page">Reservas</a></li>
             </ul>
         </nav>
@@ -83,7 +82,8 @@
                     </p>
 
                     <p id="titulo-tipo"><strong>Tipo de bicicleta</strong></p>
-                    <p role="group" aria-labelledby="titulo-tipo">
+                    <!-- CAMBIO: class="opcion" -->
+                    <p class="opcion" role="group" aria-labelledby="titulo-tipo">
                         <input type="radio" id="tipo-urbana" name="tipo_bicicleta" value="urbana" required>
                         <label for="tipo-urbana">Urbana</label>
 
@@ -124,19 +124,20 @@
                 <fieldset>
                     <legend>Confirmación</legend>
 
+                    <!-- CAMBIO: se quitó el <br> entre la etiqueta y el campo -->
                     <p>
-                        <label for="comentarios">Comentarios (opcional, máximo 300 caracteres)</label><br>
+                        <label for="comentarios">Comentarios (opcional, máximo 300 caracteres)</label>
                         <textarea id="comentarios" name="comentarios"
                                   rows="4" cols="40" maxlength="300"></textarea>
                     </p>
 
-                    <p>
+                    <!-- CAMBIO: class="opcion" -->
+                    <p class="opcion">
                         <input type="checkbox" id="politicas" name="politicas" value="aceptadas" required>
                         <label for="politicas">Acepto las políticas de alquiler</label>
                     </p>
                 </fieldset>
 
-                <!-- CAMBIO: class="boton-cta" -->
                 <button type="submit" class="boton-cta">Enviar reserva</button>
             </form>
         </section>

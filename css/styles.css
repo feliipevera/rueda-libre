@@ -19,13 +19,53 @@
     --espacio-4: 2.5rem;
 }
 
+/* ===== Modelo de caja: el ancho incluye relleno y borde ===== */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
 /* ===== Base: se hereda a todo el documento ===== */
 body {
     font-family: var(--fuente-texto);
     font-weight: 400;
+    line-height: 1.6;
     color: var(--azul-noche);
     background-color: var(--crema);
     padding: var(--espacio-2);
+}
+
+/* ===== Contenedor: ancho máximo en rem y centrado ===== */
+header, main, footer {
+    max-width: 48rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+footer {
+    margin-top: var(--espacio-4);
+    padding-top: var(--espacio-2);
+    border-top: 2px solid var(--gris-asfalto);
+}
+
+/* ===== Separación entre bloques ===== */
+section {
+    margin-bottom: var(--espacio-4);
+}
+
+figure {
+    margin: var(--espacio-3) 0;
+}
+
+aside {
+    margin: var(--espacio-3) 0;
+    padding: var(--espacio-1) var(--espacio-3);
+    border-left: 4px solid var(--verde-ruta);
+}
+
+/* ===== Imágenes: nunca se salen de su caja ===== */
+img {
+    max-width: 100%;
+    height: auto;
 }
 
 /* ===== Títulos: un solo selector agrupado ===== */
@@ -70,18 +110,20 @@ input:focus,
 select:focus,
 textarea:focus {
     outline: 3px solid var(--azul-noche);
-    outline-offset: 2px;
+    outline-offset: 0.125rem;
 }
 
-/* ===== Menú de navegación (selectores descendientes) ===== */
+/* ===== Menú de navegación ===== */
 #menu {
     list-style: none;
     padding: 0;
     margin: 0 0 var(--espacio-2);
 }
 
+/* Opciones en fila */
 #menu li {
     display: inline-block;
+    margin-right: var(--espacio-1);
 }
 
 /* Enlaces normales del menú: Gris Asfalto sobre Crema (5,6:1) */
@@ -93,16 +135,14 @@ textarea:focus {
     border-bottom: 3px solid transparent;
 }
 
-/* Página actual: Verde Ruta sobre Crema (4,9:1).
-   (1,1,1) vence a "#menu a" (1,0,1) sin usar !important */
+/* Página actual: Verde Ruta sobre Crema (4,9:1). (1,1,1) vence a "#menu a" (1,0,1) */
 #menu a.activo {
     color: var(--verde-ruta);
     font-weight: 600;
     border-bottom-color: var(--verde-ruta);
 }
 
-/* Hover y foco: Crema sobre Azul Noche (14,8:1).
-   Van DESPUÉS de .activo: misma especificidad (1,1,1), gana el último */
+/* Hover y foco: Crema sobre Azul Noche (14,8:1). Van después de .activo */
 #menu a:hover,
 #menu a:focus {
     background-color: var(--azul-noche);
@@ -110,11 +150,68 @@ textarea:focus {
     border-bottom-color: var(--crema);
 }
 
+/* ===== Portada de inicio ===== */
+.portada {
+    min-height: 60vh;
+    padding: var(--espacio-4) 0;
+    border-bottom: 2px solid var(--verde-ruta);
+}
+
+/* ===== Tarjetas de servicios ===== */
+.tarjeta {
+    padding: var(--espacio-3);
+    margin-bottom: var(--espacio-3);
+    background-color: var(--blanco);
+    border: 2px solid var(--gris-asfalto);
+    border-radius: 0.75rem;
+}
+
+.tarjeta img {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin-bottom: var(--espacio-2);
+    border-radius: 0.5rem;
+}
+
+.tarjeta h3 {
+    margin-top: 0;
+}
+
+.tarjeta p:last-child {
+    margin-bottom: 0;
+}
+
+/* ===== Tablas ===== */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: var(--espacio-3);
+}
+
+caption {
+    padding: var(--espacio-1) 0;
+    font-weight: 600;
+    text-align: left;
+}
+
+th, td {
+    padding: var(--espacio-1) var(--espacio-2);
+    border: 1px solid var(--gris-asfalto);
+    text-align: left;
+}
+
+/* Encabezados: blanco sobre Azul Noche (16:1) */
+thead th {
+    background-color: var(--azul-noche);
+    color: var(--blanco);
+}
+
 /* ===== Botón de llamada a la acción ===== */
 /* Normal: blanco sobre Verde Ruta (5,3:1) */
 .boton-cta {
     display: inline-block;
-    padding: var(--espacio-1) var(--espacio-3);
+    padding: var(--espacio-2) var(--espacio-3);
     background-color: var(--verde-ruta);
     color: var(--blanco);
     border: 2px solid var(--verde-ruta);
@@ -125,8 +222,7 @@ textarea:focus {
     cursor: pointer;
 }
 
-/* Hover y foco: blanco sobre Azul Noche (16:1).
-   (0,2,0) vence a "a:hover" (0,1,1), así el texto sigue blanco */
+/* Hover y foco: blanco sobre Azul Noche (16:1). (0,2,0) vence a "a:hover" (0,1,1) */
 .boton-cta:hover,
 .boton-cta:focus {
     background-color: var(--azul-noche);
@@ -134,10 +230,35 @@ textarea:focus {
     color: var(--blanco);
 }
 
-/* ===== Campos de formulario ===== */
+/* ===== Formulario ===== */
+fieldset {
+    margin: 0 0 var(--espacio-3);
+    padding: var(--espacio-2) var(--espacio-3);
+    border: 2px solid var(--gris-asfalto);
+    border-radius: 0.5rem;
+}
+
+legend {
+    padding: 0 var(--espacio-1);
+    font-weight: 600;
+}
+
+fieldset p {
+    margin: 0 0 var(--espacio-2);
+}
+
+/* Etiqueta sobre su campo */
+label {
+    display: block;
+    margin-bottom: var(--espacio-1);
+    font-weight: 600;
+}
+
+/* Campos a todo el ancho disponible */
 input,
 select,
 textarea {
+    width: 100%;
     padding: var(--espacio-1);
     border: 2px solid var(--gris-asfalto);
     border-radius: 0.25rem;
@@ -152,4 +273,17 @@ select:focus,
 textarea:hover,
 textarea:focus {
     border-color: var(--azul-noche);
+}
+
+/* Radios y casilla: junto a su texto y sin ancho completo.
+   (0,1,1) vence a "label" y a "input" (0,0,1) */
+.opcion label {
+    display: inline-block;
+    margin-right: var(--espacio-2);
+    margin-bottom: 0;
+    font-weight: 400;
+}
+
+.opcion input {
+    width: auto;
 }
