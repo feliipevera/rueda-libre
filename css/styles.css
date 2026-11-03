@@ -1,11 +1,14 @@
 /* =====================================================
-   RUEDA LIBRE · styles.css  (v1.5 · mobile-first)
+   RUEDA LIBRE · styles.css  (v2 · convive con Bootstrap 5.3)
+   Esta hoja se carga DESPUÉS de bootstrap.min.css en index.html.
+   tarifas.html y reservas.html todavía NO cargan Bootstrap.
+
    Índice:
-   1. Variables globales
-   2. Base (móvil: una sola columna, sin media query)
-   3. Estructura (contenedor, encabezado, menú y pie)
-   4. Componentes (portada, tarjetas, flota, rutas, etiqueta, tablas, botones, WhatsApp)
-   5. Formulario (reservas y fila de campos)
+   1. Variables globales (y puente con Bootstrap)
+   2. Base
+   3. Estructura compartida (encabezado, menú, pie)
+   4. Identidad de inicio (tarjetas, etiqueta, dato, franja, botón, WhatsApp)
+   5. [SOLO tarifas + reservas] tablas, formulario y layout de reservas
    6. Tablet  · @media (min-width: 48rem)  = 768 px
    7. Escritorio · @media (min-width: 75rem) = 1200 px
    ===================================================== */
@@ -32,13 +35,17 @@
     --espacio-2: 1rem;
     --espacio-3: 1.5rem;
     --espacio-4: 2.5rem;
+
+    /* Puente con Bootstrap 5.3: sobrescribo su variable de texto secundario
+       para que .text-body-secondary use mi Gris Asfalto. Sin !important:
+       esta hoja carga después y ":root" empata en especificidad.
+       En tarifas y reservas no tiene efecto (no usan Bootstrap). */
+    --bs-secondary-color: var(--gris-asfalto);
 }
 
 
 /* =====================================================
-   2. BASE (MÓVIL)
-   Todo lo de aquí aplica a TODOS los anchos; las
-   media queries del final solo agregan o sobrescriben.
+   2. BASE (global: las tres páginas)
    ===================================================== */
 
 /* Modelo de caja: el ancho incluye relleno y borde */
@@ -58,15 +65,26 @@ body {
     padding-bottom: 5rem;
 }
 
-/* Títulos: un solo selector agrupado */
+/* Títulos: un solo selector agrupado.
+   font-weight y line-height pisan los de Bootstrap (500 y 1.2) */
 h1, h2, h3, h4, h5, h6 {
     font-family: var(--fuente-titulos);
     font-weight: 700;
+    line-height: 1.3;
 }
 
-/* h1 más pequeño en móvil para que no ocupe media pantalla */
+/* Tamaños fijos. Bootstrap agranda h2 y h3 con calc() y vw;
+   así inicio mantiene los mismos tamaños que tarifas y reservas. */
 h1 {
     font-size: 1.75rem;
+}
+
+h2 {
+    font-size: 1.5rem;
+}
+
+h3 {
+    font-size: 1.17rem;
 }
 
 strong {
@@ -85,7 +103,8 @@ img {
     height: auto;
 }
 
-/* Enlaces: Verde Ruta sobre Crema (4,9:1) */
+/* Enlaces: Verde Ruta sobre Crema (4,9:1).
+   Pisan al "a" de Bootstrap (azul) porque esta hoja carga después. */
 a {
     color: var(--verde-ruta);
 }
@@ -107,7 +126,7 @@ textarea:focus {
 
 
 /* =====================================================
-   3. ESTRUCTURA (MÓVIL)
+   3. ESTRUCTURA COMPARTIDA (móvil)
    ===================================================== */
 
 /* Contenedor: ancho máximo en rem y centrado */
@@ -117,9 +136,7 @@ header, main, footer {
     margin-right: auto;
 }
 
-/* ----- Encabezado (móvil) -----
-   En columna: el nombre arriba y el menú debajo, ambos centrados.
-   Con flex-direction: column, align-items trabaja en horizontal. */
+/* ----- Encabezado (móvil): nombre arriba y menú debajo, centrados ----- */
 header {
     display: flex;
     flex-direction: column;
@@ -146,8 +163,7 @@ header {
     border-radius: 50%;
 }
 
-/* ----- Menú (móvil) -----
-   Fila flexible centrada; si los enlaces no caben, bajan de línea. */
+/* ----- Menú (móvil) ----- */
 #menu {
     display: flex;
     flex-direction: row;
@@ -159,8 +175,7 @@ header {
     margin: 0;
 }
 
-/* Enlaces normales del menú: Gris Asfalto sobre Crema (5,6:1).
-   Relleno más pequeño en móvil para que los 3 enlaces quepan. */
+/* Enlaces normales del menú: Gris Asfalto sobre Crema (5,6:1) */
 #menu a {
     display: block;
     padding: var(--espacio-1);
@@ -184,8 +199,7 @@ header {
     border-bottom-color: var(--crema);
 }
 
-/* ----- Pie de página (móvil) -----
-   Los tres bloques apilados en columna. */
+/* ----- Pie de página (móvil): tres bloques apilados ----- */
 footer {
     display: flex;
     flex-direction: column;
@@ -209,153 +223,107 @@ section {
     margin-bottom: var(--espacio-4);
 }
 
+
+/* =====================================================
+   4. IDENTIDAD DE INICIO
+   Solo colores, bordes y fuentes de marca. La distribución
+   (columnas, alineación, espacios) la hace Bootstrap en el HTML.
+   ===================================================== */
+
+/* Línea verde bajo la portada */
+.portada {
+    border-bottom: 2px solid var(--verde-ruta);
+}
+
+/* Tarjeta: fondo blanco, borde Gris Asfalto y esquinas redondeadas */
+.tarjeta {
+    background-color: var(--blanco);
+    border: 2px solid var(--gris-asfalto);
+    border-radius: 0.75rem;
+}
+
+/* Etiqueta "Nuevo": Azul Noche sobre Naranja Pedal (≈7:1).
+   La posición viene de las utilidades position-absolute, top-0, end-0, m-2. */
+.etiqueta-nuevo {
+    background-color: var(--naranja-pedal);
+    color: var(--azul-noche);
+}
+
+/* Dato destacado de cada beneficio (forma y tamaño con utilidades) */
+.dato-destacado {
+    background-color: var(--naranja-pedal);
+    color: var(--azul-noche);
+}
+
+/* Franja "¿Listo para rodar?": Blanco sobre Azul Noche (16:1) */
+.franja {
+    background-color: var(--azul-noche);
+    color: var(--blanco);
+}
+
+/* En la franja el botón verde no puede cambiar a Azul Noche al pasar el cursor
+   (se confundiría con el fondo): cambia a Naranja Pedal con texto Azul Noche. */
+.franja .boton-cta:hover,
+.franja .boton-cta:focus {
+    background-color: var(--naranja-pedal);
+    border-color: var(--naranja-pedal);
+    color: var(--azul-noche);
+}
+
+/* El anillo de foco Azul Noche no se vería sobre la franja: lo cambio a Crema */
+.franja a:focus {
+    outline-color: var(--crema);
+}
+
+/* ----- Botón de llamada a la acción (las 3 páginas) -----
+   Normal: blanco sobre Verde Ruta (5,3:1) */
+.boton-cta {
+    display: inline-block;
+    padding: var(--espacio-2) var(--espacio-3);
+    background-color: var(--verde-ruta);
+    color: var(--blanco);
+    border: 2px solid var(--verde-ruta);
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Hover y foco: blanco sobre Azul Noche (16:1). (0,2,0) vence a "a:hover" (0,1,1) */
+.boton-cta:hover,
+.boton-cta:focus {
+    background-color: var(--azul-noche);
+    border-color: var(--azul-noche);
+    color: var(--blanco);
+}
+
+/* ----- Botón flotante de WhatsApp (las 3 páginas) ----- */
+.boton-whatsapp {
+    position: fixed;
+    bottom: var(--espacio-2);
+    right: var(--espacio-2);
+    z-index: 100;
+    padding: var(--espacio-1) var(--espacio-2);
+    box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.3);
+}
+
+
+/* =====================================================
+   5. [SOLO tarifas + reservas]
+   Inicio ya NO usa nada de esta sección. Se migrará
+   cuando esas páginas pasen a Bootstrap.
+   ===================================================== */
+
+/* [SOLO tarifas + reservas] aside de "Qué llevar" y de contacto */
 aside {
     margin: var(--espacio-3) 0;
     padding: var(--espacio-1) var(--espacio-2);
     border-left: 4px solid var(--verde-ruta);
 }
 
-
-/* =====================================================
-   4. COMPONENTES (MÓVIL)
-   ===================================================== */
-
-/* ----- Portada (móvil) -----
-   Una sola columna: primero el texto y debajo la foto (orden del HTML). */
-.portada {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--espacio-3);
-    padding: var(--espacio-3) 0;
-    border-bottom: 2px solid var(--verde-ruta);
-}
-
-/* Sin márgenes sobrantes arriba y abajo */
-.portada-texto h1 {
-    margin-top: 0;
-}
-
-.portada-texto p:last-child {
-    margin-bottom: 0;
-}
-
-/* Foto con proporción fija y esquinas redondeadas */
-.portada-foto {
-    width: 100%;
-    aspect-ratio: 4 / 3;
-    object-fit: cover;
-    border-radius: 0.75rem;
-}
-
-/* ----- Tarjetas de servicios -----
-   position: relative convierte a la tarjeta en el "punto de referencia"
-   de los elementos absolute que tenga dentro (la etiqueta "Nuevo").
-   Relleno más pequeño en móvil: gana espacio para el contenido. */
-.tarjeta {
-    position: relative;
-    padding: var(--espacio-2);
-    margin-bottom: var(--espacio-3);
-    background-color: var(--blanco);
-    border: 2px solid var(--gris-asfalto);
-    border-radius: 0.75rem;
-}
-
-/* Foto de servicios en 16:9 para que no se vea como un cuadrado enorme.
-   (La flota y las rutas la sobrescriben con 4:3 más abajo.) */
-.tarjeta img {
-    display: block;
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    object-fit: cover;
-    margin-bottom: var(--espacio-2);
-    border-radius: 0.5rem;
-}
-
-.tarjeta h3 {
-    margin-top: 0;
-}
-
-.tarjeta p:last-child {
-    margin-bottom: 0;
-}
-
-/* ----- Flota (móvil): una columna con Grid -----
-   Las columnas por ancho se definen en las media queries:
-   móvil 1 · tablet 2 · escritorio 3. */
-.flota-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--espacio-3);
-    margin-top: var(--espacio-3);
-}
-
-/* ----- Tarjeta de flota: contenido en columna con Flexbox ----- */
-.tarjeta-flota {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    margin-bottom: 0;
-}
-
-/* La descripción crece y empuja precio y enlace al final de la tarjeta */
-.tarjeta-flota .descripcion {
-    flex-grow: 1;
-    margin: 0 0 var(--espacio-2);
-}
-
-.tarjeta-flota .precio {
-    margin: 0 0 var(--espacio-2);
-    font-weight: 600;
-}
-
-.tarjeta-flota .boton-cta {
-    text-align: center;
-}
-
-/* ----- Galería "Nuestras rutas" (móvil): una columna ----- */
-.galeria {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--espacio-3);
-    margin-top: var(--espacio-3);
-}
-
-/* La separación la da el gap, no el margen de .tarjeta */
-.tarjeta-ruta {
-    margin-bottom: 0;
-}
-
-.tarjeta-ruta .nivel {
-    font-weight: 600;
-}
-
-/* Fotos de flota y de rutas en 4:3 (selector agrupado).
-   Van después de ".tarjeta img" con igual especificidad, por eso ganan. */
-.tarjeta-flota img,
-.tarjeta-ruta img {
-    aspect-ratio: 4 / 3;
-    object-fit: cover;
-}
-
-/* ----- Etiqueta "Nuevo" -----
-   absolute: sale del flujo, así que no desplaza el contenido de la tarjeta.
-   Azul Noche sobre Naranja Pedal: contraste suficiente (≈7:1). */
-.etiqueta-nuevo {
-    position: absolute;
-    top: var(--espacio-1);
-    right: var(--espacio-1);
-    padding: 0.125rem var(--espacio-1);
-    background-color: var(--naranja-pedal);
-    color: var(--azul-noche);
-    border-radius: 0.375rem;
-    font-size: 0.875rem;
-    font-weight: 600;
-    text-transform: uppercase;
-}
-
-/* ----- Tablas (móvil) -----
-   Letra y relleno reducidos para que las 5 columnas de recorridos
-   quepan en 360 px sin scroll lateral. Se restauran en tablet. */
+/* [SOLO tarifas + reservas] Tablas (móvil): letra y relleno reducidos
+   para que las 5 columnas de recorridos quepan en 360 px */
 table {
     width: 100%;
     border-collapse: collapse;
@@ -381,62 +349,19 @@ thead th {
     color: var(--blanco);
 }
 
-/* ----- Botón de llamada a la acción -----
-   Normal: blanco sobre Verde Ruta (5,3:1) */
-.boton-cta {
-    display: inline-block;
-    padding: var(--espacio-2) var(--espacio-3);
-    background-color: var(--verde-ruta);
-    color: var(--blanco);
-    border: 2px solid var(--verde-ruta);
-    border-radius: 0.5rem;
-    font-size: 1rem;
-    font-weight: 600;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-/* Hover y foco: blanco sobre Azul Noche (16:1). (0,2,0) vence a "a:hover" (0,1,1) */
-.boton-cta:hover,
-.boton-cta:focus {
-    background-color: var(--azul-noche);
-    border-color: var(--azul-noche);
-    color: var(--blanco);
-}
-
-/* ----- Botón flotante de WhatsApp -----
-   Reutiliza .boton-cta y solo agrega la posición fija. */
-.boton-whatsapp {
-    position: fixed;
-    bottom: var(--espacio-2);
-    right: var(--espacio-2);
-    z-index: 100;
-    padding: var(--espacio-1) var(--espacio-2);
-    box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.3);
-}
-
-
-/* =====================================================
-   5. FORMULARIO (MÓVIL)
-   ===================================================== */
-
-/* ----- Layout de reservas (móvil): una columna -----
-   Formulario primero y contacto debajo. */
+/* [SOLO reservas] Layout de dos columnas (móvil: una) */
 .reservas-layout {
     display: grid;
     grid-template-columns: 1fr;
     gap: var(--espacio-3);
 }
 
-/* La separación la da el gap: se quitan los márgenes de los dos hijos */
 .reservas-layout > section,
 .reservas-layout > aside {
     margin: 0;
 }
 
-/* ----- Fila de dos campos cortos con Flexbox -----
-   flex: 1 1 12rem → en móvil no caben dos campos de 12rem,
-   así que el segundo baja solo (flex-wrap). En tablet quedan lado a lado. */
+/* [SOLO reservas] Fila de dos campos cortos con Flexbox */
 .fila-campos {
     display: flex;
     flex-wrap: wrap;
@@ -448,7 +373,7 @@ thead th {
     flex: 1 1 12rem;
 }
 
-/* Los controles heredan la fuente del cuerpo */
+/* [SOLO reservas] Controles del formulario */
 input,
 select,
 textarea,
@@ -456,8 +381,7 @@ button {
     font-family: inherit;
 }
 
-/* min-width: 0 evita que el fieldset se ensanche más que la pantalla
-   (por defecto los fieldset no se encogen por debajo de su contenido) */
+/* min-width: 0 evita que el fieldset se ensanche más que la pantalla */
 fieldset {
     min-width: 0;
     margin: 0 0 var(--espacio-3);
@@ -503,8 +427,7 @@ textarea:focus {
     border-color: var(--azul-noche);
 }
 
-/* Radios y casilla: junto a su texto y sin ancho completo.
-   (0,1,1) vence a "label" y a "input" (0,0,1) */
+/* Radios y casilla: junto a su texto y sin ancho completo */
 .opcion label {
     display: inline-block;
     margin-right: var(--espacio-2);
@@ -519,7 +442,6 @@ textarea:focus {
 
 /* =====================================================
    6. TABLET · desde 768 px (48rem)
-   Solo se escribe lo que CAMBIA respecto al móvil.
    ===================================================== */
 @media (min-width: 48rem) {
 
@@ -527,7 +449,7 @@ textarea:focus {
         font-size: 2.25rem;
     }
 
-    /* Encabezado: se recupera el MiniReto 1 (nombre a un extremo, menú al otro) */
+    /* Encabezado: nombre a un extremo, menú al otro */
     header {
         flex-direction: row;
         justify-content: space-between;
@@ -542,7 +464,7 @@ textarea:focus {
         padding: var(--espacio-1) var(--espacio-2);
     }
 
-    /* Pie: tres bloques en fila, alineados por arriba */
+    /* Pie: tres bloques en fila */
     footer {
         flex-direction: row;
         flex-wrap: wrap;
@@ -555,51 +477,28 @@ textarea:focus {
         flex: 0 1 14rem;
     }
 
-    /* Portada: texto a la izquierda, foto a la derecha */
-    .portada {
-        grid-template-columns: 1fr 1fr;
-        align-items: center;
-        gap: var(--espacio-4);
-        padding: var(--espacio-4) 0;
-    }
-
-    /* Flota: 2 columnas */
-    .flota-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    /* Galería de rutas: 3 columnas en una fila */
-    .galeria {
-        grid-template-columns: repeat(3, 1fr);
-    }
-
-    /* Reservas: formulario (2fr) y contacto (1fr) */
-    .reservas-layout {
-        grid-template-columns: 2fr 1fr;
-        align-items: start;
-        gap: var(--espacio-4);
-    }
-
-    /* Se recupera el relleno amplio */
-    .tarjeta {
-        padding: var(--espacio-3);
+    /* [SOLO tarifas + reservas] */
+    aside {
+        padding: var(--espacio-1) var(--espacio-3);
     }
 
     fieldset {
         padding: var(--espacio-2) var(--espacio-3);
     }
 
-    aside {
-        padding: var(--espacio-1) var(--espacio-3);
-    }
-
-    /* Tablas: letra y relleno normales */
     table {
         font-size: 1rem;
     }
 
     th, td {
         padding: var(--espacio-1) var(--espacio-2);
+    }
+
+    /* [SOLO reservas] formulario (2fr) y contacto (1fr) */
+    .reservas-layout {
+        grid-template-columns: 2fr 1fr;
+        align-items: start;
+        gap: var(--espacio-4);
     }
 }
 
@@ -612,10 +511,5 @@ textarea:focus {
     /* Contenedor más ancho: aprovecha la pantalla grande */
     header, main, footer {
         max-width: 64rem;
-    }
-
-    /* Flota: 3 columnas */
-    .flota-grid {
-        grid-template-columns: repeat(3, 1fr);
     }
 }

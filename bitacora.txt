@@ -412,3 +412,29 @@ CINCO CLASES CONSULTADAS EN LA DOCUMENTACIÓN OFICIAL (Bootstrap 5.3)
    Qué hace: aplica el color de texto secundario (el gris de apoyo) y se adapta a
    los modos claro/oscuro; novedad de la versión 5.3.
 
+
+
+==== MiniReto 7 · Inicio migra a Bootstrap ====
+
+
+CONFLICTOS BOOTSTRAP vs CSS PROPIO (confirmados en DevTools > Styles)
+1. Fondo, fuente y enlaces.
+   Qué vi: en <body> y en <a>, las declaraciones de Bootstrap aparecen tachadas
+   y las mías aplicadas.
+   Solución: cargar styles.css después de bootstrap.min.css (cascada por orden).
+2. Tamaño de los títulos.
+   Qué vi: h2 y h3 con font-size calc(...vw) de Bootstrap, más grandes que antes;
+   también font-weight 500 y line-height 1.2.
+   Solución: fijé h2 1.5rem, h3 1.17rem y line-height 1.3 en mi regla de títulos.
+3. Doble espacio entre tarjetas.
+   Qué vi: .tarjeta tenía margin-bottom propio y la grilla suma su gutter (g-4).
+   Solución: quité margin y padding de .tarjeta; el espacio lo dan g-4 y p-3.
+4. Gris secundario (extra).
+   Qué vi: .text-body-secondary usaba el gris de Bootstrap, no el Gris Asfalto.
+   Solución: sobrescribí --bs-secondary-color en :root con var(--gris-asfalto).
+
+PRUEBAS
+- 360 px: sin scroll horizontal, 1 columna.
+- 768 px: portada en 2 columnas, rutas en 3, flota en 2.
+- 1280 px: flota en 4, beneficios en 4, franja en fila.
+- Tarifas y reservas revisadas: se ven igual que antes.
