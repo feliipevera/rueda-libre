@@ -438,3 +438,23 @@ PRUEBAS
 - 768 px: portada en 2 columnas, rutas en 3, flota en 2.
 - 1280 px: flota en 4, beneficios en 4, franja en fila.
 - Tarifas y reservas revisadas: se ven igual que antes.
+
+
+
+### Ventajas observadas
+- Menos CSS que mantener y ninguna media query de distribución propia.
+- Cambiar columnas es cambiar una clase en el HTML.
+- La misma grilla y los mismos breakpoints en las tres páginas.
+- Formulario responsivo sin escribir CSS, con la validación nativa intacta.
+
+### Desventajas observadas
+- El HTML se llena de clases y cuesta más de leer.
+- Hay que vigilar la cascada: sin `!important`, solo con orden y especificidad.
+- Se descarga CSS y JS que no uso (Bootstrap completo).
+- Hay decisiones de diseño que Bootstrap impone (caption, legend, foco) y hay que deshacerlas.
+
+### Conclusión
+Bootstrap sí redujo el trabajo de distribución: `styles.css` bajó de ___ a ___ líneas (−___ %) y
+ las tres páginas comparten una sola grilla. El costo fue aprender la cascada y resolver ___ conflictos,
+  pero se hizo una sola vez. Para este sitio lo recomiendo, siempre que el CSS propio se limite a la identidad
+   de marca. Antes de sumar componentes, conviene cargar solo lo necesario o personalizarlo con variables.

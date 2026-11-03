@@ -1,16 +1,16 @@
 /* =====================================================
-   RUEDA LIBRE · styles.css  (v2 · convive con Bootstrap 5.3)
-   Esta hoja se carga DESPUÉS de bootstrap.min.css en index.html.
-   tarifas.html y reservas.html todavía NO cargan Bootstrap.
+   RUEDA LIBRE · styles.css  (v2.0-beta · solo identidad visual)
+   Bootstrap 5.3 se carga ANTES en las tres páginas.
+   La distribución (grilla, flex, espacios, posición) vive en el
+   HTML con clases de Bootstrap. Aquí solo queda la marca.
 
    Índice:
    1. Variables globales (y puente con Bootstrap)
-   2. Base
-   3. Estructura compartida (encabezado, menú, pie)
-   4. Identidad de inicio (tarjetas, etiqueta, dato, franja, botón, WhatsApp)
-   5. [SOLO tarifas + reservas] tablas, formulario y layout de reservas
-   6. Tablet  · @media (min-width: 48rem)  = 768 px
-   7. Escritorio · @media (min-width: 75rem) = 1200 px
+   2. Base (tipografía, color, enlaces, foco)
+   3. Estructura compartida (ancho, menú, pie)
+   4. Componentes de marca
+   5. Tablas y formulario
+   6. Tablet · 768 px  y  Escritorio · 1200 px
    ===================================================== */
 
 
@@ -26,7 +26,7 @@
     --gris-asfalto: #5B6470;
     --blanco: #FFFFFF;
 
-    /* Tipografías (con fuentes de respaldo) */
+    /* Tipografías */
     --fuente-titulos: "Montserrat", Arial, Helvetica, sans-serif;
     --fuente-texto: "Open Sans", Arial, Helvetica, sans-serif;
 
@@ -36,25 +36,16 @@
     --espacio-3: 1.5rem;
     --espacio-4: 2.5rem;
 
-    /* Puente con Bootstrap 5.3: sobrescribo su variable de texto secundario
-       para que .text-body-secondary use mi Gris Asfalto. Sin !important:
-       esta hoja carga después y ":root" empata en especificidad.
-       En tarifas y reservas no tiene efecto (no usan Bootstrap). */
+    /* Puente con Bootstrap: .text-body-secondary y .form-text usan Gris Asfalto */
     --bs-secondary-color: var(--gris-asfalto);
 }
 
 
 /* =====================================================
-   2. BASE (global: las tres páginas)
+   2. BASE
    ===================================================== */
 
-/* Modelo de caja: el ancho incluye relleno y borde */
-*, *::before, *::after {
-    box-sizing: border-box;
-}
-
-/* padding-bottom grande: deja espacio al final para que el botón
-   fijo de WhatsApp nunca tape el pie de página. */
+/* padding-bottom grande: el botón fijo de WhatsApp no tapa el pie */
 body {
     font-family: var(--fuente-texto);
     font-weight: 400;
@@ -65,46 +56,34 @@ body {
     padding-bottom: 5rem;
 }
 
-/* Títulos: un solo selector agrupado.
-   font-weight y line-height pisan los de Bootstrap (500 y 1.2) */
+/* Títulos: pisan el peso (500) y la altura de línea (1.2) de Bootstrap */
 h1, h2, h3, h4, h5, h6 {
     font-family: var(--fuente-titulos);
     font-weight: 700;
     line-height: 1.3;
 }
 
-/* Tamaños fijos. Bootstrap agranda h2 y h3 con calc() y vw;
-   así inicio mantiene los mismos tamaños que tarifas y reservas. */
-h1 {
-    font-size: 1.75rem;
-}
-
-h2 {
-    font-size: 1.5rem;
-}
-
-h3 {
-    font-size: 1.17rem;
-}
+/* Tamaños fijos: Bootstrap agranda h1-h3 con calc() y vw */
+h1 { font-size: 1.75rem; }
+h2 { font-size: 1.5rem; }
+h3 { font-size: 1.17rem; }
 
 strong {
     font-weight: 600;
 }
 
-/* Texto secundario: Gris Asfalto sobre Crema (5,6:1) */
+/* Gris Asfalto sobre Crema (5,6:1) */
 small {
     color: var(--gris-asfalto);
 }
 
-/* Imágenes fluidas: nunca más anchas que su contenedor.
-   height:auto mantiene la proporción al encogerse. */
+/* Imágenes fluidas */
 img {
     max-width: 100%;
     height: auto;
 }
 
-/* Enlaces: Verde Ruta sobre Crema (4,9:1).
-   Pisan al "a" de Bootstrap (azul) porque esta hoja carga después. */
+/* Enlaces: Verde Ruta sobre Crema (4,9:1). Pisan el azul de Bootstrap */
 a {
     color: var(--verde-ruta);
 }
@@ -114,7 +93,7 @@ a:hover {
     text-decoration-thickness: 3px;
 }
 
-/* Foco visible en todo lo que se puede enfocar */
+/* Foco visible en todo lo enfocable */
 a:focus,
 button:focus,
 input:focus,
@@ -126,32 +105,23 @@ textarea:focus {
 
 
 /* =====================================================
-   3. ESTRUCTURA COMPARTIDA (móvil)
+   3. ESTRUCTURA COMPARTIDA
    ===================================================== */
 
-/* Contenedor: ancho máximo en rem y centrado */
+/* Ancho máximo centrado (la distribución interna la hace Bootstrap) */
 header, main, footer {
     max-width: 48rem;
     margin-left: auto;
     margin-right: auto;
 }
 
-/* ----- Encabezado (móvil): nombre arriba y menú debajo, centrados ----- */
-header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: var(--espacio-1);
-    margin-bottom: var(--espacio-2);
-    text-align: center;
+/* Ritmo vertical entre secciones */
+section {
+    margin-bottom: var(--espacio-4);
 }
 
-/* Marca: logo pequeño + nombre (igual en las 3 páginas) */
+/* Marca: tipografía y logo redondo */
 .marca {
-    display: flex;
-    align-items: center;
-    gap: var(--espacio-1);
-    margin: 0;
     font-family: var(--fuente-titulos);
     font-size: 1.5rem;
     font-weight: 700;
@@ -160,22 +130,10 @@ header {
 .marca img {
     width: 3rem;
     height: 3rem;
-    border-radius: 50%;
+    object-fit: cover;
 }
 
-/* ----- Menú (móvil) ----- */
-#menu {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: var(--espacio-1);
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-/* Enlaces normales del menú: Gris Asfalto sobre Crema (5,6:1) */
+/* Menú: Gris Asfalto sobre Crema (5,6:1) */
 #menu a {
     display: block;
     padding: var(--espacio-1);
@@ -184,14 +142,14 @@ header {
     border-bottom: 3px solid transparent;
 }
 
-/* Página actual: Verde Ruta sobre Crema (4,9:1). (1,1,1) vence a "#menu a" (1,0,1) */
+/* Página actual: Verde Ruta. (1,1,1) vence a "#menu a" (1,0,1) */
 #menu a.activo {
     color: var(--verde-ruta);
     font-weight: 600;
     border-bottom-color: var(--verde-ruta);
 }
 
-/* Hover y foco: Crema sobre Azul Noche (14,8:1). Van después de .activo */
+/* Hover y foco: Crema sobre Azul Noche (14,8:1). Después de .activo */
 #menu a:hover,
 #menu a:focus {
     background-color: var(--azul-noche);
@@ -199,57 +157,29 @@ header {
     border-bottom-color: var(--crema);
 }
 
-/* ----- Pie de página (móvil): tres bloques apilados ----- */
+/* Pie: solo la línea superior (columnas y espacios, en el HTML) */
 footer {
-    display: flex;
-    flex-direction: column;
-    gap: var(--espacio-2);
-    margin-top: var(--espacio-4);
-    padding-top: var(--espacio-2);
     border-top: 2px solid var(--gris-asfalto);
-}
-
-.pie-titulo {
-    margin: 0 0 var(--espacio-1);
-    font-size: 1rem;
-}
-
-.pie-bloque p {
-    margin: 0 0 var(--espacio-1);
-}
-
-/* Separación entre bloques */
-section {
-    margin-bottom: var(--espacio-4);
 }
 
 
 /* =====================================================
-   4. IDENTIDAD DE INICIO
-   Solo colores, bordes y fuentes de marca. La distribución
-   (columnas, alineación, espacios) la hace Bootstrap en el HTML.
+   4. COMPONENTES DE MARCA
    ===================================================== */
 
-/* Línea verde bajo la portada */
 .portada {
     border-bottom: 2px solid var(--verde-ruta);
 }
 
-/* Tarjeta: fondo blanco, borde Gris Asfalto y esquinas redondeadas */
+/* Tarjeta (también la usan los fieldset del formulario) */
 .tarjeta {
     background-color: var(--blanco);
     border: 2px solid var(--gris-asfalto);
     border-radius: 0.75rem;
 }
 
-/* Etiqueta "Nuevo": Azul Noche sobre Naranja Pedal (≈7:1).
-   La posición viene de las utilidades position-absolute, top-0, end-0, m-2. */
-.etiqueta-nuevo {
-    background-color: var(--naranja-pedal);
-    color: var(--azul-noche);
-}
-
-/* Dato destacado de cada beneficio (forma y tamaño con utilidades) */
+/* Etiqueta "Nuevo" y dato destacado: Azul Noche sobre Naranja Pedal (≈7:1) */
+.etiqueta-nuevo,
 .dato-destacado {
     background-color: var(--naranja-pedal);
     color: var(--azul-noche);
@@ -261,8 +191,7 @@ section {
     color: var(--blanco);
 }
 
-/* En la franja el botón verde no puede cambiar a Azul Noche al pasar el cursor
-   (se confundiría con el fondo): cambia a Naranja Pedal con texto Azul Noche. */
+/* En la franja el botón no puede pasar a Azul Noche: pasa a Naranja Pedal */
 .franja .boton-cta:hover,
 .franja .boton-cta:focus {
     background-color: var(--naranja-pedal);
@@ -270,13 +199,12 @@ section {
     color: var(--azul-noche);
 }
 
-/* El anillo de foco Azul Noche no se vería sobre la franja: lo cambio a Crema */
+/* Foco Crema sobre la franja oscura */
 .franja a:focus {
     outline-color: var(--crema);
 }
 
-/* ----- Botón de llamada a la acción (las 3 páginas) -----
-   Normal: blanco sobre Verde Ruta (5,3:1) */
+/* Botón de llamada a la acción: blanco sobre Verde Ruta (5,3:1) */
 .boton-cta {
     display: inline-block;
     padding: var(--espacio-2) var(--espacio-3);
@@ -290,7 +218,7 @@ section {
     cursor: pointer;
 }
 
-/* Hover y foco: blanco sobre Azul Noche (16:1). (0,2,0) vence a "a:hover" (0,1,1) */
+/* Hover y foco: blanco sobre Azul Noche (16:1) */
 .boton-cta:hover,
 .boton-cta:focus {
     background-color: var(--azul-noche);
@@ -298,32 +226,17 @@ section {
     color: var(--blanco);
 }
 
-/* ----- Botón flotante de WhatsApp (las 3 páginas) ----- */
-.boton-whatsapp {
-    position: fixed;
-    bottom: var(--espacio-2);
-    right: var(--espacio-2);
-    z-index: 100;
-    padding: var(--espacio-1) var(--espacio-2);
-    box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.3);
-}
-
 
 /* =====================================================
-   5. [SOLO tarifas + reservas]
-   Inicio ya NO usa nada de esta sección. Se migrará
-   cuando esas páginas pasen a Bootstrap.
+   5. TABLAS Y FORMULARIO
    ===================================================== */
 
-/* [SOLO tarifas + reservas] aside de "Qué llevar" y de contacto */
+/* Recuadros laterales ("Qué llevar", contacto) */
 aside {
-    margin: var(--espacio-3) 0;
-    padding: var(--espacio-1) var(--espacio-2);
     border-left: 4px solid var(--verde-ruta);
 }
 
-/* [SOLO tarifas + reservas] Tablas (móvil): letra y relleno reducidos
-   para que las 5 columnas de recorridos quepan en 360 px */
+/* Tablas (móvil): letra y relleno reducidos para 5 columnas en 360 px */
 table {
     width: 100%;
     border-collapse: collapse;
@@ -331,8 +244,11 @@ table {
     font-size: 0.75rem;
 }
 
+/* Bootstrap manda el caption abajo y en gris: lo devuelvo arriba */
 caption {
+    caption-side: top;
     padding: var(--espacio-1) 0;
+    color: var(--azul-noche);
     font-weight: 600;
     text-align: left;
 }
@@ -349,166 +265,54 @@ thead th {
     color: var(--blanco);
 }
 
-/* [SOLO reservas] Layout de dos columnas (móvil: una) */
-.reservas-layout {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--espacio-3);
-}
-
-.reservas-layout > section,
-.reservas-layout > aside {
-    margin: 0;
-}
-
-/* [SOLO reservas] Fila de dos campos cortos con Flexbox */
-.fila-campos {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: flex-start;
-    gap: 0 var(--espacio-2);
-}
-
-.fila-campos p {
-    flex: 1 1 12rem;
-}
-
-/* [SOLO reservas] Controles del formulario */
-input,
-select,
-textarea,
-button {
-    font-family: inherit;
-}
-
-/* min-width: 0 evita que el fieldset se ensanche más que la pantalla */
-fieldset {
-    min-width: 0;
-    margin: 0 0 var(--espacio-3);
-    padding: var(--espacio-2);
-    border: 2px solid var(--gris-asfalto);
-    border-radius: 0.5rem;
-}
-
-legend {
-    padding: 0 var(--espacio-1);
+/* Formulario: etiquetas, campos y estados con la identidad de marca */
+.form-label {
     font-weight: 600;
 }
 
-fieldset p {
-    margin: 0 0 var(--espacio-2);
-}
-
-/* Etiqueta sobre su campo */
-label {
-    display: block;
-    margin-bottom: var(--espacio-1);
-    font-weight: 600;
-}
-
-/* Campos a todo el ancho disponible */
-input,
-select,
-textarea {
-    width: 100%;
-    padding: var(--espacio-1);
+.form-control,
+.form-select,
+.form-check-input {
     border: 2px solid var(--gris-asfalto);
-    border-radius: 0.25rem;
-    font-size: 1rem;
     color: var(--azul-noche);
 }
 
-input:hover,
-input:focus,
-select:hover,
-select:focus,
-textarea:hover,
-textarea:focus {
+.form-control:hover,
+.form-control:focus,
+.form-select:hover,
+.form-select:focus,
+.form-check-input:focus {
     border-color: var(--azul-noche);
+    box-shadow: none;
 }
 
-/* Radios y casilla: junto a su texto y sin ancho completo */
-.opcion label {
-    display: inline-block;
-    margin-right: var(--espacio-2);
-    margin-bottom: 0;
-    font-weight: 400;
-}
-
-.opcion input {
-    width: auto;
+.form-check-input:checked {
+    background-color: var(--verde-ruta);
+    border-color: var(--verde-ruta);
 }
 
 
 /* =====================================================
-   6. TABLET · desde 768 px (48rem)
+   6. RESPONSIVE
    ===================================================== */
+
+/* Tablet · 768 px */
 @media (min-width: 48rem) {
-
-    h1 {
-        font-size: 2.25rem;
-    }
-
-    /* Encabezado: nombre a un extremo, menú al otro */
-    header {
-        flex-direction: row;
-        justify-content: space-between;
-        text-align: left;
-    }
-
-    #menu {
-        justify-content: flex-start;
-    }
+    h1 { font-size: 2.25rem; }
 
     #menu a {
         padding: var(--espacio-1) var(--espacio-2);
     }
 
-    /* Pie: tres bloques en fila */
-    footer {
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        align-items: flex-start;
-        gap: var(--espacio-3);
-    }
-
-    .pie-bloque {
-        flex: 0 1 14rem;
-    }
-
-    /* [SOLO tarifas + reservas] */
-    aside {
-        padding: var(--espacio-1) var(--espacio-3);
-    }
-
-    fieldset {
-        padding: var(--espacio-2) var(--espacio-3);
-    }
-
-    table {
-        font-size: 1rem;
-    }
+    table { font-size: 1rem; }
 
     th, td {
         padding: var(--espacio-1) var(--espacio-2);
     }
-
-    /* [SOLO reservas] formulario (2fr) y contacto (1fr) */
-    .reservas-layout {
-        grid-template-columns: 2fr 1fr;
-        align-items: start;
-        gap: var(--espacio-4);
-    }
 }
 
-
-/* =====================================================
-   7. ESCRITORIO · desde 1200 px (75rem)
-   ===================================================== */
+/* Escritorio · 1200 px */
 @media (min-width: 75rem) {
-
-    /* Contenedor más ancho: aprovecha la pantalla grande */
     header, main, footer {
         max-width: 64rem;
     }
