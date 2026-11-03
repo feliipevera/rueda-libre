@@ -5,7 +5,7 @@
    2. Base (reset, texto, enlaces, foco)
    3. Estructura (contenedor, bloques y pie con Flexbox)
    4. Navegación (encabezado y menú con Flexbox)
-   5. Componentes (portada, tarjetas, etiqueta, tablas, botones, WhatsApp)
+   5. Componentes (portada, tarjetas, flota con Grid, etiqueta, tablas, botones, WhatsApp)
    6. Formulario
    ===================================================== */
 
@@ -110,12 +110,7 @@ header, main, footer {
 }
 
 /* ----- Pie de página con Flexbox -----
-   NUEVO: el pie es un contenedor flexible con tres bloques en fila.
-   - flex-direction: row        → los bloques van uno al lado del otro
-   - justify-content: space-between → el espacio sobrante se reparte entre ellos
-   - align-items: flex-start    → todos alineados por arriba
-   - flex-wrap: wrap            → si no caben, bajan de línea
-   - gap                        → separación uniforme (sin márgenes) */
+   Tres bloques en fila, alineados por arriba y con separación uniforme. */
 footer {
     display: flex;
     flex-direction: row;
@@ -128,8 +123,6 @@ footer {
     border-top: 2px solid var(--gris-asfalto);
 }
 
-/* Cada bloque ocupa 14rem de base (no crece); si la pantalla no da
-   para tres bloques de ese ancho, el último baja de línea. */
 .pie-bloque {
     flex: 0 1 14rem;
 }
@@ -164,11 +157,7 @@ aside {
    ===================================================== */
 
 /* ----- Encabezado -----
-   NUEVO: nombre en un extremo y menú en el otro, centrados verticalmente.
-   - justify-content: space-between → un extremo cada uno
-   - align-items: center            → alineados verticalmente entre sí
-   - flex-wrap: wrap                → en pantallas angostas el menú baja de línea
-   - margin-bottom: reemplaza el margen que antes tenía el #menu */
+   Nombre en un extremo y menú en el otro, centrados verticalmente. */
 header {
     display: flex;
     flex-direction: row;
@@ -179,8 +168,7 @@ header {
     margin-bottom: var(--espacio-2);
 }
 
-/* Marca: logo pequeño + nombre (igual en las 3 páginas).
-   Ya no lleva margen: el espacio lo controla el gap del encabezado. */
+/* Marca: logo pequeño + nombre (igual en las 3 páginas) */
 .marca {
     display: flex;
     align-items: center;
@@ -198,10 +186,7 @@ header {
 }
 
 /* ----- Menú -----
-   CAMBIO: la lista es un contenedor flexible.
-   - gap reemplaza al margin-right que tenían los <li>
-   - flex-wrap permite que los enlaces bajen de línea si no caben
-   - se eliminó la regla "#menu li { display: inline-block; margin-right }" */
+   Contenedor flexible: gap separa los enlaces y flex-wrap los baja de línea. */
 #menu {
     display: flex;
     flex-direction: row;
@@ -212,9 +197,7 @@ header {
     margin: 0;
 }
 
-/* Enlaces normales del menú: Gris Asfalto sobre Crema (5,6:1).
-   CAMBIO: display: block (antes inline-block) para que el relleno y el
-   borde inferior ocupen todo el <li>, que ahora es un elemento flexible. */
+/* Enlaces normales del menú: Gris Asfalto sobre Crema (5,6:1) */
 #menu a {
     display: block;
     padding: var(--espacio-1) var(--espacio-2);
@@ -275,6 +258,54 @@ header {
 
 .tarjeta p:last-child {
     margin-bottom: 0;
+}
+
+/* ----- Flota: cuadrícula con Grid -----
+   NUEVO. repeat(auto-fit, minmax(14rem, 1fr)):
+   - minmax(14rem, 1fr): cada columna mide como mínimo 14rem y, si sobra
+     espacio, se reparte en partes iguales (1fr).
+   - auto-fit: crea tantas columnas como quepan, sin media queries.
+   - gap: separación uniforme entre filas y columnas.
+   Las tarjetas de una misma fila se estiran a la misma altura
+   (align-items de Grid es "stretch" por defecto). */
+.flota-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+    gap: var(--espacio-3);
+    margin-top: var(--espacio-3);
+}
+
+/* ----- Tarjeta de flota: contenido en columna con Flexbox -----
+   Reutiliza .tarjeta (relleno, borde y esquinas de la semana 1).
+   margin-bottom: 0 porque ahora la separación la da el gap del Grid.
+   Va después de .tarjeta para que estas reglas ganen. */
+.tarjeta-flota {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-bottom: 0;
+}
+
+/* Todas las fotos con la misma proporción, aunque sean de distinto tamaño */
+.tarjeta-flota img {
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+}
+
+/* La descripción crece y ocupa el espacio sobrante: así el precio y el
+   enlace "Reservar" quedan siempre al final de la tarjeta. */
+.tarjeta-flota .descripcion {
+    flex-grow: 1;
+    margin: 0 0 var(--espacio-2);
+}
+
+.tarjeta-flota .precio {
+    margin: 0 0 var(--espacio-2);
+    font-weight: 600;
+}
+
+.tarjeta-flota .boton-cta {
+    text-align: center;
 }
 
 /* ----- Etiqueta "Nuevo" -----

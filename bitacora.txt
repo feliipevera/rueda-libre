@@ -266,3 +266,14 @@ Al estrechar la ventana, primero el menú completo baja debajo del nombre porque
 juntos. Si se estrecha más, los enlaces del menú pasan a una segunda línea en lugar de desbordarse.
 En el pie, el tercer bloque (horario) baja primero, y en pantallas de celular los tres bloques
 quedan apilados uno bajo otro. Las tres páginas se comportan igual porque comparten styles.css.
+
+
+
+
+**Columnas observadas con el modo dispositivo de DevTools:**
+- 1280 px: 3 columnas
+- 900 px: 3 columnas
+- 500 px: 1 columna
+
+(El contenedor principal tiene un ancho máximo de 48rem, por eso a 1280 px y a 900 px se ven las mismas 3 columnas.)
+

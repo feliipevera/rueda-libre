@@ -74,6 +74,72 @@
             <p><a href="paginas/reservas.html" class="boton-cta">Reservar ahora</a></p>
         </section>
 
+        <!-- NUEVO: sección "Nuestra flota" con cuadrícula (Grid) de siete tarjetas.
+             Las fotos son provisionales: cambia cada src por la foto real de ese modelo. -->
+        <section id="flota">
+            <h2>Nuestra flota</h2>
+            <p>Elige el modelo que mejor se adapte a tu recorrido.</p>
+
+            <div class="flota-grid">
+                <article class="tarjeta tarjeta-flota">
+                    <img src="img/clasica.jpg" alt="" width="200" height="200">
+                    <h3>Urbana Clásica</h3>
+                    <p class="descripcion">Cómoda y liviana para las ciclorrutas.</p>
+                    <p class="precio">$10.000 por hora</p>
+                    <a href="paginas/reservas.html" class="boton-cta" aria-label="Reservar Urbana Clásica">Reservar</a>
+                </article>
+
+                <article class="tarjeta tarjeta-flota">
+                    <img src="img/plegable.jpg" alt="" width="200" height="200">
+                    <h3>Urbana Plegable</h3>
+                    <p class="descripcion">Se dobla en segundos; ideal para combinar con el metro.</p>
+                    <p class="precio">$12.000 por hora</p>
+                    <a href="paginas/reservas.html" class="boton-cta" aria-label="Reservar Urbana Plegable">Reservar</a>
+                </article>
+
+                <article class="tarjeta tarjeta-flota">
+                    <img src="img/montaña.jpg" alt="" width="200" height="200">
+                    <h3>Montaña Trail</h3>
+                    <p class="descripcion">Suspensión delantera y 21 cambios para las subidas.</p>
+                    <p class="precio">$15.000 por hora</p>
+                    <a href="paginas/reservas.html" class="boton-cta" aria-label="Reservar Montaña Trail">Reservar</a>
+                </article>
+
+                <article class="tarjeta tarjeta-flota">
+                    <img src="img/aventura.jpg" alt="" width="200" height="200">
+                    <h3>Gravel Aventura</h3>
+                    <p class="descripcion">Para rutas mixtas de asfalto y destapado.</p>
+                    <p class="precio">$18.000 por hora</p>
+                    <a href="paginas/reservas.html" class="boton-cta" aria-label="Reservar Gravel Aventura">Reservar</a>
+                </article>
+
+                <article class="tarjeta tarjeta-flota">
+                    <img src="img/bicicleta3.jpg" alt="" width="200" height="200">
+                    <h3>Eléctrica Urbana</h3>
+                    <p class="descripcion">Asistencia eléctrica con 45 km de autonomía.</p>
+                    <p class="precio">$25.000 por hora</p>
+                    <a href="paginas/reservas.html" class="boton-cta" aria-label="Reservar Eléctrica Urbana">Reservar</a>
+                </article>
+
+                <article class="tarjeta tarjeta-flota">
+                    <img src="img/niños.jpg" alt="" width="200" height="200">
+                    <h3>Infantil</h3>
+                    <p class="descripcion">Para niños de 6 a 10 años.</p>
+                    <p class="precio">$8.000 por hora</p>
+                    <a href="paginas/reservas.html" class="boton-cta" aria-label="Reservar Infantil">Reservar</a>
+                </article>
+
+                <!-- Séptimo modelo: solo se agrega otro <article>, sin tocar el CSS -->
+                <article class="tarjeta tarjeta-flota">
+                    <img src="img/2personas.jpg" alt="" width="100" height="100">
+                    <h3>Tándem</h3>
+                    <p class="descripcion">Para dos personas; perfecta para pasear en pareja.</p>
+                    <p class="precio">$20.000 por hora</p>
+                    <a href="paginas/reservas.html" class="boton-cta" aria-label="Reservar Tándem">Reservar</a>
+                </article>
+            </div>
+        </section>
+
         <section id="como-alquilar">
             <h2>Cómo alquilar</h2>
             <p>Para alquilar una bicicleta, puedes seguir estos pasos:</p>
@@ -98,7 +164,6 @@
         </section>
     </main>
 
-    <!-- CAMBIO Flexbox: pie en tres bloques (marca, contacto y horario) -->
     <footer>
         <div class="pie-bloque">
             <h2 class="pie-titulo">Rueda Libre</h2>
