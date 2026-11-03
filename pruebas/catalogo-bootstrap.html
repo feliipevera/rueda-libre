@@ -6,7 +6,7 @@
     <title>Flota con Bootstrap 5.3 | Rueda Libre (pruebas)</title>
 
     <!-- Bootstrap 5.3 por CDN (copiado de la documentación oficial).
-         NO se enlaza css/styles.css: la distribución sale solo de las clases. -->
+         NO se enlaza css/styles.css: todo sale de clases de Bootstrap. -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
   </head>
   <body>
@@ -107,6 +107,69 @@
         </div>
 
       </div>
+
+      <!-- ===== MiniReto 6: sección de beneficios (solo utilidades de Bootstrap) ===== -->
+      <section class="mt-5 pt-5 border-top" aria-labelledby="titulo-beneficios">
+        <!-- text-center: título centrado · fw-bold: negrita · mb-4: margen inferior -->
+        <h2 id="titulo-beneficios" class="text-center fw-bold mb-4">¿Por qué Rueda Libre?</h2>
+
+        <!-- Grilla: 1 columna en celular, 2 desde sm, 4 desde lg -->
+        <div class="row g-4">
+
+          <div class="col-12 col-sm-6 col-lg-3">
+            <!-- h-100: misma altura · p-4: relleno · bg-white border rounded: caja -->
+            <article class="h-100 p-4 bg-white border rounded text-center">
+              <!-- Dato destacado: naranja (text-bg-warning) en forma de píldora -->
+              <p class="d-inline-block text-bg-warning rounded-pill px-3 py-1 fs-5 fw-bold mb-3">100 %</p>
+              <h3 class="h5 fw-semibold text-body-emphasis">Bicicletas revisadas</h3>
+              <p class="text-body-secondary mb-0">Revisamos frenos, llantas y cambios en cada alquiler, antes de que salgas.</p>
+            </article>
+          </div>
+
+          <div class="col-12 col-sm-6 col-lg-3">
+            <article class="h-100 p-4 bg-white border rounded text-center">
+              <p class="d-inline-block text-bg-warning rounded-pill px-3 py-1 fs-5 fw-bold mb-3">$0</p>
+              <h3 class="h5 fw-semibold text-body-emphasis">Casco y candado incluidos</h3>
+              <p class="text-body-secondary mb-0">Van incluidos en todas las tarifas, sin ningún costo adicional.</p>
+            </article>
+          </div>
+
+          <div class="col-12 col-sm-6 col-lg-3">
+            <article class="h-100 p-4 bg-white border rounded text-center">
+              <p class="d-inline-block text-bg-warning rounded-pill px-3 py-1 fs-5 fw-bold mb-3">+10</p>
+              <h3 class="h5 fw-semibold text-body-emphasis">Guías certificados</h3>
+              <p class="text-body-secondary mb-0">Guías locales con certificación que conocen cada ruta y su historia.</p>
+            </article>
+          </div>
+
+          <div class="col-12 col-sm-6 col-lg-3">
+            <article class="h-100 p-4 bg-white border rounded text-center">
+              <p class="d-inline-block text-bg-warning rounded-pill px-3 py-1 fs-5 fw-bold mb-3">3</p>
+              <h3 class="h5 fw-semibold text-body-emphasis">Puntos de devolución</h3>
+              <p class="text-body-secondary mb-0">Devuelve tu bicicleta en cualquiera de nuestras tres sedes.</p>
+            </article>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ===== MiniReto 6: franja "¿Listo para rodar?" ===== -->
+      <section class="mt-5 mb-4 p-4 p-md-5 bg-dark text-white rounded" aria-labelledby="titulo-franja">
+        <!-- Celular: columna (flex-column) · desde md: fila (flex-md-row)
+             align-items-center: centrado en el eje cruzado · gap: separación -->
+        <div class="d-flex flex-column flex-md-row align-items-center gap-3 gap-md-4">
+
+          <!-- Decorativo: oculto en celular (d-none) y visible desde md (d-md-block) -->
+          <img src="../img/bicicleta5.jpg" class="d-none d-md-block img-fluid rounded-circle" alt="" width="96" height="96">
+
+          <!-- Texto: centrado en celular, a la izquierda desde md; ocupa el espacio sobrante -->
+          <h2 id="titulo-franja" class="fs-3 fw-bold mb-0 text-center text-md-start flex-md-grow-1">¿Listo para rodar?</h2>
+
+          <!-- Enlace destacado solo con utilidades de color y espaciado -->
+          <a href="../paginas/reservas.html" class="text-bg-success fw-semibold px-4 py-3 rounded text-decoration-none">llega mañana</a>
+
+        </div>
+      </section>
     </main>
 
     <!-- Bundle de JavaScript (incluye Popper), justo antes de cerrar el body -->

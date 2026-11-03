@@ -384,3 +384,31 @@ completo para usar solo una parte. Recomiendo seguir con CSS propio mientras el
 sitio sea pequeño, y reconsiderar Bootstrap si el proyecto crece y necesita
 muchos componentes (menús, modales, formularios) o más gente trabajando en él.
 
+
+
+
+==== MiniReto 6 · Sin una línea de CSS: utilidades ====
+
+
+CINCO CLASES CONSULTADAS EN LA DOCUMENTACIÓN OFICIAL (Bootstrap 5.3)
+1. text-bg-success
+   Dónde: Helpers > Color & background.
+   Qué hace: pone fondo verde y un color de texto con buen contraste a la vez;
+   así el enlace de la franja se ve destacado con una sola clase.
+2. flex-md-row
+   Dónde: Utilities > Flex (dirección).
+   Qué hace: cambia la dirección de los elementos a fila desde 768 px; antes de
+   eso se respeta flex-column. Es lo que hace que la franja pase de columna a fila.
+3. d-none + d-md-block
+   Dónde: Utilities > Display (ocultar y mostrar).
+   Qué hace: d-none oculta el elemento y d-md-block lo muestra desde 768 px; es
+   el modo de ocultar la imagen decorativa en celulares.
+4. gap-3
+   Dónde: Utilities > Flex / Spacing (gap).
+   Qué hace: separa los hijos de un contenedor flex o grid sin tener que poner
+   márgenes en cada uno. Mejor que usar m-*.
+5. text-body-secondary
+   Dónde: Utilities > Colors (texto).
+   Qué hace: aplica el color de texto secundario (el gris de apoyo) y se adapta a
+   los modos claro/oscuro; novedad de la versión 5.3.
+
