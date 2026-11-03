@@ -198,3 +198,33 @@ COMPROBACIÓN DE HERENCIA (DevTools, Styles y Computed)
 COMBINACIONES USADAS (del mapa de uso de color)
 Azul Noche sobre Crema (texto y títulos), Verde Ruta sobre Crema (enlaces),
 Gris Asfalto sobre Crema (texto secundario).
+
+
+
+
+MINIRETO 10:
+
+CONFLICTO DE LA CLASE "activo"
+Reglas del compañero (con mis variables):
+  #menu a { color: var(--gris-asfalto); }
+  .activo { color: var(--verde-ruta); font-weight: 600; }
+
+Especificidad (ids, clases/pseudoclases, elementos):
+  #menu a  -> (1,0,1)
+  .activo  -> (0,1,0)
+Causa: un id pesa más que cualquier cantidad de clases, así que "#menu a" vence
+a ".activo" aunque ".activo" esté después. En DevTools (Styles), el color de
+".activo" aparece tachado. El font-weight sí se aplica porque "#menu a" no lo define.
+
+Solución:
+  #menu a.activo { color: var(--verde-ruta); font-weight: 600; ... }
+  Especificidad (1,1,1): supera a (1,0,1) por la clase adicional.
+Hover/foco del menú ("#menu a:hover", (1,1,1)) van después de ".activo" porque
+tienen la misma especificidad y gana la última.
+
+Segundo conflicto evitado: "a:hover" (0,1,1) vencería a ".boton-cta" (0,1,0) y dejaría
+el texto azul sobre fondo azul. Se resolvió con ".boton-cta:hover" (0,2,0).
+
+RECORRIDO CON TAB
+En index, tarifas y reservas el foco siempre se ve (contorno Azul Noche de 3px).
+Estados revisados con el botón :hov de DevTools en menú, enlaces, botones y campos.

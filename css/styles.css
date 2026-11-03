@@ -6,6 +6,7 @@
     --azul-noche: #14213D;
     --crema: #FAF6EF;
     --gris-asfalto: #5B6470;
+    --blanco: #FFFFFF;
 
     /* Tipografías (con fuentes de respaldo) */
     --fuente-titulos: "Montserrat", Arial, Helvetica, sans-serif;
@@ -38,15 +39,20 @@ strong {
     font-weight: 600;
 }
 
+/* ===== Texto secundario: Gris Asfalto sobre Crema (5,6:1) ===== */
+small,
+figcaption {
+    color: var(--gris-asfalto);
+}
+
 /* ===== Enlaces: Verde Ruta sobre Crema (4,9:1) ===== */
 a {
     color: var(--verde-ruta);
 }
 
-/* ===== Texto secundario: Gris Asfalto sobre Crema (5,6:1) ===== */
-small,
-figcaption {
-    color: var(--gris-asfalto);
+a:hover {
+    color: var(--azul-noche);
+    text-decoration-thickness: 3px;
 }
 
 /* ===== Controles de formulario: heredan la fuente del cuerpo ===== */
@@ -55,4 +61,95 @@ select,
 textarea,
 button {
     font-family: inherit;
+}
+
+/* ===== Foco visible en todo lo que se puede enfocar ===== */
+a:focus,
+button:focus,
+input:focus,
+select:focus,
+textarea:focus {
+    outline: 3px solid var(--azul-noche);
+    outline-offset: 2px;
+}
+
+/* ===== Menú de navegación (selectores descendientes) ===== */
+#menu {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 var(--espacio-2);
+}
+
+#menu li {
+    display: inline-block;
+}
+
+/* Enlaces normales del menú: Gris Asfalto sobre Crema (5,6:1) */
+#menu a {
+    display: inline-block;
+    padding: var(--espacio-1) var(--espacio-2);
+    color: var(--gris-asfalto);
+    text-decoration: none;
+    border-bottom: 3px solid transparent;
+}
+
+/* Página actual: Verde Ruta sobre Crema (4,9:1).
+   (1,1,1) vence a "#menu a" (1,0,1) sin usar !important */
+#menu a.activo {
+    color: var(--verde-ruta);
+    font-weight: 600;
+    border-bottom-color: var(--verde-ruta);
+}
+
+/* Hover y foco: Crema sobre Azul Noche (14,8:1).
+   Van DESPUÉS de .activo: misma especificidad (1,1,1), gana el último */
+#menu a:hover,
+#menu a:focus {
+    background-color: var(--azul-noche);
+    color: var(--crema);
+    border-bottom-color: var(--crema);
+}
+
+/* ===== Botón de llamada a la acción ===== */
+/* Normal: blanco sobre Verde Ruta (5,3:1) */
+.boton-cta {
+    display: inline-block;
+    padding: var(--espacio-1) var(--espacio-3);
+    background-color: var(--verde-ruta);
+    color: var(--blanco);
+    border: 2px solid var(--verde-ruta);
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Hover y foco: blanco sobre Azul Noche (16:1).
+   (0,2,0) vence a "a:hover" (0,1,1), así el texto sigue blanco */
+.boton-cta:hover,
+.boton-cta:focus {
+    background-color: var(--azul-noche);
+    border-color: var(--azul-noche);
+    color: var(--blanco);
+}
+
+/* ===== Campos de formulario ===== */
+input,
+select,
+textarea {
+    padding: var(--espacio-1);
+    border: 2px solid var(--gris-asfalto);
+    border-radius: 0.25rem;
+    font-size: 1rem;
+    color: var(--azul-noche);
+}
+
+input:hover,
+input:focus,
+select:hover,
+select:focus,
+textarea:hover,
+textarea:focus {
+    border-color: var(--azul-noche);
 }

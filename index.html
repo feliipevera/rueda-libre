@@ -6,7 +6,6 @@
     <meta name="description" content="Rueda Libre: alquiler de bicicletas y recorridos guiados en Medellín. Una manera de rodar en cualquier parte.">
     <title>Rueda Libre | Alquiler de bicicletas en Medellín</title>
 
-    <!-- NUEVO: Google Fonts primero, luego tu hoja de estilos -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
@@ -19,7 +18,8 @@
         <h1>Rueda Libre</h1>
         <nav>
             <ul id="menu">
-                <li><a href="index.html" aria-current="page">Inicio</a></li>
+                <!-- CAMBIO: class="activo" en la página actual -->
+                <li><a href="index.html" class="activo" aria-current="page">Inicio</a></li>
                 <li><a href="paginas/tarifas.html">Tarifas y rutas</a></li>
                 <li><a href="paginas/reservas.html">Reservas</a></li>
             </ul>
@@ -54,7 +54,8 @@
                 <p>Ofrecemos accesorios para mantener tu bicicleta en perfecto estado y reparaciones.</p>
             </article>
 
-            <p><a href="paginas/reservas.html">Reservar ahora</a></p>
+            <!-- CAMBIO: class="boton-cta" -->
+            <p><a href="paginas/reservas.html" class="boton-cta">Reservar ahora</a></p>
         </section>
 
         <section id="como-alquilar">
