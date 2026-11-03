@@ -239,3 +239,22 @@ Tarjetas: padding 1.5rem, borde 2px, border-radius 0.75rem, margin-bottom 1.5rem
 Imagen de la tarjeta: width: 100%; height: auto; display: block.
 Tablas: border-collapse: collapse; celdas con padding 0.5rem 1rem; encabezados
 en blanco sobre Azul Noche (16:1).
+
+
+
+
+resumen: 
+Lo que construí: En los retos 1 a 4 armé el repositorio la página de inicio las 
+tarifas con tablas y las reservas con menú y pie comunes en los retos 5 a 8 organicé 
+todo con etiquetas semánticas hice el formulario con validación auditue la accesibilidad
+y publiqué la v0.2 en GitHub Pages en los retos 9 a 11 creé styles.css con variables,
+tipografías estados del menú botones y modelo de caja en el reto 12 agregué la etiqueta
+“Nuevo” el botón flotante de WhatsApp unifiqué las tres páginas y ordené el CSS por secciones.
+
+Pruebas y decisiones: Revisé en DevTools que no hubiera errores 404 y corregí el nombre de
+una imagen mal escrita. Recorrí el sitio solo con teclado, y dejé espacio al final de las
+páginas para que WhatsApp no tape el pie.
+
+Lo que mejoraría: Adaptar el menú a celulares con media queries conectar el formulario a
+un servidor real y escribir textos alternativos descriptivos para las imágenes y aprender 
+y repasar mas funciones tanto de html como de css

@@ -14,8 +14,12 @@
 <body>
     <a href="#contenido">Saltar al contenido principal</a>
 
+    <!-- CAMBIO v1.0: encabezado idéntico al de las otras páginas -->
     <header>
-        <p><strong>Rueda Libre</strong></p>
+        <p class="marca">
+            <img src="../img/LogoBicicleta.jpg" alt="" width="48" height="48">
+            <span>Rueda Libre</span>
+        </p>
         <nav>
             <ul id="menu">
                 <li><a href="../index.html">Inicio</a></li>
@@ -82,7 +86,6 @@
                     </p>
 
                     <p id="titulo-tipo"><strong>Tipo de bicicleta</strong></p>
-                    <!-- CAMBIO: class="opcion" -->
                     <p class="opcion" role="group" aria-labelledby="titulo-tipo">
                         <input type="radio" id="tipo-urbana" name="tipo_bicicleta" value="urbana" required>
                         <label for="tipo-urbana">Urbana</label>
@@ -124,14 +127,12 @@
                 <fieldset>
                     <legend>Confirmación</legend>
 
-                    <!-- CAMBIO: se quitó el <br> entre la etiqueta y el campo -->
                     <p>
                         <label for="comentarios">Comentarios (opcional, máximo 300 caracteres)</label>
                         <textarea id="comentarios" name="comentarios"
                                   rows="4" cols="40" maxlength="300"></textarea>
                     </p>
 
-                    <!-- CAMBIO: class="opcion" -->
                     <p class="opcion">
                         <input type="checkbox" id="politicas" name="politicas" value="aceptadas" required>
                         <label for="politicas">Acepto las políticas de alquiler</label>
@@ -157,5 +158,8 @@
     <footer>
         <p>Rueda Libre · <a href="mailto:hola@ruedalibre.example">hola@ruedalibre.example</a> · © 2026</p>
     </footer>
+
+    <!-- NUEVO v1.0: enlace flotante de WhatsApp -->
+    <a href="https://wa.me/573000000000" class="boton-cta boton-whatsapp" target="_blank" rel="noopener" aria-label="WhatsApp (se abre en otra pestaña)">WhatsApp</a>
 </body>
 </html>
