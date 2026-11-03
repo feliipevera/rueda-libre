@@ -296,3 +296,13 @@ línea. Grid habría sido más de lo necesario para este caso.
 arriba y separados con gap. Es una sola dimensión y con `flex-wrap` los bloques bajan de línea al estrechar 
 la ventana.
 
+
+PROBLEMAS RESPONSIVE RESUELTOS
+1. [Confirmar en DevTools] La tabla de recorridos (5 columnas) causaba scroll
+   horizontal a 360 px. Solución: font-size 0.75rem y padding 0.25rem en móvil;
+   se restauran en tablet.
+2. [Confirmar en DevTools] Los 3 enlaces del menú con relleno de 1rem no cabían
+   en una línea a 360 px. Solución: relleno de 0.5rem en móvil y 1rem desde tablet.
+3. El pie tenía flex: 0 1 14rem en cada bloque; al pasarlo a columna el
+   flex-basis actuaba sobre el alto. Solución: moverlo a la media query de tablet.
+4. (Agrega aquí cualquier otro problema que SÍ veas con tus ojos.)

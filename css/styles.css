@@ -1,13 +1,13 @@
 /* =====================================================
-   RUEDA LIBRE · styles.css
+   RUEDA LIBRE · styles.css  (v1.5 · mobile-first)
    Índice:
    1. Variables globales
-   2. Base (reset, texto, enlaces, foco)
-   3. Estructura (contenedor, bloques y pie con Flexbox)
-   4. Navegación (encabezado y menú con Flexbox)
-   5. Componentes (portada, tarjetas, flota, rutas, etiqueta, tablas, botones, WhatsApp)
-   6. Formulario (layout 2:1 de reservas y fila de campos)
-   7. Pantallas angostas
+   2. Base (móvil: una sola columna, sin media query)
+   3. Estructura (contenedor, encabezado, menú y pie)
+   4. Componentes (portada, tarjetas, flota, rutas, etiqueta, tablas, botones, WhatsApp)
+   5. Formulario (reservas y fila de campos)
+   6. Tablet  · @media (min-width: 48rem)  = 768 px
+   7. Escritorio · @media (min-width: 75rem) = 1200 px
    ===================================================== */
 
 
@@ -36,7 +36,9 @@
 
 
 /* =====================================================
-   2. BASE
+   2. BASE (MÓVIL)
+   Todo lo de aquí aplica a TODOS los anchos; las
+   media queries del final solo agregan o sobrescriben.
    ===================================================== */
 
 /* Modelo de caja: el ancho incluye relleno y borde */
@@ -62,6 +64,11 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 700;
 }
 
+/* h1 más pequeño en móvil para que no ocupe media pantalla */
+h1 {
+    font-size: 1.75rem;
+}
+
 strong {
     font-weight: 600;
 }
@@ -72,7 +79,8 @@ figcaption {
     color: var(--gris-asfalto);
 }
 
-/* Imágenes: nunca se salen de su caja */
+/* Imágenes fluidas: nunca más anchas que su contenedor.
+   height:auto mantiene la proporción al encogerse. */
 img {
     max-width: 100%;
     height: auto;
@@ -100,7 +108,7 @@ textarea:focus {
 
 
 /* =====================================================
-   3. ESTRUCTURA
+   3. ESTRUCTURA (MÓVIL)
    ===================================================== */
 
 /* Contenedor: ancho máximo en rem y centrado */
@@ -110,22 +118,82 @@ header, main, footer {
     margin-right: auto;
 }
 
-/* ----- Pie de página con Flexbox -----
-   Tres bloques en fila (una dimensión), alineados por arriba. */
-footer {
+/* ----- Encabezado (móvil) -----
+   En columna: el nombre arriba y el menú debajo, ambos centrados.
+   Con flex-direction: column, align-items trabaja en horizontal. */
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--espacio-1);
+    margin-bottom: var(--espacio-2);
+    text-align: center;
+}
+
+/* Marca: logo pequeño + nombre (igual en las 3 páginas) */
+.marca {
+    display: flex;
+    align-items: center;
+    gap: var(--espacio-1);
+    margin: 0;
+    font-family: var(--fuente-titulos);
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.marca img {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+}
+
+/* ----- Menú (móvil) -----
+   Fila flexible centrada; si los enlaces no caben, bajan de línea. */
+#menu {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    align-items: flex-start;
     flex-wrap: wrap;
-    gap: var(--espacio-3);
+    justify-content: center;
+    gap: var(--espacio-1);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Enlaces normales del menú: Gris Asfalto sobre Crema (5,6:1).
+   Relleno más pequeño en móvil para que los 3 enlaces quepan. */
+#menu a {
+    display: block;
+    padding: var(--espacio-1);
+    color: var(--gris-asfalto);
+    text-decoration: none;
+    border-bottom: 3px solid transparent;
+}
+
+/* Página actual: Verde Ruta sobre Crema (4,9:1). (1,1,1) vence a "#menu a" (1,0,1) */
+#menu a.activo {
+    color: var(--verde-ruta);
+    font-weight: 600;
+    border-bottom-color: var(--verde-ruta);
+}
+
+/* Hover y foco: Crema sobre Azul Noche (14,8:1). Van después de .activo */
+#menu a:hover,
+#menu a:focus {
+    background-color: var(--azul-noche);
+    color: var(--crema);
+    border-bottom-color: var(--crema);
+}
+
+/* ----- Pie de página (móvil) -----
+   Los tres bloques apilados en columna. */
+footer {
+    display: flex;
+    flex-direction: column;
+    gap: var(--espacio-2);
     margin-top: var(--espacio-4);
     padding-top: var(--espacio-2);
     border-top: 2px solid var(--gris-asfalto);
-}
-
-.pie-bloque {
-    flex: 0 1 14rem;
 }
 
 .pie-titulo {
@@ -148,98 +216,26 @@ figure {
 
 aside {
     margin: var(--espacio-3) 0;
-    padding: var(--espacio-1) var(--espacio-3);
+    padding: var(--espacio-1) var(--espacio-2);
     border-left: 4px solid var(--verde-ruta);
 }
 
 
 /* =====================================================
-   4. NAVEGACIÓN (encabezado y menú con Flexbox)
+   4. COMPONENTES (MÓVIL)
    ===================================================== */
 
-/* ----- Encabezado -----
-   Nombre en un extremo y menú en el otro, centrados verticalmente. */
-header {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: var(--espacio-2);
-    margin-bottom: var(--espacio-2);
-}
-
-/* Marca: logo pequeño + nombre (igual en las 3 páginas) */
-.marca {
-    display: flex;
-    align-items: center;
-    gap: var(--espacio-1);
-    margin: 0;
-    font-family: var(--fuente-titulos);
-    font-size: 1.5rem;
-    font-weight: 700;
-}
-
-.marca img {
-    width: 3rem;
-    height: 3rem;
-    border-radius: 50%;
-}
-
-/* ----- Menú -----
-   Contenedor flexible: gap separa los enlaces y flex-wrap los baja de línea. */
-#menu {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: var(--espacio-1);
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-/* Enlaces normales del menú: Gris Asfalto sobre Crema (5,6:1) */
-#menu a {
-    display: block;
-    padding: var(--espacio-1) var(--espacio-2);
-    color: var(--gris-asfalto);
-    text-decoration: none;
-    border-bottom: 3px solid transparent;
-}
-
-/* Página actual: Verde Ruta sobre Crema (4,9:1). (1,1,1) vence a "#menu a" (1,0,1) */
-#menu a.activo {
-    color: var(--verde-ruta);
-    font-weight: 600;
-    border-bottom-color: var(--verde-ruta);
-}
-
-/* Hover y foco: Crema sobre Azul Noche (14,8:1). Van después de .activo */
-#menu a:hover,
-#menu a:focus {
-    background-color: var(--azul-noche);
-    color: var(--crema);
-    border-bottom-color: var(--crema);
-}
-
-
-/* =====================================================
-   5. COMPONENTES
-   ===================================================== */
-
-/* ----- Portada de inicio con Grid -----
-   Dos columnas iguales (1fr 1fr): texto a la izquierda, foto a la derecha.
-   align-items: center centra verticalmente el bloque de texto frente a la foto. */
+/* ----- Portada (móvil) -----
+   Una sola columna: primero el texto y debajo la foto (orden del HTML). */
 .portada {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    align-items: center;
-    gap: var(--espacio-4);
-    padding: var(--espacio-4) 0;
+    grid-template-columns: 1fr;
+    gap: var(--espacio-3);
+    padding: var(--espacio-3) 0;
     border-bottom: 2px solid var(--verde-ruta);
 }
 
-/* Sin márgenes sobrantes arriba y abajo, para que el centrado sea exacto */
+/* Sin márgenes sobrantes arriba y abajo */
 .portada-texto h1 {
     margin-top: 0;
 }
@@ -258,10 +254,11 @@ header {
 
 /* ----- Tarjetas de servicios -----
    position: relative convierte a la tarjeta en el "punto de referencia"
-   de los elementos absolute que tenga dentro (la etiqueta "Nuevo"). */
+   de los elementos absolute que tenga dentro (la etiqueta "Nuevo").
+   Relleno más pequeño en móvil: gana espacio para el contenido. */
 .tarjeta {
     position: relative;
-    padding: var(--espacio-3);
+    padding: var(--espacio-2);
     margin-bottom: var(--espacio-3);
     background-color: var(--blanco);
     border: 2px solid var(--gris-asfalto);
@@ -284,11 +281,12 @@ header {
     margin-bottom: 0;
 }
 
-/* ----- Flota: cuadrícula adaptable con Grid -----
-   Tantas columnas como quepan (auto-fit), cada una de 14rem como mínimo. */
+/* ----- Flota (móvil): una columna con Grid -----
+   Las columnas por ancho se definen en las media queries:
+   móvil 1 · tablet 2 · escritorio 3. */
 .flota-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+    grid-template-columns: 1fr;
     gap: var(--espacio-3);
     margin-top: var(--espacio-3);
 }
@@ -316,11 +314,10 @@ header {
     text-align: center;
 }
 
-/* ----- Galería "Nuestras rutas" con Grid -----
-   Tres columnas iguales (repeat(3, 1fr)) en una sola fila. */
+/* ----- Galería "Nuestras rutas" (móvil): una columna ----- */
 .galeria {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: 1fr;
     gap: var(--espacio-3);
     margin-top: var(--espacio-3);
 }
@@ -357,11 +354,14 @@ header {
     text-transform: uppercase;
 }
 
-/* ----- Tablas ----- */
+/* ----- Tablas (móvil) -----
+   Letra y relleno reducidos para que las 5 columnas de recorridos
+   quepan en 360 px sin scroll lateral. Se restauran en tablet. */
 table {
     width: 100%;
     border-collapse: collapse;
     margin-bottom: var(--espacio-3);
+    font-size: 0.75rem;
 }
 
 caption {
@@ -371,7 +371,7 @@ caption {
 }
 
 th, td {
-    padding: var(--espacio-1) var(--espacio-2);
+    padding: 0.25rem;
     border: 1px solid var(--gris-asfalto);
     text-align: left;
 }
@@ -418,17 +418,15 @@ thead th {
 
 
 /* =====================================================
-   6. FORMULARIO
+   5. FORMULARIO (MÓVIL)
    ===================================================== */
 
-/* ----- Layout de reservas con Grid (proporción 2:1) -----
-   2fr para el formulario y 1fr para el contacto.
-   align-items: start evita que el aside se estire a la altura del formulario. */
+/* ----- Layout de reservas (móvil): una columna -----
+   Formulario primero y contacto debajo. */
 .reservas-layout {
     display: grid;
-    grid-template-columns: 2fr 1fr;
-    align-items: start;
-    gap: var(--espacio-4);
+    grid-template-columns: 1fr;
+    gap: var(--espacio-3);
 }
 
 /* La separación la da el gap: se quitan los márgenes de los dos hijos */
@@ -438,9 +436,8 @@ thead th {
 }
 
 /* ----- Fila de dos campos cortos con Flexbox -----
-   Documento y celular en la misma fila (una dimensión).
-   flex: 1 1 12rem → cada campo parte de 12rem y se reparten el espacio;
-   si no caben, el segundo baja de línea (flex-wrap). */
+   flex: 1 1 12rem → en móvil no caben dos campos de 12rem,
+   así que el segundo baja solo (flex-wrap). En tablet quedan lado a lado. */
 .fila-campos {
     display: flex;
     flex-wrap: wrap;
@@ -460,9 +457,12 @@ button {
     font-family: inherit;
 }
 
+/* min-width: 0 evita que el fieldset se ensanche más que la pantalla
+   (por defecto los fieldset no se encogen por debajo de su contenido) */
 fieldset {
+    min-width: 0;
     margin: 0 0 var(--espacio-3);
-    padding: var(--espacio-2) var(--espacio-3);
+    padding: var(--espacio-2);
     border: 2px solid var(--gris-asfalto);
     border-radius: 0.5rem;
 }
@@ -519,14 +519,104 @@ textarea:focus {
 
 
 /* =====================================================
-   7. PANTALLAS ANGOSTAS
-   Red de seguridad: en celulares las columnas del boceto de escritorio
-   pasan a una sola, para que nada quede apretado.
+   6. TABLET · desde 768 px (48rem)
+   Solo se escribe lo que CAMBIA respecto al móvil.
    ===================================================== */
-@media (max-width: 40rem) {
-    .portada,
-    .galeria,
+@media (min-width: 48rem) {
+
+    h1 {
+        font-size: 2.25rem;
+    }
+
+    /* Encabezado: se recupera el MiniReto 1 (nombre a un extremo, menú al otro) */
+    header {
+        flex-direction: row;
+        justify-content: space-between;
+        text-align: left;
+    }
+
+    #menu {
+        justify-content: flex-start;
+    }
+
+    #menu a {
+        padding: var(--espacio-1) var(--espacio-2);
+    }
+
+    /* Pie: tres bloques en fila, alineados por arriba */
+    footer {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: var(--espacio-3);
+    }
+
+    .pie-bloque {
+        flex: 0 1 14rem;
+    }
+
+    /* Portada: texto a la izquierda, foto a la derecha */
+    .portada {
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+        gap: var(--espacio-4);
+        padding: var(--espacio-4) 0;
+    }
+
+    /* Flota: 2 columnas */
+    .flota-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Galería de rutas: 3 columnas en una fila */
+    .galeria {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    /* Reservas: formulario (2fr) y contacto (1fr) */
     .reservas-layout {
-        grid-template-columns: 1fr;
+        grid-template-columns: 2fr 1fr;
+        align-items: start;
+        gap: var(--espacio-4);
+    }
+
+    /* Se recupera el relleno amplio */
+    .tarjeta {
+        padding: var(--espacio-3);
+    }
+
+    fieldset {
+        padding: var(--espacio-2) var(--espacio-3);
+    }
+
+    aside {
+        padding: var(--espacio-1) var(--espacio-3);
+    }
+
+    /* Tablas: letra y relleno normales */
+    table {
+        font-size: 1rem;
+    }
+
+    th, td {
+        padding: var(--espacio-1) var(--espacio-2);
+    }
+}
+
+
+/* =====================================================
+   7. ESCRITORIO · desde 1200 px (75rem)
+   ===================================================== */
+@media (min-width: 75rem) {
+
+    /* Contenedor más ancho: aprovecha la pantalla grande */
+    header, main, footer {
+        max-width: 64rem;
+    }
+
+    /* Flota: 3 columnas */
+    .flota-grid {
+        grid-template-columns: repeat(3, 1fr);
     }
 }
