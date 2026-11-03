@@ -29,7 +29,6 @@
     </header>
 
     <main id="contenido">
-        <!-- CAMBIO: se eliminó la imagen (figure.logo) que estaba debajo de "El mejor lugar de bicicletas" -->
         <section class="portada">
             <h1>Bienvenido a Rueda Libre</h1>
             <p>El mejor lugar de bicicletas</p>
@@ -51,7 +50,6 @@
                 <p><strong>Por hora o por día</strong>, pensado para la comodidad del cliente.</p>
             </article>
 
-            <!-- CAMBIO: se agregó la imagen bicicleta3.jpg a la tarjeta de eléctricas -->
             <article class="tarjeta tarjeta-nueva">
                 <img src="img/bicicleta3.jpg" alt="" width="200" height="200">
                 <h3>Bicicletas eléctricas</h3>
@@ -60,7 +58,6 @@
                     <a href="paginas/tarifas.html#alquiler">Ver tarifas de alquiler</a></p>
             </article>
 
-            <!-- CAMBIO: bicileta2.jpg corregido a bicicleta2.jpg -->
             <article class="tarjeta">
                 <img src="img/bicicleta5.jpg" alt="" width="200" height="200">
                 <h3>Recorridos guiados por la ciudad</h3>
@@ -68,7 +65,6 @@
                     <a href="paginas/tarifas.html#recorridos">Ver tarifas y rutas de los recorridos guiados</a></p>
             </article>
 
-            <!-- CAMBIO: se agregó la imagen bicicleta4.jpg a la tarjeta de Taller -->
             <article class="tarjeta">
                 <img src="img/bicicleta4.jpg" alt="" width="200" height="200">
                 <h3>Taller</h3>
@@ -96,17 +92,31 @@
         <section id="ubicacion">
             <h2>Ubicación</h2>
             <p>Descubre nuestra ubicación:</p>
-            <!-- CAMBIO: bicileta5.jpg corregido a bicicleta5.jpg -->
             <img src="img/bicicleta2.png" alt="Bicicleta estacionada frente a la tienda de Rueda Libre" width="800" height="600">
             <p>Nuestra tienda se encuentra en Medellín, en la dirección: <em>Calle 10 # 20-30, Medellín, Colombia.</em></p>
-            <!-- CAMBIO: se quitó "(se abre en otra pestaña)" del texto visible; el aviso queda en aria-label -->
             <a href="https://www.google.com/maps/place/Calle+10+%2320-30,+Medell%C3%ADn,+Antioquia" target="_blank" rel="noopener" aria-label="Ver ubicación en Google Maps (se abre en otra pestaña)">Ver ubicación en Google Maps</a>
-            <!-- CAMBIO: se eliminó el párrafo "Si deseas contactarnos, escríbenos a..." para que el correo aparezca una sola vez (en el pie) -->
         </section>
     </main>
 
+    <!-- CAMBIO Flexbox: pie en tres bloques (marca, contacto y horario) -->
     <footer>
-        <p>Rueda Libre · <a href="mailto:hola@ruedalibre.example">hola@ruedalibre.example</a> · 2026</p>
+        <div class="pie-bloque">
+            <h2 class="pie-titulo">Rueda Libre</h2>
+            <p>Alquiler de bicicletas y recorridos guiados en Medellín.</p>
+            <p>© 2026</p>
+        </div>
+
+        <div class="pie-bloque">
+            <h2 class="pie-titulo">Contacto</h2>
+            <p><a href="mailto:hola@ruedalibre.example">hola@ruedalibre.example</a></p>
+            <p>Calle 10 # 20-30, Medellín</p>
+        </div>
+
+        <div class="pie-bloque">
+            <h2 class="pie-titulo">Horario</h2>
+            <p>Lunes a viernes: 7:00 a. m. a 7:00 p. m.</p>
+            <p>Sábados, domingos y festivos: 6:00 a. m. a 2:00 p. m.</p>
+        </div>
     </footer>
 
     <a href="https://wa.me/573000000000" class="boton-cta boton-whatsapp" target="_blank" rel="noopener" aria-label="WhatsApp (se abre en otra pestaña)">WhatsApp</a>

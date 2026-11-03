@@ -1,10 +1,10 @@
 /* =====================================================
-   RUEDA LIBRE v1.0 · styles.css
+   RUEDA LIBRE · styles.css
    Índice:
    1. Variables globales
    2. Base (reset, texto, enlaces, foco)
-   3. Estructura (contenedor y bloques)
-   4. Navegación (encabezado y menú)
+   3. Estructura (contenedor, bloques y pie con Flexbox)
+   4. Navegación (encabezado y menú con Flexbox)
    5. Componentes (portada, tarjetas, etiqueta, tablas, botones, WhatsApp)
    6. Formulario
    ===================================================== */
@@ -43,8 +43,7 @@
     box-sizing: border-box;
 }
 
-/* Se hereda a todo el documento.
-   padding-bottom grande: deja espacio al final para que el botón
+/* padding-bottom grande: deja espacio al final para que el botón
    fijo de WhatsApp nunca tape el pie de página. */
 body {
     font-family: var(--fuente-texto);
@@ -110,10 +109,38 @@ header, main, footer {
     margin-right: auto;
 }
 
+/* ----- Pie de página con Flexbox -----
+   NUEVO: el pie es un contenedor flexible con tres bloques en fila.
+   - flex-direction: row        → los bloques van uno al lado del otro
+   - justify-content: space-between → el espacio sobrante se reparte entre ellos
+   - align-items: flex-start    → todos alineados por arriba
+   - flex-wrap: wrap            → si no caben, bajan de línea
+   - gap                        → separación uniforme (sin márgenes) */
 footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: var(--espacio-3);
     margin-top: var(--espacio-4);
     padding-top: var(--espacio-2);
     border-top: 2px solid var(--gris-asfalto);
+}
+
+/* Cada bloque ocupa 14rem de base (no crece); si la pantalla no da
+   para tres bloques de ese ancho, el último baja de línea. */
+.pie-bloque {
+    flex: 0 1 14rem;
+}
+
+.pie-titulo {
+    margin: 0 0 var(--espacio-1);
+    font-size: 1rem;
+}
+
+.pie-bloque p {
+    margin: 0 0 var(--espacio-1);
 }
 
 /* Separación entre bloques */
@@ -133,15 +160,32 @@ aside {
 
 
 /* =====================================================
-   4. NAVEGACIÓN (encabezado y menú)
+   4. NAVEGACIÓN (encabezado y menú con Flexbox)
    ===================================================== */
 
-/* Marca del encabezado: logo pequeño + nombre (igual en las 3 páginas) */
+/* ----- Encabezado -----
+   NUEVO: nombre en un extremo y menú en el otro, centrados verticalmente.
+   - justify-content: space-between → un extremo cada uno
+   - align-items: center            → alineados verticalmente entre sí
+   - flex-wrap: wrap                → en pantallas angostas el menú baja de línea
+   - margin-bottom: reemplaza el margen que antes tenía el #menu */
+header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--espacio-2);
+    margin-bottom: var(--espacio-2);
+}
+
+/* Marca: logo pequeño + nombre (igual en las 3 páginas).
+   Ya no lleva margen: el espacio lo controla el gap del encabezado. */
 .marca {
     display: flex;
     align-items: center;
     gap: var(--espacio-1);
-    margin: 0 0 var(--espacio-1);
+    margin: 0;
     font-family: var(--fuente-titulos);
     font-size: 1.5rem;
     font-weight: 700;
@@ -153,21 +197,26 @@ aside {
     border-radius: 50%;
 }
 
+/* ----- Menú -----
+   CAMBIO: la lista es un contenedor flexible.
+   - gap reemplaza al margin-right que tenían los <li>
+   - flex-wrap permite que los enlaces bajen de línea si no caben
+   - se eliminó la regla "#menu li { display: inline-block; margin-right }" */
 #menu {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: var(--espacio-1);
     list-style: none;
     padding: 0;
-    margin: 0 0 var(--espacio-2);
+    margin: 0;
 }
 
-/* Opciones en fila */
-#menu li {
-    display: inline-block;
-    margin-right: var(--espacio-1);
-}
-
-/* Enlaces normales del menú: Gris Asfalto sobre Crema (5,6:1) */
+/* Enlaces normales del menú: Gris Asfalto sobre Crema (5,6:1).
+   CAMBIO: display: block (antes inline-block) para que el relleno y el
+   borde inferior ocupen todo el <li>, que ahora es un elemento flexible. */
 #menu a {
-    display: inline-block;
+    display: block;
     padding: var(--espacio-1) var(--espacio-2);
     color: var(--gris-asfalto);
     text-decoration: none;
@@ -194,9 +243,7 @@ aside {
    5. COMPONENTES
    ===================================================== */
 
-/* ----- Portada de inicio -----
-   CAMBIO: se quitó min-height: 60vh, que dejaba un espacio vacío
-   enorme debajo del texto. Ahora la portada mide lo que ocupa su contenido. */
+/* ----- Portada de inicio ----- */
 .portada {
     padding: var(--espacio-4) 0;
     border-bottom: 2px solid var(--verde-ruta);
@@ -232,7 +279,6 @@ aside {
 
 /* ----- Etiqueta "Nuevo" -----
    absolute: sale del flujo, así que no desplaza el contenido de la tarjeta.
-   top/right se miden desde la esquina superior derecha de .tarjeta.
    Azul Noche sobre Naranja Pedal: contraste suficiente (≈7:1). */
 .etiqueta-nuevo {
     position: absolute;
@@ -245,12 +291,6 @@ aside {
     font-size: 0.875rem;
     font-weight: 600;
     text-transform: uppercase;
-}
-
-/* Reserva sitio a la derecha del título para que la etiqueta no lo pise
-   en pantallas angostas. */
-.tarjeta-nueva h3 {
-    padding-right: 5rem;
 }
 
 /* ----- Tablas ----- */
@@ -302,9 +342,7 @@ thead th {
 }
 
 /* ----- Botón flotante de WhatsApp -----
-   Reutiliza .boton-cta (mismos colores y estados) y solo agrega la posición.
-   fixed: se ancla a la ventana, no a la página, y queda visible al hacer scroll.
-   Va después de .boton-cta en el archivo para que su padding gane. */
+   Reutiliza .boton-cta y solo agrega la posición fija. */
 .boton-whatsapp {
     position: fixed;
     bottom: var(--espacio-2);

@@ -258,3 +258,11 @@ páginas para que WhatsApp no tape el pie.
 Lo que mejoraría: Adaptar el menú a celulares con media queries conectar el formulario a
 un servidor real y escribir textos alternativos descriptivos para las imágenes y aprender 
 y repasar mas funciones tanto de html como de css
+
+
+*lo que pasa al estrechar la pagina:
+
+Al estrechar la ventana, primero el menú completo baja debajo del nombre porque ya no caben 
+juntos. Si se estrecha más, los enlaces del menú pasan a una segunda línea en lugar de desbordarse.
+En el pie, el tercer bloque (horario) baja primero, y en pantallas de celular los tres bloques
+quedan apilados uno bajo otro. Las tres páginas se comportan igual porque comparten styles.css.
