@@ -33,7 +33,7 @@
         <p>Completa el formulario con los datos de tu reserva. También puedes escribirnos a
             <a href="mailto:hola@ruedalibre.example">hola@ruedalibre.example</a>.</p>
 
-        <!-- NUEVO (ejercicio 3): contenedor Grid 2:1. Sus dos hijos directos son el formulario (2fr) y el aside (1fr) -->
+        <!-- Contenedor Grid 2:1. Sus dos hijos directos son el formulario (2fr) y el aside (1fr) -->
         <div class="reservas-layout">
             <section id="formulario-reserva">
                 <h2>Formulario de reserva</h2>
@@ -50,7 +50,7 @@
                                    required minlength="3" autocomplete="name">
                         </p>
 
-                        <!-- NUEVO (ejercicio 3): documento y celular en la misma fila (Flexbox) -->
+                        <!-- Documento y celular en la misma fila (Flexbox) -->
                         <div class="fila-campos">
                             <p>
                                 <label for="documento">Número de documento</label>
@@ -89,16 +89,31 @@
                                    required min="2026-11-01" max="2026-12-31">
                         </p>
 
+                        <!-- v1.5+: siete modelos. Cada radio va DENTRO de su label para que
+                             el botón y su texto nunca se separen al saltar de línea. -->
                         <p id="titulo-tipo"><strong>Tipo de bicicleta</strong></p>
                         <p class="opcion" role="group" aria-labelledby="titulo-tipo">
-                            <input type="radio" id="tipo-urbana" name="tipo_bicicleta" value="urbana" required>
-                            <label for="tipo-urbana">Urbana</label>
-
-                            <input type="radio" id="tipo-montana" name="tipo_bicicleta" value="montana" required>
-                            <label for="tipo-montana">Montaña</label>
-
-                            <input type="radio" id="tipo-electrica" name="tipo_bicicleta" value="electrica" required>
-                            <label for="tipo-electrica">Eléctrica</label>
+                            <label for="tipo-clasica">
+                                <input type="radio" id="tipo-clasica" name="tipo_bicicleta" value="clasica" required> Urbana Clásica
+                            </label>
+                            <label for="tipo-plegable">
+                                <input type="radio" id="tipo-plegable" name="tipo_bicicleta" value="plegable" required> Urbana Plegable
+                            </label>
+                            <label for="tipo-montana">
+                                <input type="radio" id="tipo-montana" name="tipo_bicicleta" value="montana" required> Montaña Trail
+                            </label>
+                            <label for="tipo-gravel">
+                                <input type="radio" id="tipo-gravel" name="tipo_bicicleta" value="gravel" required> Gravel Aventura
+                            </label>
+                            <label for="tipo-electrica">
+                                <input type="radio" id="tipo-electrica" name="tipo_bicicleta" value="electrica" required> Eléctrica Urbana
+                            </label>
+                            <label for="tipo-infantil">
+                                <input type="radio" id="tipo-infantil" name="tipo_bicicleta" value="infantil" required> Infantil
+                            </label>
+                            <label for="tipo-tandem">
+                                <input type="radio" id="tipo-tandem" name="tipo_bicicleta" value="tandem" required> Tándem
+                            </label>
                         </p>
 
                         <p>
@@ -147,7 +162,7 @@
                 </form>
             </section>
 
-            <!-- CAMBIO (ejercicio 3): el aside incluye la información de contacto además del horario -->
+            <!-- El aside incluye la información de contacto además del horario -->
             <aside>
                 <h2>Contacto</h2>
                 <p><a href="mailto:hola@ruedalibre.example">hola@ruedalibre.example</a></p>

@@ -74,8 +74,7 @@ strong {
 }
 
 /* Texto secundario: Gris Asfalto sobre Crema (5,6:1) */
-small,
-figcaption {
+small {
     color: var(--gris-asfalto);
 }
 
@@ -210,10 +209,6 @@ section {
     margin-bottom: var(--espacio-4);
 }
 
-figure {
-    margin: var(--espacio-3) 0;
-}
-
 aside {
     margin: var(--espacio-3) 0;
     padding: var(--espacio-1) var(--espacio-2);
@@ -265,10 +260,13 @@ aside {
     border-radius: 0.75rem;
 }
 
+/* Foto de servicios en 16:9 para que no se vea como un cuadrado enorme.
+   (La flota y las rutas la sobrescriben con 4:3 más abajo.) */
 .tarjeta img {
     display: block;
     width: 100%;
-    height: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
     margin-bottom: var(--espacio-2);
     border-radius: 0.5rem;
 }
@@ -331,7 +329,8 @@ aside {
     font-weight: 600;
 }
 
-/* Fotos de flota y de rutas con la misma proporción (selector agrupado) */
+/* Fotos de flota y de rutas en 4:3 (selector agrupado).
+   Van después de ".tarjeta img" con igual especificidad, por eso ganan. */
 .tarjeta-flota img,
 .tarjeta-ruta img {
     aspect-ratio: 4 / 3;

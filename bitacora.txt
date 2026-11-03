@@ -306,3 +306,81 @@ PROBLEMAS RESPONSIVE RESUELTOS
 3. El pie tenía flex: 0 1 14rem en cada bloque; al pasarlo a columna el
    flex-basis actuaba sobre el alto. Solución: moverlo a la media query de tablet.
 4. (Agrega aquí cualquier otro problema que SÍ veas con tus ojos.)
+
+
+
+*** MiniReto 5 · La flota en Bootstrap: primera comparación ====
+
+VERSIÓN USADA
+- Bootstrap 5.3.8 por CDN (CSS + bundle de JavaScript), tomado de la documentación oficial.
+- Archivo: pruebas/catalogo-bootstrap.html (sin enlazar css/styles.css).
+
+TIEMPO INVERTIDO 
+- Total Bootstrap: ~30 min
+    · Crear carpeta pruebas/ y archivo con la plantilla de Bootstrap: ~5 min
+    · Copiar el marcado de la flota y corregir rutas (../img/, ../paginas/): ~8 min
+    · Armar la grilla (container, row, g-4, col-12 col-sm-6 col-lg-4 col-xl-3): ~7 min
+    · Probar en DevTools (360, 576, 992, 1200 px) y revisar Network: ~10 min
+- Solo la grilla con Bootstrap (de pegar las tarjetas a ver 1/2/3/4 columnas): ~10 min
+- Versión con CSS propio (MiniReto 3 + ajustes mobile-first de la v1.5): ~45 min
+- Diferencia: Bootstrap fue ~15 min más rápido para la grilla. Hay que tener en
+  cuenta que en la versión de Bootstrap el contenido ya estaba escrito (solo se
+  copió), así que la comparación favorece un poco a Bootstrap.
+
+CÓDIGO DE DISTRIBUCIÓN DE LA FLOTA
+- CSS propio (styles.css): 12 líneas
+    · .flota-grid base (móvil): 6 líneas (4 declaraciones)
+    · .flota-grid en tablet (2 columnas): 3 líneas
+    · .flota-grid en escritorio (3 columnas): 3 líneas
+- CSS propio extra para el interior de la tarjeta de flota (.tarjeta-flota,
+  .descripcion, .precio, .boton-cta): ~17 líneas.
+- Bootstrap: 0 líneas de CSS propio y 31 clases de distribución
+    · container (1) + row y g-4 (2) + 4 clases col-* x 7 tarjetas (28) = 31
+    · Interior de la tarjeta: card, h-100, d-flex, flex-column, flex-grow-1, mt-auto.
+- Total de líneas del archivo:
+    · Propia: ~50 líneas de HTML (flota en index.html) + ~29 de CSS = ~79
+    · Bootstrap: ~115 líneas de HTML + 0 de CSS = ~115
+  (Bootstrap pide más HTML porque cada tarjeta lleva más etiquetas anidadas:
+  col > card > card-body.)
+- Se puede acortar con row-cols: row row-cols-1 row-cols-sm-2 row-cols-lg-3
+  row-cols-xl-4 g-4 + una clase "col" por tarjeta = 14 clases en vez de 31.
+
+COLUMNAS DE LA FLOTA POR ANCHO
+| Ancho   | Bootstrap (prueba) | Versión propia (v1.5) |
+|---------|--------------------|-----------------------|
+| 360 px  | 1 columna          | 1 columna             |
+| 576 px  | 2 columnas (sm)    | 1 columna             |
+| 768 px  | 2 columnas         | 2 columnas            |
+| 992 px  | 3 columnas (lg)    | 2 columnas            |
+| 1200 px | 4 columnas (xl)    | 3 columnas            |
+- Los puntos de cambio de Bootstrap (576, 992, 1200) no coinciden con los míos
+  (768 y 1200).
+- Con 7 modelos y 4 columnas quedan 4 + 3 tarjetas, sin tarjeta sola.
+
+QUÉ ME DIO BOOTSTRAP SIN ESFUERZO
+- La grilla de 12 columnas con 4 breakpoints, sin escribir ni una media query.
+- Gutters consistentes con una sola clase (g-4 = 1,5 rem, igual que mi --espacio-3).
+- Tarjetas con borde, esquinas redondeadas y altura igual (card, h-100).
+- Botón con estados hover y foco ya resueltos (btn btn-success).
+- Reboot: normaliza el estilo base entre navegadores.
+
+QUÉ CONTROL PERDÍ
+- Los breakpoints son los de Bootstrap (576/992/1200), no los que yo elegí.
+- Mi paleta de marca (Verde Ruta, Azul Noche, Crema) y mis fuentes no se aplican;
+  btn-success es un verde genérico.
+- El HTML se llena de clases: las mismas 4 clases col-* se repiten en cada columna.
+- Se descarga todo el framework (~230 KB de CSS y ~80 KB de JS sin comprimir,
+  aprox.) para usar solo la grilla y un botón; esta página no usa ningún
+  componente que necesite el JavaScript.
+- Para cambiar un detalle (por ejemplo la proporción 4:3 de las fotos) tengo que
+  buscar la clase de Bootstrap que lo haga (ratio ratio-4x3) o escribir CSS propio.
+
+
+CONCLUSIÓN PARA EL TEAM LÍDER
+Para una grilla simple, Bootstrap fue más rápido (~10 min contra ~45 min) y no
+necesitó CSS propio. Pero usó más HTML (~115 líneas contra ~50), menos control
+sobre los breakpoints y la identidad de marca, y obliga a cargar un framework
+completo para usar solo una parte. Recomiendo seguir con CSS propio mientras el
+sitio sea pequeño, y reconsiderar Bootstrap si el proyecto crece y necesita
+muchos componentes (menús, modales, formularios) o más gente trabajando en él.
+
