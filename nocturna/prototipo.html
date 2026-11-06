@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Prototipo de la campaña Rueda Nocturna: recorridos en bicicleta por Medellín cuando se encienden las luces.">
+    <title>Rueda Nocturna | Prototipo (Play CDN)</title>
+
+    <!-- Play CDN de Tailwind v4: solo para prototipar, no es para producción -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body class="bg-slate-950 text-white antialiased">
+
+    <!-- Enlace de salto: oculto (sr-only) y visible solo al enfocarlo con Tab -->
+    <a href="#contenido" class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded focus:bg-white focus:px-4 focus:py-2 focus:text-slate-950">Saltar al contenido principal</a>
+
+    <!-- flex + min-h-screen + items-center: la sección queda centrada en la pantalla
+         px-6 py-16: espaciado interno -->
+    <main id="contenido" class="flex min-h-screen items-center px-6 py-16">
+
+        <!-- mx-auto w-full max-w-3xl: centrada, ocupa todo el ancho hasta 48 rem
+             space-y-6: separación vertical entre los hijos -->
+        <section class="mx-auto w-full max-w-3xl space-y-6" aria-labelledby="titulo-campana">
+
+            <!-- Etiqueta de campaña -->
+            <p class="inline-block rounded-full bg-amber-400 px-4 py-1 text-sm font-semibold uppercase tracking-widest text-slate-950">Nuevo · Jueves a sábado</p>
+
+            <!-- Único h1 de la página -->
+            <h1 id="titulo-campana" class="text-5xl font-bold leading-tight tracking-tight text-white sm:text-6xl">Rueda Nocturna</h1>
+
+            <!-- Subtítulo -->
+            <p class="max-w-xl text-lg leading-relaxed text-slate-300">Descubre Medellín en bici cuando se encienden las luces</p>
+
+            <!-- Dos datos destacados -->
+            <ul class="flex flex-wrap gap-4">
+                <li class="rounded-xl border border-slate-700 bg-slate-900 px-5 py-3 text-2xl font-bold text-amber-400">3 rutas</li>
+                <li class="rounded-xl border border-slate-700 bg-slate-900 px-5 py-3 text-2xl font-bold text-amber-400">Desde $55.000</li>
+            </ul>
+
+            <!-- Enlace con apariencia de botón, solo con utilidades -->
+            <div>
+                <a href="../paginas/reservas.html" class="inline-block rounded-lg border-2 border-transparent bg-amber-400 px-8 py-4 text-base font-semibold text-slate-950 shadow-lg hover:bg-amber-200 focus:outline-hidden focus:ring-4 focus:ring-white focus:ring-offset-2 focus:ring-offset-slate-950">Inscríbete</a>
+            </div>
+
+        </section>
+    </main>
+</body>
+</html>

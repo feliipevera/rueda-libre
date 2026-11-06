@@ -440,6 +440,15 @@ PRUEBAS
 - Tarifas y reservas revisadas: se ven igual que antes.
 
 
+ ***Comparación | CSS propio | Bootstrap | Diferencia |
+
+| Flota completa (con pruebas en DevTools) | ~45 min | ~30 min | ~15 min menos (≈33 %) |
+| Solo la grilla | ~45 min | ~10 min | ~35 min menos (≈78 %) |
+
+Medida	         | * v1.5 (46888e1)  |* v2.0-beta (198d684) |      Reducción
+Líneas totales	 |       622	     |    319	            |  −303(−48,7 %)
+Líneas de código |	     527	     |    264	            |  −263(−49,9 %)
+Tamaño    	     |        14,3 KB	 |   7,43 KB	        |       48 %
 
 ### Ventajas observadas
 - Menos CSS que mantener y ninguna media query de distribución propia.
@@ -449,7 +458,8 @@ PRUEBAS
 
 ### Desventajas observadas
 - El HTML se llena de clases y cuesta más de leer.
-- Hay que vigilar la cascada: sin `!important`, solo con orden y especificidad.
+- Hay que vigilar la cascada: sin `!important`, solo con orden
+ y especificidad.
 - Se descarga CSS y JS que no uso (Bootstrap completo).
 - Hay decisiones de diseño que Bootstrap impone (caption, legend, foco) y hay que deshacerlas.
 
@@ -458,3 +468,47 @@ Bootstrap sí redujo el trabajo de distribución: `styles.css` bajó de ___ a __
  las tres páginas comparten una sola grilla. El costo fue aprender la cascada y resolver ___ conflictos,
   pero se hizo una sola vez. Para este sitio lo recomiendo, siempre que el CSS propio se limite a la identidad
    de marca. Antes de sumar componentes, conviene cargar solo lo necesario o personalizarlo con variables.
+
+
+
+   ## Tailwind · MiniReto 1: botón con Bootstrap (semana 2) vs. Tailwind (hoy)
+
+### Cómo lo construí con Bootstrap (semana 2)
+
+En `pruebas/catalogo-bootstrap.html`:
+<a href="../paginas/reservas.html" class="btn btn-success mt-auto">Reservar</a>
+
+En la franja "¿Listo para rodar?", solo con utilidades:
+<a href="../paginas/reservas.html" class="text-bg-success fw-semibold px-4 py-3 rounded text-decoration-none">Reservar ahora</a>
+
+En el sitio real, `.boton-cta` en `styles.css` (unas 20 líneas de CSS propio entre estilos base, hover y foco, más un caso
+ especial dentro de la franja).
+
+- Con `btn btn-success` bastan 2 clases: Bootstrap ya trae relleno, borde, esquinas, colores y estados hover, focus y active.
+- La versión de la franja solo con utilidades de Bootstrap quedó sin hover ni foco propios: Bootstrap tiene utilidades de color
+ y espaciado, pero no variantes de estado.
+- Para ajustar el botón a mi marca (Verde Ruta, Azul Noche, foco visible) tuve que escribir CSS propio y ganarle a Bootstrap por
+ orden de carga.
+
+### Cómo lo construí hoy con Tailwind
+
+<a href="../paginas/reservas.html" class="inline-block rounded-lg border-2 border-transparent bg-amber-400 px-8 py-4 text-base 
+font-semibold text-slate-950 shadow-lg hover:bg-amber-200 focus:outline-hidden focus:ring-4 focus:ring-white focus:ring-offset-2
+ focus:ring-offset-slate-950">Inscríbete</a>
+
+- Son 17 clases y no existe una clase `btn`: cada decisión de diseño es una utilidad visible en el HTML.
+- Espaciado (`px-8 py-4`), color (`bg-amber-400`, `text-slate-950`), tipografía (`text-base font-semibold`), forma (`rounded-lg`)
+ y sombra (`shadow-lg`).
+- Los estados son utilidades con prefijo: `hover:bg-amber-200` y `focus:ring-4`. No escribí una sola línea de CSS.
+- Quité el contorno del navegador con `focus:outline-hidden` y lo reemplacé con un anillo (`focus:ring-4`), para que el foco siga
+ siendo visible.
+
+### Diferencia clave: framework de componentes vs. utility-first
+
+Un framework de componentes (Bootstrap) entrega piezas ya diseñadas con nombre (`btn`, `card`, `navbar`): se arma rápido, pero la
+apariencia viene decidida y personalizarla implica sobrescribir su CSS (en la migración resolví 8 conflictos de cascada). Un
+framework utility-first (Tailwind) entrega utilidades pequeñas de una sola función y el diseño se compone en el HTML: no hay look
+impuesto ni CSS que sobrescribir, pero el HTML se alarga y se repite (el mismo botón son 17 clases cada vez que se usa). En
+resumen: Bootstrap decide el diseño por ti; Tailwind te da las herramientas para decidirlo tú.
+
+Prototipo: https://feliipevera.github.io/rueda-libre/nocturna/prototipo.html
