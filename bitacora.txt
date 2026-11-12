@@ -511,4 +511,10 @@ framework utility-first (Tailwind) entrega utilidades pequeñas de una sola func
 impuesto ni CSS que sobrescribir, pero el HTML se alarga y se repite (el mismo botón son 17 clases cada vez que se usa). En
 resumen: Bootstrap decide el diseño por ti; Tailwind te da las herramientas para decidirlo tú.
 
-Prototipo: https://feliipevera.github.io/rueda-libre/nocturna/prototipo.html
+
+
+ RETO #2 Tailwind
+ 
+### Qué encontré en `output.css` (Tailwind 4.1.x (est.), ~900 líneas (est.))
+- `bg-amber-400` (la uso): aparece, 2 coincidencias (la clase `.bg-amber-400` y su variante `.hover\:bg-amber-400` del botón de contorno).
+- `bg-pink-500` (no la uso): 0 coincidencias.
