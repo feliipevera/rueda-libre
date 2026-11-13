@@ -1,5 +1,6 @@
 @import "tailwindcss";
 
+/* ===== TEMA DE LA MARCA ===== */
 @theme {
     /* Se borra la paleta genérica de Tailwind: solo existen los colores de la marca */
     --color-*: initial;
@@ -19,4 +20,41 @@
     /* Fuentes de la marca (se cargan desde Google Fonts en el HTML) */
     --font-titulos: "Montserrat", Arial, Helvetica, sans-serif;
     --font-texto: "Open Sans", Arial, Helvetica, sans-serif;
+}
+
+/* ===== COMPONENTES: solo los botones (máximo 3 clases con @apply) ===== */
+@layer components {
+
+    /* Botón principal */
+    .btn-principal {
+        @apply inline-block
+            px-8 py-4
+            text-base font-semibold
+            rounded-lg border-2 border-transparent bg-verde-ruta text-white shadow-lg
+            hover:bg-azul-noche
+            focus:outline-hidden focus:ring-4 focus:ring-azul-noche focus:ring-offset-2 focus:ring-offset-crema
+            dark:bg-amarillo-farol dark:text-azul-noche dark:shadow-amarillo-farol/25 dark:hover:bg-crema dark:focus:ring-crema dark:focus:ring-offset-azul-noche;
+    }
+
+    /* Botón secundario */
+    .btn-secundario {
+        @apply inline-block
+            px-8 py-4
+            text-base font-semibold
+            rounded-lg border-2 border-azul-noche bg-azul-noche text-crema shadow-md
+            hover:border-gris-asfalto hover:bg-gris-asfalto
+            focus:outline-hidden focus:ring-4 focus:ring-azul-noche focus:ring-offset-2 focus:ring-offset-crema
+            dark:border-crema/30 dark:bg-white/10 dark:hover:border-crema/30 dark:hover:bg-white/20 dark:focus:ring-crema dark:focus:ring-offset-azul-noche;
+    }
+
+    /* Botón de contorno */
+    .btn-contorno {
+        @apply inline-block
+            px-8 py-4
+            text-base font-semibold
+            rounded-lg border-2 border-azul-noche text-azul-noche
+            hover:bg-azul-noche hover:text-crema
+            focus:outline-hidden focus:ring-4 focus:ring-azul-noche focus:ring-offset-2 focus:ring-offset-crema
+            dark:border-amarillo-farol dark:text-amarillo-farol dark:hover:bg-amarillo-farol dark:hover:text-azul-noche dark:focus:ring-crema dark:focus:ring-offset-azul-noche;
+    }
 }

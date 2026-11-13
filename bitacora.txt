@@ -585,3 +585,27 @@ Comprobación del scroll: en la consola, `document.documentElement.scrollWidth >
 | Azul Noche sobre Amarillo Farol (botón) | oscuro | 11,1:1 | Cumple |
 | **Verde Ruta sobre Azul Noche (texto)** | oscuro | **3,0:1** | **No cumple** → se usa Amarillo Farol |
 | **Gris Asfalto sobre Azul Noche (secundario)** | oscuro | **2,7:1** | **No cumple** → se usa Crema al 75 % |
+
+
+
+
+
+### 4. Comparativa (mi experiencia y mediciones)
+| Criterio | Bootstrap | Tailwind |
+
+| Curva de aprendizaje | Más baja: `btn btn-success` (2 clases); grilla de la flota en ~10 min y flota completa en ~30 min frente
+ a ~45 min con CSS propio. | Más alta: utilidades, Node y CLI, `@theme`, `dark:`. Un botón eran 23 utilidades hasta usar `@apply`. |
+| Personalización | Me exigió 8 conflictos de cascada y 319 líneas de CSS propio para recuperar la marca. | Colores y fuentes en `@theme`,
+ modo oscuro con `dark:` y 0 conflictos de cascada. |
+| Tamaño final | ≈ 320 kB entre CSS y JS, aunque use pocos componentes. | ≈ 25 kB de CSS y sin JavaScript: solo genera lo que uso. |
+| Casos de uso | Prototipos rápidos y sitios con componentes con JavaScript listos (modal, menú desplegable, carrusel). | Sitios con 
+identidad propia, landing pages y kits de componentes; mejor rendimiento en celular. |
+
+*** Recomendación para Rueda Libre:
+
+Recomiendo **Tailwind con la CLI** para la próxima versión de todo el sitio. Es un sitio mayormente estático, con identidad de marca
+definida (colores y tipografías propios), tráfico principalmente móvil y poca necesidad de componentes con JavaScript. En mis dos
+versiones, Tailwind dio el tamaño final mucho menor, cero conflictos de cascada y los colores de marca definidos en un solo lugar. 
+Condiciones: extraer con `@apply` solo los elementos repetidos (los botones), reutilizar las cards como plantilla, y subir el
+`output.css` minificado a GitHub Pages porque no ejecuta la CLI. Si más adelante se necesitaran muchos componentes con JavaScript,
+ Bootstrap seguiría siendo la opción más rápida para ese caso.
