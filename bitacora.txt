@@ -536,3 +536,19 @@ resumen: Bootstrap decide el diseño por ti; Tailwind te da las herramientas par
  focus:ring-offset-2 focus:ring-offset-slate-950`.
 
 
+
+
+## Tailwind · MiniReto 5: maquetación de la landing
+
+
+### Pasos de "¿Cómo funciona?": grid, no flex:
+
+Usé `grid grid-cols-4 gap-6` porque son cuatro elementos de igual peso: grid da columnas del mismo ancho y alto aunque cada paso tenga
+ más o menos texto. Con flex el ancho depende del contenido, salvo que agregue `flex-1` a cada paso. Reservé flex para el encabezado, 
+ el pie y la franja, que son distribuciones en una sola dirección (alinear y separar).
+
+
+ 
+
+
+

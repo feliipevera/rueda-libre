@@ -13,124 +13,247 @@
 
     <a href="#contenido" class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded focus:bg-white focus:px-4 focus:py-2 focus:text-slate-950">Saltar al contenido principal</a>
 
-    <main id="contenido" class="px-6 py-16">
-        <div class="mx-auto w-full max-w-3xl space-y-16">
+    <!-- ===== ENCABEZADO =====
+         Contenedor común: mx-auto w-full max-w-6xl px-6 (el mismo en todas las secciones)
+         flex + items-center + justify-between: logo a la izquierda, enlaces y botón a la derecha -->
+    <header class="border-b border-slate-800">
+        <div class="mx-auto w-full max-w-6xl px-6">
+            <div class="flex items-center justify-between gap-8 py-4">
 
-            <!-- ===== SECCIÓN PRINCIPAL (del prototipo aprobado) ===== -->
-            <section class="space-y-6" aria-labelledby="titulo-campana">
+                <a href="#inicio" class="flex items-center gap-3 rounded focus:outline-hidden focus:ring-4 focus:ring-white focus:ring-offset-2 focus:ring-offset-slate-950">
+                    <img src="../img/LogoBicicleta.jpg" alt="" width="48" height="48" class="h-12 w-12 rounded-full object-cover">
+                    <span class="text-xl font-bold tracking-tight text-white">Rueda Libre</span>
+                </a>
 
-                <p class="inline-block rounded-full bg-amber-400 px-4 py-1 text-sm font-semibold uppercase tracking-widest text-slate-950">Nuevo · Jueves a sábado</p>
+                <div class="flex items-center gap-8">
+                    <nav aria-label="Principal">
+                        <ul class="flex items-center gap-6">
+                            <li><a href="#inicio" class="rounded text-base font-semibold text-slate-300 hover:text-white focus:outline-hidden focus:ring-4 focus:ring-white focus:ring-offset-2 focus:ring-offset-slate-950">Inicio</a></li>
+                            <li><a href="#rutas" class="rounded text-base font-semibold text-slate-300 hover:text-white focus:outline-hidden focus:ring-4 focus:ring-white focus:ring-offset-2 focus:ring-offset-slate-950">Rutas</a></li>
+                            <li><a href="#como-funciona" class="rounded text-base font-semibold text-slate-300 hover:text-white focus:outline-hidden focus:ring-4 focus:ring-white focus:ring-offset-2 focus:ring-offset-slate-950">¿Cómo funciona?</a></li>
+                            <li><a href="#inscripcion" class="rounded text-base font-semibold text-slate-300 hover:text-white focus:outline-hidden focus:ring-4 focus:ring-white focus:ring-offset-2 focus:ring-offset-slate-950">Inscripción</a></li>
+                        </ul>
+                    </nav>
 
-                <h1 id="titulo-campana" class="text-5xl font-bold leading-tight tracking-tight text-white sm:text-6xl">Rueda Nocturna</h1>
-
-                <p class="max-w-xl text-lg leading-relaxed text-slate-300">Descubre Medellín en bici cuando se encienden las luces</p>
-
-                <ul class="flex flex-wrap gap-4">
-                    <li class="rounded-xl border border-slate-700 bg-slate-900 px-5 py-3 text-2xl font-bold text-amber-400">3 rutas</li>
-                    <li class="rounded-xl border border-slate-700 bg-slate-900 px-5 py-3 text-2xl font-bold text-amber-400">Desde $55.000</li>
-                </ul>
-
-                <div>
                     <a href="../paginas/reservas.html" class="inline-block rounded-lg border-2 border-transparent bg-amber-400 px-8 py-4 text-base font-semibold text-slate-950 shadow-lg hover:bg-amber-200 focus:outline-hidden focus:ring-4 focus:ring-white focus:ring-offset-2 focus:ring-offset-slate-950">Inscríbete</a>
                 </div>
-            </section>
 
-            <!-- ===== RUTAS =====
-                 Tres cards con la misma estructura, una debajo de otra (la cuadrícula llega mañana).
-                 Card: borde de 2 px (el hover solo le cambia el color, así el contenido no se mueve),
-                 sombra, esquinas redondeadas y overflow-hidden para que la imagen siga la curva.
-                 Etiqueta de nivel: color por dificultad + texto "Nivel: ..." -->
-            <section class="space-y-6" aria-labelledby="titulo-rutas">
-                <h2 id="titulo-rutas" class="text-3xl font-bold tracking-tight">Rutas</h2>
-                <p class="max-w-xl leading-relaxed text-slate-300">Todas las rutas salen de la sede de Rueda Libre e incluyen bicicleta, casco, luces LED, chaleco reflectivo y guía.</p>
+            </div>
+        </div>
+    </header>
 
-                <div class="space-y-8">
+    <main id="contenido">
 
-                    <!-- Ruta 1 · Fácil -->
-                    <article class="overflow-hidden rounded-2xl border-2 border-slate-700 bg-slate-900 shadow-lg transition duration-200 hover:border-amber-400 hover:shadow-2xl">
-                        <img src="../img/barrio.jpg" alt="" width="800" height="400" loading="lazy" class="h-48 w-full object-cover">
-                        <div class="space-y-5 p-6">
-                            <p class="inline-block rounded-full bg-emerald-400 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-slate-950">Nivel: Fácil</p>
-                            <h3 class="text-2xl font-bold leading-tight tracking-tight text-white">Luces del Centro</h3>
-                            <dl class="divide-y divide-slate-800">
-                                <div class="flex items-baseline justify-between gap-4 py-2">
-                                    <dt class="text-sm text-slate-400">Distancia</dt>
-                                    <dd class="font-semibold text-white">10 km</dd>
-                                </div>
-                                <div class="flex items-baseline justify-between gap-4 py-2">
-                                    <dt class="text-sm text-slate-400">Duración</dt>
-                                    <dd class="font-semibold text-white">2 h</dd>
-                                </div>
-                                <div class="flex items-baseline justify-between gap-4 py-2">
-                                    <dt class="text-sm text-slate-400">Punto de encuentro</dt>
-                                    <dd class="font-semibold text-white">Sede de Rueda Libre</dd>
-                                </div>
-                            </dl>
-                            <div class="flex flex-wrap items-center justify-between gap-4 border-t border-slate-800 pt-5">
-                                <p class="text-3xl font-bold text-amber-400">$55.000</p>
-                                <a href="../paginas/reservas.html" aria-label="Inscríbete en Luces del Centro" class="inline-block rounded-lg border-2 border-transparent bg-amber-400 px-8 py-4 text-base font-semibold text-slate-950 shadow-lg hover:bg-amber-200 focus:outline-hidden focus:ring-4 focus:ring-white focus:ring-offset-2 focus:ring-offset-slate-950">Inscríbete</a>
-                            </div>
-                        </div>
-                    </article>
+        <!-- ===== SECCIÓN PRINCIPAL ===== -->
+        <section id="inicio" class="py-16" aria-labelledby="titulo-campana">
+            <div class="mx-auto w-full max-w-6xl px-6">
+                <div class="max-w-3xl space-y-6">
 
-                    <!-- Ruta 2 · Medio -->
-                    <article class="overflow-hidden rounded-2xl border-2 border-slate-700 bg-slate-900 shadow-lg transition duration-200 hover:border-amber-400 hover:shadow-2xl">
-                        <img src="../img/rio.jpg" alt="" width="800" height="400" loading="lazy" class="h-48 w-full object-cover">
-                        <div class="space-y-5 p-6">
-                            <p class="inline-block rounded-full bg-yellow-300 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-slate-950">Nivel: Medio</p>
-                            <h3 class="text-2xl font-bold leading-tight tracking-tight text-white">Miradores de la Ciudad</h3>
-                            <dl class="divide-y divide-slate-800">
-                                <div class="flex items-baseline justify-between gap-4 py-2">
-                                    <dt class="text-sm text-slate-400">Distancia</dt>
-                                    <dd class="font-semibold text-white">16 km</dd>
-                                </div>
-                                <div class="flex items-baseline justify-between gap-4 py-2">
-                                    <dt class="text-sm text-slate-400">Duración</dt>
-                                    <dd class="font-semibold text-white">3 h</dd>
-                                </div>
-                                <div class="flex items-baseline justify-between gap-4 py-2">
-                                    <dt class="text-sm text-slate-400">Punto de encuentro</dt>
-                                    <dd class="font-semibold text-white">Sede de Rueda Libre</dd>
-                                </div>
-                            </dl>
-                            <div class="flex flex-wrap items-center justify-between gap-4 border-t border-slate-800 pt-5">
-                                <p class="text-3xl font-bold text-amber-400">$75.000</p>
-                                <a href="../paginas/reservas.html" aria-label="Inscríbete en Miradores de la Ciudad" class="inline-block rounded-lg border-2 border-transparent bg-amber-400 px-8 py-4 text-base font-semibold text-slate-950 shadow-lg hover:bg-amber-200 focus:outline-hidden focus:ring-4 focus:ring-white focus:ring-offset-2 focus:ring-offset-slate-950">Inscríbete</a>
-                            </div>
-                        </div>
-                    </article>
+                    <p class="inline-block rounded-full bg-amber-400 px-4 py-1 text-sm font-semibold uppercase tracking-widest text-slate-950">Nuevo · Jueves a sábado</p>
 
-                    <!-- Ruta 3 · Difícil -->
-                    <article class="overflow-hidden rounded-2xl border-2 border-slate-700 bg-slate-900 shadow-lg transition duration-200 hover:border-amber-400 hover:shadow-2xl">
-                        <img src="../img/palmas.jpg" alt="" width="800" height="400" loading="lazy" class="h-48 w-full object-cover">
-                        <div class="space-y-5 p-6">
-                            <p class="inline-block rounded-full bg-rose-400 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-slate-950">Nivel: Difícil</p>
-                            <h3 class="text-2xl font-bold leading-tight tracking-tight text-white">Luna en Las Palmas</h3>
-                            <dl class="divide-y divide-slate-800">
-                                <div class="flex items-baseline justify-between gap-4 py-2">
-                                    <dt class="text-sm text-slate-400">Distancia</dt>
-                                    <dd class="font-semibold text-white">22 km</dd>
-                                </div>
-                                <div class="flex items-baseline justify-between gap-4 py-2">
-                                    <dt class="text-sm text-slate-400">Duración</dt>
-                                    <dd class="font-semibold text-white">3,5 h</dd>
-                                </div>
-                                <div class="flex items-baseline justify-between gap-4 py-2">
-                                    <dt class="text-sm text-slate-400">Punto de encuentro</dt>
-                                    <dd class="font-semibold text-white">Sede de Rueda Libre</dd>
-                                </div>
-                            </dl>
-                            <div class="flex flex-wrap items-center justify-between gap-4 border-t border-slate-800 pt-5">
-                                <p class="text-3xl font-bold text-amber-400">$95.000</p>
-                                <a href="../paginas/reservas.html" aria-label="Inscríbete en Luna en Las Palmas" class="inline-block rounded-lg border-2 border-transparent bg-amber-400 px-8 py-4 text-base font-semibold text-slate-950 shadow-lg hover:bg-amber-200 focus:outline-hidden focus:ring-4 focus:ring-white focus:ring-offset-2 focus:ring-offset-slate-950">Inscríbete</a>
-                            </div>
-                        </div>
-                    </article>
+                    <h1 id="titulo-campana" class="text-5xl font-bold leading-tight tracking-tight text-white sm:text-6xl">Rueda Nocturna</h1>
+
+                    <p class="max-w-xl text-lg leading-relaxed text-slate-300">Descubre Medellín en bici cuando se encienden las luces</p>
+
+                    <ul class="flex flex-wrap gap-4">
+                        <li class="rounded-xl border border-slate-700 bg-slate-900 px-5 py-3 text-2xl font-bold text-amber-400">3 rutas</li>
+                        <li class="rounded-xl border border-slate-700 bg-slate-900 px-5 py-3 text-2xl font-bold text-amber-400">Desde $55.000</li>
+                    </ul>
+
+                    <div>
+                        <a href="../paginas/reservas.html" class="inline-block rounded-lg border-2 border-transparent bg-amber-400 px-8 py-4 text-base font-semibold text-slate-950 shadow-lg hover:bg-amber-200 focus:outline-hidden focus:ring-4 focus:ring-white focus:ring-offset-2 focus:ring-offset-slate-950">Inscríbete</a>
+                    </div>
 
                 </div>
-            </section>
+            </div>
+        </section>
 
-        </div>
+        <!-- ===== RUTAS =====
+             grid grid-cols-3 gap-8: tres cards en fila, todas del mismo alto
+             Las cards son idénticas a la del kit: solo cambian los datos y el color de la etiqueta -->
+        <section id="rutas" class="py-16" aria-labelledby="titulo-rutas">
+            <div class="mx-auto w-full max-w-6xl px-6">
+                <div class="space-y-8">
+
+                    <div class="space-y-4">
+                        <h2 id="titulo-rutas" class="text-3xl font-bold tracking-tight">Rutas</h2>
+                        <p class="max-w-xl leading-relaxed text-slate-300">Todas las rutas salen de la sede de Rueda Libre e incluyen bicicleta, casco, luces LED, chaleco reflectivo y guía.</p>
+                    </div>
+
+                    <div class="grid grid-cols-3 gap-8">
+
+                        <!-- Ruta 1 · Fácil -->
+                        <article class="overflow-hidden rounded-2xl border-2 border-slate-700 bg-slate-900 shadow-lg transition duration-200 hover:border-amber-400 hover:shadow-2xl">
+                            <img src="../img/barrio.jpg" alt="" width="800" height="400" loading="lazy" class="h-48 w-full object-cover">
+                            <div class="space-y-5 p-6">
+                                <p class="inline-block rounded-full bg-emerald-400 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-slate-950">Nivel: Fácil</p>
+                                <h3 class="text-2xl font-bold leading-tight tracking-tight text-white">Luces del Centro</h3>
+                                <dl class="divide-y divide-slate-800">
+                                    <div class="flex items-baseline justify-between gap-4 py-2">
+                                        <dt class="text-sm text-slate-400">Distancia</dt>
+                                        <dd class="font-semibold text-white">10 km</dd>
+                                    </div>
+                                    <div class="flex items-baseline justify-between gap-4 py-2">
+                                        <dt class="text-sm text-slate-400">Duración</dt>
+                                        <dd class="font-semibold text-white">2 h</dd>
+                                    </div>
+                                    <div class="flex items-baseline justify-between gap-4 py-2">
+                                        <dt class="text-sm text-slate-400">Punto de encuentro</dt>
+                                        <dd class="font-semibold text-white">Sede de Rueda Libre</dd>
+                                    </div>
+                                </dl>
+                                <div class="flex flex-wrap items-center justify-between gap-4 border-t border-slate-800 pt-5">
+                                    <p class="text-3xl font-bold text-amber-400">$55.000</p>
+                                    <a href="../paginas/reservas.html" aria-label="Inscríbete en Luces del Centro" class="inline-block rounded-lg border-2 border-transparent bg-amber-400 px-8 py-4 text-base font-semibold text-slate-950 shadow-lg hover:bg-amber-200 focus:outline-hidden focus:ring-4 focus:ring-white focus:ring-offset-2 focus:ring-offset-slate-950">Inscríbete</a>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Ruta 2 · Medio -->
+                        <article class="overflow-hidden rounded-2xl border-2 border-slate-700 bg-slate-900 shadow-lg transition duration-200 hover:border-amber-400 hover:shadow-2xl">
+                            <img src="../img/rio.jpg" alt="" width="800" height="400" loading="lazy" class="h-48 w-full object-cover">
+                            <div class="space-y-5 p-6">
+                                <p class="inline-block rounded-full bg-yellow-300 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-slate-950">Nivel: Medio</p>
+                                <h3 class="text-2xl font-bold leading-tight tracking-tight text-white">Miradores de la Ciudad</h3>
+                                <dl class="divide-y divide-slate-800">
+                                    <div class="flex items-baseline justify-between gap-4 py-2">
+                                        <dt class="text-sm text-slate-400">Distancia</dt>
+                                        <dd class="font-semibold text-white">16 km</dd>
+                                    </div>
+                                    <div class="flex items-baseline justify-between gap-4 py-2">
+                                        <dt class="text-sm text-slate-400">Duración</dt>
+                                        <dd class="font-semibold text-white">3 h</dd>
+                                    </div>
+                                    <div class="flex items-baseline justify-between gap-4 py-2">
+                                        <dt class="text-sm text-slate-400">Punto de encuentro</dt>
+                                        <dd class="font-semibold text-white">Sede de Rueda Libre</dd>
+                                    </div>
+                                </dl>
+                                <div class="flex flex-wrap items-center justify-between gap-4 border-t border-slate-800 pt-5">
+                                    <p class="text-3xl font-bold text-amber-400">$75.000</p>
+                                    <a href="../paginas/reservas.html" aria-label="Inscríbete en Miradores de la Ciudad" class="inline-block rounded-lg border-2 border-transparent bg-amber-400 px-8 py-4 text-base font-semibold text-slate-950 shadow-lg hover:bg-amber-200 focus:outline-hidden focus:ring-4 focus:ring-white focus:ring-offset-2 focus:ring-offset-slate-950">Inscríbete</a>
+                                </div>
+                            </div>
+                        </article>
+
+                        <!-- Ruta 3 · Difícil -->
+                        <article class="overflow-hidden rounded-2xl border-2 border-slate-700 bg-slate-900 shadow-lg transition duration-200 hover:border-amber-400 hover:shadow-2xl">
+                            <img src="../img/palmas.jpg" alt="" width="800" height="400" loading="lazy" class="h-48 w-full object-cover">
+                            <div class="space-y-5 p-6">
+                                <p class="inline-block rounded-full bg-rose-400 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-slate-950">Nivel: Difícil</p>
+                                <h3 class="text-2xl font-bold leading-tight tracking-tight text-white">Luna en Las Palmas</h3>
+                                <dl class="divide-y divide-slate-800">
+                                    <div class="flex items-baseline justify-between gap-4 py-2">
+                                        <dt class="text-sm text-slate-400">Distancia</dt>
+                                        <dd class="font-semibold text-white">22 km</dd>
+                                    </div>
+                                    <div class="flex items-baseline justify-between gap-4 py-2">
+                                        <dt class="text-sm text-slate-400">Duración</dt>
+                                        <dd class="font-semibold text-white">3,5 h</dd>
+                                    </div>
+                                    <div class="flex items-baseline justify-between gap-4 py-2">
+                                        <dt class="text-sm text-slate-400">Punto de encuentro</dt>
+                                        <dd class="font-semibold text-white">Sede de Rueda Libre</dd>
+                                    </div>
+                                </dl>
+                                <div class="flex flex-wrap items-center justify-between gap-4 border-t border-slate-800 pt-5">
+                                    <p class="text-3xl font-bold text-amber-400">$95.000</p>
+                                    <a href="../paginas/reservas.html" aria-label="Inscríbete en Luna en Las Palmas" class="inline-block rounded-lg border-2 border-transparent bg-amber-400 px-8 py-4 text-base font-semibold text-slate-950 shadow-lg hover:bg-amber-200 focus:outline-hidden focus:ring-4 focus:ring-white focus:ring-offset-2 focus:ring-offset-slate-950">Inscríbete</a>
+                                </div>
+                            </div>
+                        </article>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== ¿CÓMO FUNCIONA? =====
+             grid grid-cols-4 gap-6: cuatro pasos de igual ancho y alto, sin importar cuánto texto tenga cada uno
+             Los números son decorativos (aria-hidden): la lista <ol> ya los anuncia -->
+        <section id="como-funciona" class="py-16" aria-labelledby="titulo-como-funciona">
+            <div class="mx-auto w-full max-w-6xl px-6">
+                <div class="space-y-8">
+
+                    <h2 id="titulo-como-funciona" class="text-3xl font-bold tracking-tight">¿Cómo funciona?</h2>
+
+                    <ol class="grid grid-cols-4 gap-6">
+
+                        <li class="space-y-3 rounded-2xl border-2 border-slate-700 bg-slate-900 p-6">
+                            <p aria-hidden="true" class="flex h-10 w-10 items-center justify-center rounded-full bg-amber-400 text-lg font-bold text-slate-950">1</p>
+                            <h3 class="text-xl font-bold tracking-tight text-white">Elige tu ruta</h3>
+                            <p class="leading-relaxed text-slate-300">Escoge entre Luces del Centro, Miradores de la Ciudad o Luna en Las Palmas según tu nivel.</p>
+                        </li>
+
+                        <li class="space-y-3 rounded-2xl border-2 border-slate-700 bg-slate-900 p-6">
+                            <p aria-hidden="true" class="flex h-10 w-10 items-center justify-center rounded-full bg-amber-400 text-lg font-bold text-slate-950">2</p>
+                            <h3 class="text-xl font-bold tracking-tight text-white">Inscríbete</h3>
+                            <p class="leading-relaxed text-slate-300">Completa el formulario de reserva con tus datos y recibe la confirmación por correo.</p>
+                        </li>
+
+                        <li class="space-y-3 rounded-2xl border-2 border-slate-700 bg-slate-900 p-6">
+                            <p aria-hidden="true" class="flex h-10 w-10 items-center justify-center rounded-full bg-amber-400 text-lg font-bold text-slate-950">3</p>
+                            <h3 class="text-xl font-bold tracking-tight text-white">Recoge tu equipo</h3>
+                            <p class="leading-relaxed text-slate-300">En la sede de Rueda Libre te entregamos bicicleta, casco, luces LED y chaleco reflectivo.</p>
+                        </li>
+
+                        <li class="space-y-3 rounded-2xl border-2 border-slate-700 bg-slate-900 p-6">
+                            <p aria-hidden="true" class="flex h-10 w-10 items-center justify-center rounded-full bg-amber-400 text-lg font-bold text-slate-950">4</p>
+                            <h3 class="text-xl font-bold tracking-tight text-white">Rueda</h3>
+                            <p class="leading-relaxed text-slate-300">Sal con tu guía y descubre Medellín cuando se encienden las luces.</p>
+                        </li>
+
+                    </ol>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== FRANJA DE INSCRIPCIÓN =====
+             flex + justify-between + items-center: texto a la izquierda y botón a la derecha -->
+        <section id="inscripcion" class="py-16" aria-labelledby="titulo-inscripcion">
+            <div class="mx-auto w-full max-w-6xl px-6">
+                <div class="flex items-center justify-between gap-8 rounded-2xl border-2 border-slate-700 bg-slate-900 p-8 shadow-lg">
+
+                    <div class="max-w-xl space-y-2">
+                        <h2 id="titulo-inscripcion" class="text-3xl font-bold tracking-tight">¿Listo para rodar de noche?</h2>
+                        <p class="text-lg leading-relaxed text-slate-300">Salidas de jueves a sábado desde la sede de Rueda Libre. Desde $55.000, con bicicleta, casco, luces LED, chaleco reflectivo y guía.</p>
+                    </div>
+
+                    <a href="../paginas/reservas.html" class="inline-block rounded-lg border-2 border-transparent bg-amber-400 px-8 py-4 text-base font-semibold text-slate-950 shadow-lg hover:bg-amber-200 focus:outline-hidden focus:ring-4 focus:ring-white focus:ring-offset-2 focus:ring-offset-slate-950">Inscríbete</a>
+
+                </div>
+            </div>
+        </section>
+
     </main>
+
+    <!-- ===== PIE DE PÁGINA: tres bloques con flex ===== -->
+    <footer class="border-t border-slate-800 py-12">
+        <div class="mx-auto w-full max-w-6xl px-6">
+            <div class="flex justify-between gap-8">
+
+                <div class="max-w-xs space-y-2">
+                    <h2 class="text-sm font-semibold uppercase tracking-wide text-slate-400">Rueda Nocturna</h2>
+                    <p class="text-slate-300">Recorridos nocturnos en bicicleta por Medellín.</p>
+                    <p class="text-slate-300">© 2026 Rueda Libre</p>
+                </div>
+
+                <div class="max-w-xs space-y-2">
+                    <h2 class="text-sm font-semibold uppercase tracking-wide text-slate-400">Contacto</h2>
+                    <p><a href="mailto:hola@ruedalibre.example" class="inline-block rounded text-sm font-semibold text-amber-400 underline hover:text-amber-200 focus:outline-hidden focus:ring-4 focus:ring-white focus:ring-offset-2 focus:ring-offset-slate-950">hola@ruedalibre.example</a></p>
+                    <p class="text-slate-300">Calle 10 # 20-30, Medellín</p>
+                </div>
+
+                <div class="max-w-xs space-y-2">
+                    <h2 class="text-sm font-semibold uppercase tracking-wide text-slate-400">Cuándo</h2>
+                    <p class="text-slate-300">Rueda Nocturna: jueves a sábado.</p>
+                    <p class="text-slate-300">Salida desde la sede de Rueda Libre.</p>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+
 </body>
 </html>
+
