@@ -514,7 +514,25 @@ resumen: Bootstrap decide el diseño por ti; Tailwind te da las herramientas par
 
 
  RETO #2 Tailwind
- 
+
 ### Qué encontré en `output.css` (Tailwind 4.1.x (est.), ~900 líneas (est.))
 - `bg-amber-400` (la uso): aparece, 2 coincidencias (la clase `.bg-amber-400` y su variante `.hover\:bg-amber-400` del botón de contorno).
 - `bg-pink-500` (no la uso): 0 coincidencias.
+
+
+
+
+## Tailwind · MiniReto 4: kit de componentes Rueda Nocturna v0.1
+
+### Reglas del kit
+
+1. Radios: `rounded-lg` (botones, campos, alertas), `rounded-2xl` (cards), `rounded-full` (etiquetas).
+2. Bordes: `border-2` en botones, campos y cards; `border-l-4` en alertas.
+3. Espaciado: solo la escala de Tailwind (múltiplos de 4 px): botones `px-8 py-4`, campos `px-4 py-3`, alertas `p-4`, cards `p-6`.
+4. Colores: fondo `slate-950`, superficie `slate-900`, borde `slate-700`, texto `white`/`slate-300`/`slate-400`, acento `amber-400`;
+ estados sky, emerald y amber.
+5. Sombras: `shadow-lg` en botón principal y cards (`hover:shadow-2xl`), `shadow-md` en secundario.
+6. Interacción: hover cambia color o sombra sin mover el contenido; foco siempre `focus:outline-hidden focus:ring-4 focus:ring-white
+ focus:ring-offset-2 focus:ring-offset-slate-950`.
+
+

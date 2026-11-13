@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Kit de componentes Rueda Nocturna v0.1: botones, card, alertas y campos de formulario.">
+    <title>Kit de componentes v0.1 | Rueda Nocturna</title>
+
+    <!-- CSS generado por la CLI de Tailwind -->
+    <link rel="stylesheet" href="src/output.css">
+</head>
+<body class="bg-slate-950 text-white antialiased">
+
+    <a href="#contenido" class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded focus:bg-white focus:px-4 focus:py-2 focus:text-slate-950">Saltar al contenido principal</a>
+
+    <main id="contenido" class="px-6 py-16">
+        <div class="mx-auto w-full max-w-3xl space-y-16">
+
+            <!-- ===== ENCABEZADO ===== -->
+            <header class="space-y-4">
+                <a href="index.html" class="inline-block rounded text-sm font-semibold text-amber-400 underline hover:text-amber-200 focus:outline-hidden focus:ring-4 focus:ring-white focus:ring-offset-2 focus:ring-offset-slate-950">← Volver a Rueda Nocturna</a>
+                <h1 class="text-4xl font-bold leading-tight tracking-tight sm:text-5xl">Kit de componentes · v0.1</h1>
+            </header>
+
+            <!-- ===== 1. BOTONES ===== -->
+            <section class="space-y-6" aria-labelledby="titulo-botones">
+                <h2 id="titulo-botones" class="text-2xl font-bold tracking-tight">Botones</h2>
+
+                <div class="grid gap-8 sm:grid-cols-3">
+
+                    <div class="space-y-3">
+                        <p class="text-sm uppercase tracking-wide text-slate-400">Principal</p>
+                        <a href="../paginas/reservas.html" class="inline-block rounded-lg border-2 border-transparent bg-amber-400 px-8 py-4 text-base font-semibold text-slate-950 shadow-lg hover:bg-amber-200 focus:outline-hidden focus:ring-4 focus:ring-white focus:ring-offset-2 focus:ring-offset-slate-950">Inscríbete</a>
+                    </div>
+
+                    <div class="space-y-3">
+                        <p class="text-sm uppercase tracking-wide text-slate-400">Secundario</p>
+                        <a href="../paginas/tarifas.html" class="inline-block rounded-lg border-2 border-slate-700 bg-slate-800 px-8 py-4 text-base font-semibold text-white shadow-md hover:bg-slate-600 focus:outline-hidden focus:ring-4 focus:ring-white focus:ring-offset-2 focus:ring-offset-slate-950">Ver rutas</a>
+                    </div>
+
+                    <div class="space-y-3">
+                        <p class="text-sm uppercase tracking-wide text-slate-400">Contorno</p>
+                        <a href="index.html" class="inline-block rounded-lg border-2 border-amber-400 px-8 py-4 text-base font-semibold text-amber-400 hover:bg-amber-400 hover:text-slate-950 focus:outline-hidden focus:ring-4 focus:ring-white focus:ring-offset-2 focus:ring-offset-slate-950">Volver al inicio</a>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- ===== 2. CARD (la de la primera ruta del MiniReto 3) ===== -->
+            <section class="space-y-6" aria-labelledby="titulo-card">
+                <h2 id="titulo-card" class="text-2xl font-bold tracking-tight">Card</h2>
+
+                <article class="overflow-hidden rounded-2xl border-2 border-slate-700 bg-slate-900 shadow-lg transition duration-200 hover:border-amber-400 hover:shadow-2xl">
+                    <img src="../img/barrio.jpg" alt="" width="800" height="400" loading="lazy" class="h-48 w-full object-cover">
+                    <div class="space-y-5 p-6">
+                        <p class="inline-block rounded-full bg-emerald-400 px-3 py-1 text-xs font-semibold uppercase tracking-widest text-slate-950">Nivel: Fácil</p>
+                        <h3 class="text-2xl font-bold leading-tight tracking-tight text-white">Luces del Centro</h3>
+                        <dl class="divide-y divide-slate-800">
+                            <div class="flex items-baseline justify-between gap-4 py-2">
+                                <dt class="text-sm text-slate-400">Distancia</dt>
+                                <dd class="font-semibold text-white">10 km</dd>
+                            </div>
+                            <div class="flex items-baseline justify-between gap-4 py-2">
+                                <dt class="text-sm text-slate-400">Duración</dt>
+                                <dd class="font-semibold text-white">2 h</dd>
+                            </div>
+                            <div class="flex items-baseline justify-between gap-4 py-2">
+                                <dt class="text-sm text-slate-400">Punto de encuentro</dt>
+                                <dd class="font-semibold text-white">Sede de Rueda Libre</dd>
+                            </div>
+                        </dl>
+                        <div class="flex flex-wrap items-center justify-between gap-4 border-t border-slate-800 pt-5">
+                            <p class="text-3xl font-bold text-amber-400">$55.000</p>
+                            <a href="../paginas/reservas.html" aria-label="Inscríbete en Luces del Centro" class="inline-block rounded-lg border-2 border-transparent bg-amber-400 px-8 py-4 text-base font-semibold text-slate-950 shadow-lg hover:bg-amber-200 focus:outline-hidden focus:ring-4 focus:ring-white focus:ring-offset-2 focus:ring-offset-slate-950">Inscríbete</a>
+                        </div>
+                    </div>
+                </article>
+            </section>
+
+            <!-- ===== 3. ALERTAS =====
+                 Fondo suave (color/10), borde lateral de color, título destacado y texto.
+                 El título dice el tipo (Información, Éxito, Advertencia): no depende solo del color.
+                 role="status" en la de éxito: el lector de pantalla la anuncia como aviso. -->
+            <section class="space-y-6" aria-labelledby="titulo-alertas">
+                <h2 id="titulo-alertas" class="text-2xl font-bold tracking-tight">Alertas</h2>
+
+                <div class="space-y-4">
+
+                    <div class="rounded-lg border-l-4 border-sky-400 bg-sky-400/10 p-4">
+                        <p class="font-semibold text-sky-300">Información</p>
+                        <p class="mt-1 text-slate-200">Las rutas nocturnas incluyen bicicleta, casco, luces LED, chaleco reflectivo y guía.</p>
+                    </div>
+
+                    <div role="status" class="rounded-lg border-l-4 border-emerald-400 bg-emerald-400/10 p-4">
+                        <p class="font-semibold text-emerald-300">Éxito</p>
+                        <p class="mt-1 text-slate-200">Tu inscripción quedó registrada. Te enviaremos la confirmación por correo electrónico.</p>
+                    </div>
+
+                    <div class="rounded-lg border-l-4 border-amber-400 bg-amber-400/10 p-4">
+                        <p class="font-semibold text-amber-300">Advertencia</p>
+                        <p class="mt-1 text-slate-200">La ruta de nivel Difícil tiene subidas largas. Elige según tu experiencia.</p>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- ===== 4. CAMPOS DE FORMULARIO =====
+                 label con for = id del campo · texto de ayuda enlazado con aria-describedby
+                 foco: el mismo anillo blanco de los botones -->
+            <section class="space-y-6" aria-labelledby="titulo-campos">
+                <h2 id="titulo-campos" class="text-2xl font-bold tracking-tight">Campos de formulario</h2>
+
+                <div class="space-y-6">
+
+                    <div class="space-y-2">
+                        <label for="correo" class="block text-sm font-semibold text-white">Correo electrónico</label>
+                        <input type="email" id="correo" name="correo" autocomplete="email" placeholder="ejemplo@correo.com" aria-describedby="ayuda-correo" class="block w-full rounded-lg border-2 border-slate-700 bg-slate-900 px-4 py-3 text-base text-white placeholder:text-slate-400 hover:border-slate-500 focus:border-amber-400 focus:outline-hidden focus:ring-4 focus:ring-white focus:ring-offset-2 focus:ring-offset-slate-950">
+                        <p id="ayuda-correo" class="text-sm text-slate-400">Aquí te enviaremos la confirmación de tu inscripción.</p>
+                    </div>
+
+                    <div class="space-y-2">
+                        <label for="celular" class="block text-sm font-semibold text-white">Celular</label>
+                        <input type="tel" id="celular" name="celular" autocomplete="tel" inputmode="numeric" maxlength="10" pattern="3[0-9]{9}" placeholder="3001234567" aria-describedby="ayuda-celular" title="10 dígitos, debe empezar por 3. Ejemplo: 3001234567" class="block w-full rounded-lg border-2 border-slate-700 bg-slate-900 px-4 py-3 text-base text-white placeholder:text-slate-400 hover:border-slate-500 focus:border-amber-400 focus:outline-hidden focus:ring-4 focus:ring-white focus:ring-offset-2 focus:ring-offset-slate-950">
+                        <p id="ayuda-celular" class="text-sm text-slate-400">10 dígitos, empieza por 3. Ejemplo: 3001234567.</p>
+                    </div>
+
+                </div>
+            </section>
+
+        </div>
+    </main>
+</body>
+</html>
