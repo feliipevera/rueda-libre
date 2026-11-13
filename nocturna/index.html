@@ -21,12 +21,14 @@
 
     <a href="#contenido" class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:px-4 focus:py-2 focus:rounded focus:bg-white focus:text-azul-noche">Saltar al contenido principal</a>
 
-    <!-- ===== ENCABEZADO ===== -->
+    <!-- ===== ENCABEZADO =====
+         El logo lleva al sitio principal (../index.html).
+         "Sitio principal" aparece en el menú desde lg (1024 px): a 768 px no cabe. -->
     <header class="border-b border-gris-asfalto/30 dark:border-crema/20">
         <div class="mx-auto w-full max-w-6xl px-6">
             <div class="flex flex-col items-center md:flex-row md:justify-between gap-4 py-4 md:gap-3 lg:gap-8">
 
-                <a href="#inicio" class="flex shrink-0 items-center gap-3 rounded focus:outline-hidden focus:ring-4 focus:ring-azul-noche focus:ring-offset-2 focus:ring-offset-crema dark:focus:ring-crema dark:focus:ring-offset-azul-noche">
+                <a href="../index.html" class="flex shrink-0 items-center gap-3 rounded focus:outline-hidden focus:ring-4 focus:ring-azul-noche focus:ring-offset-2 focus:ring-offset-crema dark:focus:ring-crema dark:focus:ring-offset-azul-noche">
                     <img src="../img/LogoBicicleta.jpg" alt="" width="48" height="48" class="h-12 w-12 rounded-full object-cover">
                     <span class="font-titulos text-lg font-bold tracking-tight lg:text-xl">Rueda Libre</span>
                 </a>
@@ -38,6 +40,7 @@
                             <li><a href="#rutas" class="whitespace-nowrap text-sm font-semibold lg:text-base rounded text-gris-asfalto hover:text-azul-noche focus:outline-hidden focus:ring-4 focus:ring-azul-noche focus:ring-offset-2 focus:ring-offset-crema dark:text-crema/75 dark:hover:text-crema dark:focus:ring-crema dark:focus:ring-offset-azul-noche">Rutas</a></li>
                             <li><a href="#como-funciona" class="whitespace-nowrap text-sm font-semibold lg:text-base rounded text-gris-asfalto hover:text-azul-noche focus:outline-hidden focus:ring-4 focus:ring-azul-noche focus:ring-offset-2 focus:ring-offset-crema dark:text-crema/75 dark:hover:text-crema dark:focus:ring-crema dark:focus:ring-offset-azul-noche">¿Cómo funciona?</a></li>
                             <li><a href="#inscripcion" class="whitespace-nowrap text-sm font-semibold lg:text-base rounded text-gris-asfalto hover:text-azul-noche focus:outline-hidden focus:ring-4 focus:ring-azul-noche focus:ring-offset-2 focus:ring-offset-crema dark:text-crema/75 dark:hover:text-crema dark:focus:ring-crema dark:focus:ring-offset-azul-noche">Inscripción</a></li>
+                            <li class="hidden lg:block"><a href="../index.html" class="whitespace-nowrap text-sm font-semibold lg:text-base rounded text-gris-asfalto hover:text-azul-noche focus:outline-hidden focus:ring-4 focus:ring-azul-noche focus:ring-offset-2 focus:ring-offset-crema dark:text-crema/75 dark:hover:text-crema dark:focus:ring-crema dark:focus:ring-offset-azul-noche">Sitio principal</a></li>
                         </ul>
                     </nav>
 
@@ -230,7 +233,8 @@
 
     </main>
 
-    <!-- ===== PIE DE PÁGINA ===== -->
+    <!-- ===== PIE DE PÁGINA =====
+         Tres bloques. El primero incluye los enlaces al sitio principal (visibles también en celular). -->
     <footer class="py-10 md:py-12 border-t border-gris-asfalto/30 dark:border-crema/20">
         <div class="mx-auto w-full max-w-6xl px-6">
             <div class="flex flex-col md:flex-row md:justify-between gap-8">
@@ -239,6 +243,13 @@
                     <h2 class="font-titulos text-sm font-bold uppercase tracking-wide text-gris-asfalto dark:text-crema/75">Rueda Nocturna</h2>
                     <p>Recorridos nocturnos en bicicleta por Medellín.</p>
                     <p>© 2026 Rueda Libre</p>
+                    <nav aria-label="Sitio principal de Rueda Libre" class="pt-2">
+                        <ul class="space-y-1">
+                            <li><a href="../index.html" class="inline-block text-sm font-semibold underline rounded text-verde-ruta hover:text-azul-noche focus:outline-hidden focus:ring-4 focus:ring-azul-noche focus:ring-offset-2 focus:ring-offset-crema dark:text-amarillo-farol dark:hover:text-crema dark:focus:ring-crema dark:focus:ring-offset-azul-noche">Sitio principal</a></li>
+                            <li><a href="../paginas/tarifas.html" class="inline-block text-sm font-semibold underline rounded text-verde-ruta hover:text-azul-noche focus:outline-hidden focus:ring-4 focus:ring-azul-noche focus:ring-offset-2 focus:ring-offset-crema dark:text-amarillo-farol dark:hover:text-crema dark:focus:ring-crema dark:focus:ring-offset-azul-noche">Tarifas y rutas</a></li>
+                            <li><a href="../paginas/reservas.html" class="inline-block text-sm font-semibold underline rounded text-verde-ruta hover:text-azul-noche focus:outline-hidden focus:ring-4 focus:ring-azul-noche focus:ring-offset-2 focus:ring-offset-crema dark:text-amarillo-farol dark:hover:text-crema dark:focus:ring-crema dark:focus:ring-offset-azul-noche">Reservas</a></li>
+                        </ul>
+                    </nav>
                 </div>
 
                 <div class="max-w-xs space-y-2">
