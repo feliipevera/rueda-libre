@@ -570,3 +570,18 @@ Usé `grid grid-cols-4 gap-6` porque son cuatro elementos de igual peso: grid da
 
 Comprobación del scroll: en la consola, `document.documentElement.scrollWidth > window.innerWidth` devolvió `false` en los cuatro anchos.
 
+
+
+### Contraste (WCAG, mínimo 4,5:1 para texto)
+| Combinación | Modo | Contraste | Resultado |
+|---|---|---|---|
+| Azul Noche sobre Crema (texto) | claro | 14,8:1 | Cumple |
+| Gris Asfalto sobre Crema (secundario) | claro | 5,6:1 | Cumple |
+| Verde Ruta sobre Blanco (precios) | claro | 5,3:1 | Cumple |
+| Blanco sobre Verde Ruta (botón) | claro | 5,3:1 | Cumple |
+| Crema sobre Azul Noche (texto) | oscuro | 14,8:1 | Cumple |
+| Crema al 75 % sobre Azul Noche (secundario) | oscuro | ≈8,9:1 | Cumple |
+| Amarillo Farol sobre Azul Noche (precios, enlaces) | oscuro | 11,1:1 | Cumple |
+| Azul Noche sobre Amarillo Farol (botón) | oscuro | 11,1:1 | Cumple |
+| **Verde Ruta sobre Azul Noche (texto)** | oscuro | **3,0:1** | **No cumple** → se usa Amarillo Farol |
+| **Gris Asfalto sobre Azul Noche (secundario)** | oscuro | **2,7:1** | **No cumple** → se usa Crema al 75 % |
