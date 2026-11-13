@@ -548,7 +548,25 @@ Usé `grid grid-cols-4 gap-6` porque son cuatro elementos de igual peso: grid da
  el pie y la franja, que son distribuciones en una sola dirección (alinear y separar).
 
 
- 
 
 
+## Tailwind · MiniReto 6: landing responsive (mobile-first)
+
+### Qué se rompía a 360 px (versión de escritorio)
+- Encabezado: logo, 4 enlaces y botón en una sola fila no caben; se desborda o se aprieta.
+- Rutas en `grid-cols-3`: cada card queda de ~90 px, con texto y botón desbordados.
+- Pasos en `grid-cols-4`: columnas de ~60 px, texto partido letra por letra.
+- Franja y pie en fila: texto, botón y tres bloques demasiado apretados.
+- Título `text-5xl` y secciones con `py-16`: demasiado grandes para el celular.
+
+
+### Pruebas (DevTools, modo dispositivo)
+| Ancho | Encabezado | Rutas | Pasos | Franja y pie | Scroll horizontal |
+|---|---|---|---|---|---|
+| 360 px | Apilado; solo logo y botón | 1 columna | 1 columna | Apilados | No |
+| 768 px | En fila, con enlaces | 2 columnas | 2 columnas | En fila | No |
+| 1024 px | En fila, enlaces con más espacio | 3 columnas | 4 columnas | En fila | No |
+| 1280 px | En fila, contenedor centrado a 72 rem | 3 columnas | 4 columnas | En fila | No |
+
+Comprobación del scroll: en la consola, `document.documentElement.scrollWidth > window.innerWidth` devolvió `false` en los cuatro anchos.
 

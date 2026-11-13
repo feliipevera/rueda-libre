@@ -14,24 +14,25 @@
     <a href="#contenido" class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded focus:bg-white focus:px-4 focus:py-2 focus:text-slate-950">Saltar al contenido principal</a>
 
     <!-- ===== ENCABEZADO =====
-         Contenedor común: mx-auto w-full max-w-6xl px-6 (el mismo en todas las secciones)
-         flex + items-center + justify-between: logo a la izquierda, enlaces y botón a la derecha -->
+         Mobile-first: sin prefijo = celular (apilado: logo arriba, botón debajo)
+         md: = fila con logo a un lado y enlaces + botón al otro
+         Los enlaces a secciones están ocultos en celular (hidden) y aparecen desde md (md:block) -->
     <header class="border-b border-slate-800">
         <div class="mx-auto w-full max-w-6xl px-6">
-            <div class="flex items-center justify-between gap-8 py-4">
+            <div class="flex flex-col items-center gap-4 py-4 md:flex-row md:justify-between md:gap-3 lg:gap-8">
 
-                <a href="#inicio" class="flex items-center gap-3 rounded focus:outline-hidden focus:ring-4 focus:ring-white focus:ring-offset-2 focus:ring-offset-slate-950">
+                <a href="#inicio" class="flex shrink-0 items-center gap-3 rounded focus:outline-hidden focus:ring-4 focus:ring-white focus:ring-offset-2 focus:ring-offset-slate-950">
                     <img src="../img/LogoBicicleta.jpg" alt="" width="48" height="48" class="h-12 w-12 rounded-full object-cover">
-                    <span class="text-xl font-bold tracking-tight text-white">Rueda Libre</span>
+                    <span class="text-lg font-bold tracking-tight text-white lg:text-xl">Rueda Libre</span>
                 </a>
 
-                <div class="flex items-center gap-8">
-                    <nav aria-label="Principal">
-                        <ul class="flex items-center gap-6">
-                            <li><a href="#inicio" class="rounded text-base font-semibold text-slate-300 hover:text-white focus:outline-hidden focus:ring-4 focus:ring-white focus:ring-offset-2 focus:ring-offset-slate-950">Inicio</a></li>
-                            <li><a href="#rutas" class="rounded text-base font-semibold text-slate-300 hover:text-white focus:outline-hidden focus:ring-4 focus:ring-white focus:ring-offset-2 focus:ring-offset-slate-950">Rutas</a></li>
-                            <li><a href="#como-funciona" class="rounded text-base font-semibold text-slate-300 hover:text-white focus:outline-hidden focus:ring-4 focus:ring-white focus:ring-offset-2 focus:ring-offset-slate-950">¿Cómo funciona?</a></li>
-                            <li><a href="#inscripcion" class="rounded text-base font-semibold text-slate-300 hover:text-white focus:outline-hidden focus:ring-4 focus:ring-white focus:ring-offset-2 focus:ring-offset-slate-950">Inscripción</a></li>
+                <div class="flex items-center md:gap-3 lg:gap-8">
+                    <nav aria-label="Principal" class="hidden md:block">
+                        <ul class="flex items-center gap-3 lg:gap-6">
+                            <li><a href="#inicio" class="whitespace-nowrap rounded text-sm font-semibold text-slate-300 hover:text-white focus:outline-hidden focus:ring-4 focus:ring-white focus:ring-offset-2 focus:ring-offset-slate-950 lg:text-base">Inicio</a></li>
+                            <li><a href="#rutas" class="whitespace-nowrap rounded text-sm font-semibold text-slate-300 hover:text-white focus:outline-hidden focus:ring-4 focus:ring-white focus:ring-offset-2 focus:ring-offset-slate-950 lg:text-base">Rutas</a></li>
+                            <li><a href="#como-funciona" class="whitespace-nowrap rounded text-sm font-semibold text-slate-300 hover:text-white focus:outline-hidden focus:ring-4 focus:ring-white focus:ring-offset-2 focus:ring-offset-slate-950 lg:text-base">¿Cómo funciona?</a></li>
+                            <li><a href="#inscripcion" class="whitespace-nowrap rounded text-sm font-semibold text-slate-300 hover:text-white focus:outline-hidden focus:ring-4 focus:ring-white focus:ring-offset-2 focus:ring-offset-slate-950 lg:text-base">Inscripción</a></li>
                         </ul>
                     </nav>
 
@@ -44,20 +45,22 @@
 
     <main id="contenido">
 
-        <!-- ===== SECCIÓN PRINCIPAL ===== -->
-        <section id="inicio" class="py-16" aria-labelledby="titulo-campana">
+        <!-- ===== SECCIÓN PRINCIPAL =====
+             Relleno vertical: py-10 (celular) → md:py-16 → lg:py-20 (igual en todas las secciones)
+             Título: text-4xl (celular) → sm:text-5xl → lg:text-6xl -->
+        <section id="inicio" class="py-10 md:py-16 lg:py-20" aria-labelledby="titulo-campana">
             <div class="mx-auto w-full max-w-6xl px-6">
                 <div class="max-w-3xl space-y-6">
 
                     <p class="inline-block rounded-full bg-amber-400 px-4 py-1 text-sm font-semibold uppercase tracking-widest text-slate-950">Nuevo · Jueves a sábado</p>
 
-                    <h1 id="titulo-campana" class="text-5xl font-bold leading-tight tracking-tight text-white sm:text-6xl">Rueda Nocturna</h1>
+                    <h1 id="titulo-campana" class="text-4xl font-bold leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl">Rueda Nocturna</h1>
 
-                    <p class="max-w-xl text-lg leading-relaxed text-slate-300">Descubre Medellín en bici cuando se encienden las luces</p>
+                    <p class="max-w-xl text-base leading-relaxed text-slate-300 md:text-lg">Descubre Medellín en bici cuando se encienden las luces</p>
 
                     <ul class="flex flex-wrap gap-4">
-                        <li class="rounded-xl border border-slate-700 bg-slate-900 px-5 py-3 text-2xl font-bold text-amber-400">3 rutas</li>
-                        <li class="rounded-xl border border-slate-700 bg-slate-900 px-5 py-3 text-2xl font-bold text-amber-400">Desde $55.000</li>
+                        <li class="rounded-xl border border-slate-700 bg-slate-900 px-5 py-3 text-xl font-bold text-amber-400 sm:text-2xl">3 rutas</li>
+                        <li class="rounded-xl border border-slate-700 bg-slate-900 px-5 py-3 text-xl font-bold text-amber-400 sm:text-2xl">Desde $55.000</li>
                     </ul>
 
                     <div>
@@ -69,18 +72,18 @@
         </section>
 
         <!-- ===== RUTAS =====
-             grid grid-cols-3 gap-8: tres cards en fila, todas del mismo alto
-             Las cards son idénticas a la del kit: solo cambian los datos y el color de la etiqueta -->
-        <section id="rutas" class="py-16" aria-labelledby="titulo-rutas">
+             grid-cols-1 (celular) → sm:grid-cols-2 (desde 640 px) → lg:grid-cols-3 (desde 1024 px)
+             Las cards son idénticas a las del kit: solo cambian los datos y el color de la etiqueta -->
+        <section id="rutas" class="py-10 md:py-16 lg:py-20" aria-labelledby="titulo-rutas">
             <div class="mx-auto w-full max-w-6xl px-6">
-                <div class="space-y-8">
+                <div class="space-y-6 md:space-y-8">
 
                     <div class="space-y-4">
-                        <h2 id="titulo-rutas" class="text-3xl font-bold tracking-tight">Rutas</h2>
+                        <h2 id="titulo-rutas" class="text-2xl font-bold tracking-tight md:text-3xl">Rutas</h2>
                         <p class="max-w-xl leading-relaxed text-slate-300">Todas las rutas salen de la sede de Rueda Libre e incluyen bicicleta, casco, luces LED, chaleco reflectivo y guía.</p>
                     </div>
 
-                    <div class="grid grid-cols-3 gap-8">
+                    <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8">
 
                         <!-- Ruta 1 · Fácil -->
                         <article class="overflow-hidden rounded-2xl border-2 border-slate-700 bg-slate-900 shadow-lg transition duration-200 hover:border-amber-400 hover:shadow-2xl">
@@ -169,15 +172,15 @@
         </section>
 
         <!-- ===== ¿CÓMO FUNCIONA? =====
-             grid grid-cols-4 gap-6: cuatro pasos de igual ancho y alto, sin importar cuánto texto tenga cada uno
+             grid-cols-1 (celular) → sm:grid-cols-2 → lg:grid-cols-4
              Los números son decorativos (aria-hidden): la lista <ol> ya los anuncia -->
-        <section id="como-funciona" class="py-16" aria-labelledby="titulo-como-funciona">
+        <section id="como-funciona" class="py-10 md:py-16 lg:py-20" aria-labelledby="titulo-como-funciona">
             <div class="mx-auto w-full max-w-6xl px-6">
-                <div class="space-y-8">
+                <div class="space-y-6 md:space-y-8">
 
-                    <h2 id="titulo-como-funciona" class="text-3xl font-bold tracking-tight">¿Cómo funciona?</h2>
+                    <h2 id="titulo-como-funciona" class="text-2xl font-bold tracking-tight md:text-3xl">¿Cómo funciona?</h2>
 
-                    <ol class="grid grid-cols-4 gap-6">
+                    <ol class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
 
                         <li class="space-y-3 rounded-2xl border-2 border-slate-700 bg-slate-900 p-6">
                             <p aria-hidden="true" class="flex h-10 w-10 items-center justify-center rounded-full bg-amber-400 text-lg font-bold text-slate-950">1</p>
@@ -209,14 +212,14 @@
         </section>
 
         <!-- ===== FRANJA DE INSCRIPCIÓN =====
-             flex + justify-between + items-center: texto a la izquierda y botón a la derecha -->
-        <section id="inscripcion" class="py-16" aria-labelledby="titulo-inscripcion">
+             Celular: apilada (flex-col) · desde md: fila con texto a un lado y botón al otro -->
+        <section id="inscripcion" class="py-10 md:py-16 lg:py-20" aria-labelledby="titulo-inscripcion">
             <div class="mx-auto w-full max-w-6xl px-6">
-                <div class="flex items-center justify-between gap-8 rounded-2xl border-2 border-slate-700 bg-slate-900 p-8 shadow-lg">
+                <div class="flex flex-col items-start gap-6 rounded-2xl border-2 border-slate-700 bg-slate-900 p-6 shadow-lg md:flex-row md:items-center md:justify-between md:gap-8 md:p-8">
 
                     <div class="max-w-xl space-y-2">
-                        <h2 id="titulo-inscripcion" class="text-3xl font-bold tracking-tight">¿Listo para rodar de noche?</h2>
-                        <p class="text-lg leading-relaxed text-slate-300">Salidas de jueves a sábado desde la sede de Rueda Libre. Desde $55.000, con bicicleta, casco, luces LED, chaleco reflectivo y guía.</p>
+                        <h2 id="titulo-inscripcion" class="text-2xl font-bold tracking-tight md:text-3xl">¿Listo para rodar de noche?</h2>
+                        <p class="text-base leading-relaxed text-slate-300 md:text-lg">Salidas de jueves a sábado desde la sede de Rueda Libre. Desde $55.000, con bicicleta, casco, luces LED, chaleco reflectivo y guía.</p>
                     </div>
 
                     <a href="../paginas/reservas.html" class="inline-block rounded-lg border-2 border-transparent bg-amber-400 px-8 py-4 text-base font-semibold text-slate-950 shadow-lg hover:bg-amber-200 focus:outline-hidden focus:ring-4 focus:ring-white focus:ring-offset-2 focus:ring-offset-slate-950">Inscríbete</a>
@@ -227,10 +230,11 @@
 
     </main>
 
-    <!-- ===== PIE DE PÁGINA: tres bloques con flex ===== -->
-    <footer class="border-t border-slate-800 py-12">
+    <!-- ===== PIE DE PÁGINA =====
+         Celular: tres bloques apilados (flex-col) · desde md: en fila (md:flex-row) -->
+    <footer class="border-t border-slate-800 py-10 md:py-12">
         <div class="mx-auto w-full max-w-6xl px-6">
-            <div class="flex justify-between gap-8">
+            <div class="flex flex-col gap-8 md:flex-row md:justify-between">
 
                 <div class="max-w-xs space-y-2">
                     <h2 class="text-sm font-semibold uppercase tracking-wide text-slate-400">Rueda Nocturna</h2>
@@ -256,4 +260,3 @@
 
 </body>
 </html>
-
